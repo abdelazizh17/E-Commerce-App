@@ -1,12 +1,12 @@
-import 'dart:ui';
-
 import 'package:e_commerce/core/utils/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppStyles {
   static TextStyle styleMediumWhite14() {
     return TextStyle(
       color: AppColors.whiteColor,
-      fontSize: 14,
+      fontSize: 14.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w500,
     );
@@ -15,7 +15,7 @@ abstract class AppStyles {
   static TextStyle styleMediumBlack14() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 14,
+      fontSize: 14.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w500,
     );
@@ -24,7 +24,7 @@ abstract class AppStyles {
   static TextStyle styleRegular10() {
     return TextStyle(
       color: AppColors.greyColor,
-      fontSize: 10,
+      fontSize: 10.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w400,
     );
@@ -33,7 +33,7 @@ abstract class AppStyles {
   static TextStyle styleRegularGrey11() {
     return TextStyle(
       color: AppColors.greyColor,
-      fontSize: 11,
+      fontSize: 11.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w400,
     );
@@ -42,7 +42,7 @@ abstract class AppStyles {
   static TextStyle styleRegularBlack11() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 11,
+      fontSize: 11.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w400,
     );
@@ -51,7 +51,7 @@ abstract class AppStyles {
   static TextStyle styleRegular14() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 14,
+      fontSize: 14.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w400,
     );
@@ -60,7 +60,7 @@ abstract class AppStyles {
   static TextStyle styleRegular16() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 16,
+      fontSize: 16.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w400,
     );
@@ -69,7 +69,7 @@ abstract class AppStyles {
   static TextStyle styleSimiBold16() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 16,
+      fontSize: 16.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w600,
     );
@@ -78,7 +78,7 @@ abstract class AppStyles {
   static TextStyle styleSimiBold18() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 18,
+      fontSize: 18.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w600,
     );
@@ -87,7 +87,7 @@ abstract class AppStyles {
   static TextStyle styleSimiBoldWhite24() {
     return TextStyle(
       color: AppColors.whiteColor,
-      fontSize: 24,
+      fontSize: 24.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w600,
     );
@@ -96,7 +96,7 @@ abstract class AppStyles {
   static TextStyle styleSimiBoldBlack24() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 24,
+      fontSize: 24.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w600,
     );
@@ -105,8 +105,8 @@ abstract class AppStyles {
   static TextStyle styleBoldBlack34() {
     return TextStyle(
       color: AppColors.blackColor,
-      fontSize: 34,
-      fontFamily: 'Poppins',
+      fontSize: 34.sp,
+      fontFamily: 'Metropolis',
       fontWeight: FontWeight.w700,
     );
   }
@@ -114,8 +114,8 @@ abstract class AppStyles {
   static TextStyle styleBoldWhite34() {
     return TextStyle(
       color: AppColors.whiteColor,
-      fontSize: 34,
-      fontFamily: 'Poppins',
+      fontSize: 34.sp,
+      fontFamily: 'Metropolis',
       fontWeight: FontWeight.w700,
     );
   }
