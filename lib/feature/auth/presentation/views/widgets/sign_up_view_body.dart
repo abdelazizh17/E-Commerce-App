@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/utils/app_styles.dart';
+import 'package:e_commerce/feature/auth/presentation/views/widgets/already_have_an_account_section.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field_sign_up_section.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,10 @@ class SignUpViewBody extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 11,
                 ),
                 CustomTextFormFieldSignUpSection(),
+                SizedBox(
+                  height: 16,
+                ),
+                AlreadyHaveAnAccountSection(),
               ],
             ),
           )
