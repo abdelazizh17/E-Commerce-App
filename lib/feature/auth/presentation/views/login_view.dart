@@ -1,3 +1,4 @@
+import 'package:e_commerce/feature/auth/presentation/views/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -5,11 +6,12 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Login"),
+    return Scaffold(
+      backgroundColor: Color(0xFFF9F9F9),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
       ),
+      body: LoginViewBody(),
     );
   }
 }
-

@@ -1,14 +1,11 @@
-import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/already_have_an_account_and_forgot_password_section.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field_sign_up_section.dart';
+import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field_login_section.dart';
 import 'package:flutter/material.dart';
 
-class SignUpHeaderSection extends StatelessWidget {
-  const SignUpHeaderSection({
-    super.key,
-  });
+class LoginHeaderSection extends StatelessWidget {
+  const LoginHeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +14,25 @@ class SignUpHeaderSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'SignUp',
+            'Login',
             style: AppStyles.styleBoldBlack34(),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height / 11,
           ),
-          CustomTextFormFieldSignUpSection(),
+          CustomTextFormFieldLoginSection(),
           SizedBox(
             height: 16,
           ),
           AlreadyHaveAnAccountAndForgotPasswordSection(
-            title: 'Already have an account?',
-            onTap: () {
-              Navigator.pushNamed(context, Routes.loginView);
-            },
+            title: 'Forgot your password?',
+            onTap: () {},
           ),
           SizedBox(
             height: 26,
           ),
           CustomButton(
-            title: 'SignUp',
+            title: 'Login',
             onPressed: () {},
           ),
         ],
