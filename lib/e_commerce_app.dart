@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/routes/app_router.dart';
+import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +15,8 @@ class ECommerceApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
+          onGenerateRoute: appRouter.generateRoute,
+          initialRoute: Routes.signUpView,
           debugShowCheckedModeBanner: false,
           home: SignUpView(),
         );

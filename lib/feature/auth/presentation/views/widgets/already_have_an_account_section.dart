@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,9 @@ class AlreadyHaveAnAccountSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, Routes.loginView);
+          },
           child: Text(
             'Already have an account?',
             style: AppStyles.styleMediumBlack14(),
