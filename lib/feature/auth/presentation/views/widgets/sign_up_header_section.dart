@@ -1,8 +1,8 @@
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/auth/presentation/manager/cubit/auth_cubit.dart';
+import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/already_have_an_account_and_forgot_password_section.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_bloc_consumer.dart';
+import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_sign_up_bloc_consumer.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field_sign_up_section.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +45,7 @@ class SignUpHeaderSection extends StatelessWidget {
             SizedBox(
               height: 26,
             ),
-            CustomButtonBlocConsumer(authCubit: authCubit),
+            CustomButtonSignUpBlocConsumer(authCubit: authCubit),
           ],
         ),
       ),

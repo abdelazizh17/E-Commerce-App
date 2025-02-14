@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce/core/data/failure/failure.dart';
-import 'package:e_commerce/feature/auth/data/models/sign_up_model.dart';
+import 'package:e_commerce/feature/auth/data/models/login_data.dart';
+import 'package:e_commerce/feature/auth/data/models/sign_up_data.dart';
 import 'package:e_commerce/feature/auth/data/services/auth_firebase_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,10 +18,21 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController userName = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
-  Future<void> signUp(SignUpModel signUpModel) async {
+
+  Future<void> signUp(SignUpData signUpData) async {
     emit(AuthLoading());
     try {
-      await authFirebaseService.signUp(signUpModel);
+      await authFirebaseService.signUp(signUpData);
+      emit(AuthSuccess());
+    } catch (e) {
+      emit(AuthFailure(Failure.fromException(e).message));
+    }
+  }
+
+  Future<void> login(LoginData loginData) async {
+    emit(AuthLoading());
+    try {
+      await authFirebaseService.login(loginData);
       emit(AuthSuccess());
     } catch (e) {
       emit(AuthFailure(Failure.fromException(e).message));

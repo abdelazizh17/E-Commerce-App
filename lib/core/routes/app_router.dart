@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/feature/auth/presentation/manager/cubit/auth_cubit.dart';
+import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
+import 'package:e_commerce/feature/auth/presentation/views/forgot_password_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce/feature/home_layout/presentation/views/home_layout_view.dart';
@@ -18,9 +19,16 @@ class AppRouter {
         );
       case Routes.loginView:
         return MaterialPageRoute(
-          builder: (context) => const LoginView(),
+          builder: (context) => BlocProvider(
+            create: (context) => AuthCubit(),
+            child: const LoginView(),
+          ),
         );
-       case Routes.homeLayout:
+      case Routes.forgotPassword:
+        return MaterialPageRoute(
+          builder: (context) => const ForgotPasswordView(),
+        );
+      case Routes.homeLayout:
         return MaterialPageRoute(
           builder: (context) => const HomeLayoutView(),
         );
