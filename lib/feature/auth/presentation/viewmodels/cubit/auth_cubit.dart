@@ -48,4 +48,24 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailure(Failure.fromException(e).message));
     }
   }
+
+  Future<void> signInwithGoogle() async {
+    emit(AuthLoading());
+    try {
+      await authFirebaseService.signInWithGoogle();
+      emit(SignInGoogle());
+    } catch (e) {
+      emit(AuthFailure(Failure.fromException(e).message));
+    }
+  }
+
+   Future<void> signOutGoogle() async {
+    emit(AuthLoading());
+    try {
+      await authFirebaseService.signOutGoogle();
+      emit(SignOutGoogle());
+    } catch (e) {
+      emit(AuthFailure(Failure.fromException(e).message));
+    }
+  }
 }
