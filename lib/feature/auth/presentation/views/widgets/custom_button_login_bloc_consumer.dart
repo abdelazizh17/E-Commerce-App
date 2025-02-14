@@ -29,8 +29,7 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
               context, Routes.homeLayout, (route) => false);
         } else if (state is AuthFailure) {
           authCubit.isLoading = false;
-          showSnackBar(
-              context, state.errMessage, AppColors.primaryColor);
+          showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
       },
       builder: (context, state) {
@@ -39,8 +38,7 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
               ? CustomCircleIndicator()
               : Text(
                   'Login',
-                  style: AppStyles.styleMediumWhite14()
-                      .copyWith(color: AppColors.whiteColor),
+                  style: AppStyles.styleMediumWhite14(),
                 ),
           onPressed: () {
             if (authCubit.formKey.currentState!.validate()) {
