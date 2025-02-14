@@ -8,10 +8,10 @@ class SignUpView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF9F9F9),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 85),
+        child: SignUpViewBody(),
       ),
-      body: SignUpViewBody(),
     );
   }
 }

@@ -7,11 +7,13 @@ class LoginFooterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SliverFillRemaining(
+    return SliverFillRemaining(
       hasScrollBody: false,
       child: Column(
         children: [
-          Spacer(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 9,
+          ),
           Text(
             'Or login with social account',
             style: AppStyles.styleMediumBlack14(),
@@ -20,8 +22,10 @@ class LoginFooterSection extends StatelessWidget {
             height: 12,
           ),
           CustomQuickAuthButtonSection(),
-          SizedBox(
-            height: 26,
+          Flexible(
+            child: SizedBox(
+              height: 26,
+            ),
           )
         ],
       ),

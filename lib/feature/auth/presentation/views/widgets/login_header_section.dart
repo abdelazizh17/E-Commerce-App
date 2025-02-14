@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/already_have_an_account_and_forgot_password_section.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
@@ -32,7 +33,11 @@ class LoginHeaderSection extends StatelessWidget {
             height: 26,
           ),
           CustomButton(
-            title: 'Login',
+            widget: Text(
+              'Login',
+              style: AppStyles.styleMediumWhite14()
+                  .copyWith(color: AppColors.whiteColor),
+            ),
             onPressed: () {},
           ),
         ],
