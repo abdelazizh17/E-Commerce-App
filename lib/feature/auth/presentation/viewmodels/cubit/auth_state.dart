@@ -14,3 +14,5 @@ final class AuthFailure extends AuthState {
 
   AuthFailure(this.errMessage);
 }
+
+class PasswordResetRequestSent extends AuthState {}

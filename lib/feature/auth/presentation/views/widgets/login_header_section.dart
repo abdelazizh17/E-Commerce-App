@@ -35,7 +35,10 @@ class LoginHeaderSection extends StatelessWidget {
             AlreadyHaveAnAccountAndForgotPasswordSection(
               title: 'Forgot your password?',
               onTap: () {
-                Navigator.pushNamed(context, Routes.forgotPassword);
+                Navigator.pushNamed(
+                  context,
+                  Routes.forgotPasswordView,
+                );
               },
             ),
             SizedBox(

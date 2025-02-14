@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/data/helper_methods.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
+import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_forgot_password_bloc_consumer.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -16,39 +16,36 @@ class ForgotPasswordViewBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Forgot password',
-                  style: AppStyles.styleBoldBlack34(),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 9,
-                ),
-                Text(
-                  'Please, enter your email address. You will receive a link to create a new password via email.',
-                  style: AppStyles.styleMediumBlack14(),
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                CustomTextFormField(
-                  labelText: 'Email',
-                  validator: (value) => validateEmail(value),
-                  controller: authCubit.email,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 11,
-                ),
-                CustomButton(
-                  onPressed: () {},
-                  widget: Text(
-                    'Send',
-                    style: AppStyles.styleMediumWhite14(),
+            child: Form(
+              key: authCubit.formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Forgot password',
+                    style: AppStyles.styleBoldBlack34(),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 9,
+                  ),
+                  Text(
+                    'Please, enter your email address. You will receive a link to create a new password via email.',
+                    style: AppStyles.styleMediumBlack14(),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  CustomTextFormField(
+                    labelText: 'Email',
+                    validator: (value) => validateEmail(value),
+                    controller: authCubit.email,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 11,
+                  ),
+                  CustomButtonForgotPasswordBlocConsumer(authCubit: authCubit),
+                ],
+              ),
             ),
           )
         ],
@@ -56,3 +53,4 @@ class ForgotPasswordViewBody extends StatelessWidget {
     );
   }
 }
+

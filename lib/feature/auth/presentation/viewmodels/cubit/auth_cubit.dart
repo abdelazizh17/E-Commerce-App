@@ -38,4 +38,14 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailure(Failure.fromException(e).message));
     }
   }
+
+  Future<void> resetPassword(String email) async {
+    emit(AuthLoading());
+    try {
+      await authFirebaseService.resetPassword(email);
+      emit(PasswordResetRequestSent());
+    } catch (e) {
+      emit(AuthFailure(Failure.fromException(e).message));
+    }
+  }
 }

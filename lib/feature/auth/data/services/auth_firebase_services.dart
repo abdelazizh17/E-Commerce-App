@@ -16,4 +16,9 @@ class AuthFirebaseServices {
       password: loginData.password,
     );
   }
+
+  Future<void> resetPassword(String email)async{
+    await FirebaseAuth.instance
+    .sendPasswordResetEmail(email:email);
+  }
 }

@@ -24,9 +24,12 @@ class AppRouter {
             child: const LoginView(),
           ),
         );
-      case Routes.forgotPassword:
+      case Routes.forgotPasswordView:
         return MaterialPageRoute(
-          builder: (context) => const ForgotPasswordView(),
+          builder: (context) => BlocProvider(
+            create: (context) => AuthCubit(),
+            child: const ForgotPasswordView(),
+          ),
         );
       case Routes.homeLayout:
         return MaterialPageRoute(
