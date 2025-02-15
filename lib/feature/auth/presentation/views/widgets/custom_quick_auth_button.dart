@@ -6,8 +6,10 @@ class CustomQuickAuthButton extends StatelessWidget {
   const CustomQuickAuthButton({
     super.key,
     required this.image,
+    this.onPressed,
   });
   final String image;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CustomQuickAuthButton extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1.46,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.zero,
             elevation: 0,

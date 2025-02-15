@@ -16,5 +16,4 @@ final class AuthFailure extends AuthState {
 }
 
 class PasswordResetRequestSent extends AuthState {}
-class SignInGoogle extends AuthState {}
-class SignOutGoogle extends AuthState {}
+class LoggedOut extends AuthState {}

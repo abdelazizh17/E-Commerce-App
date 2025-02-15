@@ -27,7 +27,10 @@ class AuthFirebaseServices {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     if (googleUser == null) {
-      return;
+      throw FirebaseAuthException(
+        code: 'sign_in_cancelled',
+        message: 'User cancelled sign-in',
+      );
     }
 
     // Obtain the auth details from the request

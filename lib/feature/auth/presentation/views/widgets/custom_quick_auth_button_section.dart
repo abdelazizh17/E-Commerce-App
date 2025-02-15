@@ -1,6 +1,9 @@
+import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_assets.dart';
+import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_quick_auth_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomQuickAuthButtonSection extends StatelessWidget {
   const CustomQuickAuthButtonSection({
@@ -9,16 +12,31 @@ class CustomQuickAuthButtonSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authCubit = AuthCubit.get(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomQuickAuthButton(
-          image: Assets.imagesGoogle,
+        BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSuccess) {
+              authCubit.isLoading = false;
+              Navigator.pushReplacementNamed(context, Routes.homeLayout);
+            }
+          },
+          child: CustomQuickAuthButton(
+            onPressed: () {
+              authCubit.signInwithGoogle();
+            },
+            image: Assets.imagesGoogle,
+          ),
         ),
         SizedBox(
           width: 16,
         ),
         CustomQuickAuthButton(
+          onPressed: () {
+            
+          },
           image: Assets.imagesFacebook,
         ),
       ],
