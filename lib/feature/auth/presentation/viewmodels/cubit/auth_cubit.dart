@@ -68,4 +68,25 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailure(Failure.fromException(e).message));
     }
   }
+
+  Future<void> signInWithFacebook() async {
+    emit(AuthLoading());
+    try {
+      await authFirebaseService.signInWithFacebook();
+      emit(AuthSuccess());
+    } catch (e) {
+      debugPrint(e.toString());
+      emit(AuthFailure(Failure.fromException(e).message));
+    }
+  }
+
+  Future<void> signOutFacebook() async {
+    emit(AuthLoading());
+    try {
+      await authFirebaseService.signOutFacebook();
+      emit(LoggedOut());
+    } catch (e) {
+      emit(AuthFailure(Failure.fromException(e).message));
+    }
+  }
 }

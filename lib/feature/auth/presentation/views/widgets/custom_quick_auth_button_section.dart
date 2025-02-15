@@ -35,7 +35,7 @@ class CustomQuickAuthButtonSection extends StatelessWidget {
         ),
         CustomQuickAuthButton(
           onPressed: () {
-            
+            authCubit.signInWithFacebook();
           },
           image: Assets.imagesFacebook,
         ),

@@ -39,6 +39,12 @@ Failure _handleFirebaseAuthException(FirebaseAuthException e) {
       return const Failure('Password is too weak');
     case 'sign_in_cancelled':
       return const Failure('Sign-in was cancelled');
+    case 'facebook_auth_no_token':
+      return const Failure('Facebook authentication failed: No access token.');
+    case 'facebook_sign_in_cancelled':
+      return const Failure('Sign-in was cancelled.');
+    case 'facebook_sign_in_failed':
+      return const Failure('Facebook sign-in failed.');
     default:
       return Failure('Firebase Auth error: ${e.message}');
   }
