@@ -8,4 +8,5 @@ class Routes {
   static const String favoritesView = '/favoritesView';
   static const String shopView = '/shopView';
   static const String profileView = '/profileView';
+  static const String settingView = '/settingView';
 }

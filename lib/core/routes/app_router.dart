@@ -9,6 +9,7 @@ import 'package:e_commerce/feature/home/presentation/views/home_view.dart';
 import 'package:e_commerce/feature/home_layout/presentation/viewmodels/cubit/home_layout_cubit.dart';
 import 'package:e_commerce/feature/home_layout/presentation/views/home_layout_view.dart';
 import 'package:e_commerce/feature/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce/feature/profile/presentation/views/settings_view.dart';
 import 'package:e_commerce/feature/shop/presentation/views/shop_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,6 +64,10 @@ class AppRouter {
       case Routes.profileView:
         return MaterialPageRoute(
           builder: (context) => const ProfileView(),
+        );
+        case Routes.settingView:
+        return MaterialPageRoute(
+          builder: (context) => const SettingsView(),
         );
       default:
         return MaterialPageRoute(
