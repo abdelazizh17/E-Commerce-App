@@ -10,11 +10,17 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        CustomSliverAppBar(),
+        CustomSliverAppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios),
+          ),
+        ),
         LoginHeaderSection(),
         LoginFooterSection(),
       ],
     );
   }
 }
-

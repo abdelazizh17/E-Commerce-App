@@ -14,7 +14,14 @@ class ForgotPasswordViewBody extends StatelessWidget {
     final authCubit = AuthCubit.get(context);
     return CustomScrollView(
       slivers: [
-        CustomSliverAppBar(),
+        CustomSliverAppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios),
+          ),
+        ),
         SliverToBoxAdapter(
           child: Form(
             key: authCubit.formKey,

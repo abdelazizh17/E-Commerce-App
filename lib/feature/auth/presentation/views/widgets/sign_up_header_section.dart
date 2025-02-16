@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
+import 'package:e_commerce/core/widgets/title_screen.dart';
 import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/already_have_an_account_and_forgot_password_section.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_sign_up_bloc_consumer.dart';
@@ -24,9 +24,8 @@ class SignUpHeaderSection extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height / 15,
             ),
-            Text(
-              'SignUp',
-              style: AppStyles.styleBoldBlack34(),
+            TitleScreen(
+              title: 'SignUp',
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height / 11,
@@ -55,3 +54,5 @@ class SignUpHeaderSection extends StatelessWidget {
     );
   }
 }
+
+

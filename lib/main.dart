@@ -20,7 +20,7 @@ void main() async {
         BlocProvider(
           create: (_) => AuthCubit(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (_) => HomeLayoutCubit(),
         ),
       ],
