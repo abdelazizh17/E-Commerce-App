@@ -15,50 +15,56 @@ class HomeLayoutView extends StatelessWidget {
 
         return Scaffold(
           body: homeLayoutCubit.screens[homeLayoutCubit.currentIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: homeLayoutCubit.currentIndex,
-            onTap: homeLayoutCubit.changeTap,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: AppColors.whiteColor,
-            selectedIconTheme:
-                IconThemeData(color: AppColors.primaryColor, size: 30),
-            unselectedIconTheme:
-                IconThemeData(color: AppColors.greyColor, size: 25),
-            selectedItemColor: AppColors.primaryColor,
-            unselectedItemColor: AppColors.greyColor,
-            showUnselectedLabels: true,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  LucideIcons.home,
+          bottomNavigationBar: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12),
+              topRight: Radius.circular(12),
+            ),
+            child: BottomNavigationBar(
+              currentIndex: homeLayoutCubit.currentIndex,
+              onTap: homeLayoutCubit.changeTap,
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: AppColors.whiteColor,
+              selectedIconTheme:
+                  IconThemeData(color: AppColors.primaryColor, size: 30),
+              unselectedIconTheme:
+                  IconThemeData(color: AppColors.greyColor, size: 25),
+              selectedItemColor: AppColors.primaryColor,
+              unselectedItemColor: AppColors.greyColor,
+              showUnselectedLabels: true,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    LucideIcons.home,
+                  ),
+                  label: "Home",
                 ),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  LucideIcons.shoppingCart,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    LucideIcons.shoppingCart,
+                  ),
+                  label: "Shop",
                 ),
-                label: "Shop",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  LucideIcons.shoppingBag,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    LucideIcons.shoppingBag,
+                  ),
+                  label: "Bag",
                 ),
-                label: "Bag",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  LucideIcons.heart,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    LucideIcons.heart,
+                  ),
+                  label: "Favorites",
                 ),
-                label: "Favorites",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  LucideIcons.user,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    LucideIcons.user,
+                  ),
+                  label: "Profile",
                 ),
-                label: "Profile",
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
