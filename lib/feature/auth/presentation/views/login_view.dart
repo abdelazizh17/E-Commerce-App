@@ -8,10 +8,8 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF9F9F9),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),
-      body: LoginViewBody(),
+      body: SafeArea(
+        child: LoginViewBody()),
     );
   }
 }

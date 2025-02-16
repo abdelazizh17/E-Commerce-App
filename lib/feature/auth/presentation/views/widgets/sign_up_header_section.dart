@@ -21,6 +21,9 @@ class SignUpHeaderSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 15,
+            ),
             Text(
               'SignUp',
               style: AppStyles.styleBoldBlack34(),

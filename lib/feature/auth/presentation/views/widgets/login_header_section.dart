@@ -15,37 +15,40 @@ class LoginHeaderSection extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Form(
         key: authCubit.formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Login',
-              style: AppStyles.styleBoldBlack34(),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 11,
-            ),
-            CustomTextFormFieldLoginSection(
-              email: authCubit.email,
-              password: authCubit.password,
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            AlreadyHaveAnAccountAndForgotPasswordSection(
-              title: 'Forgot your password?',
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  Routes.forgotPasswordView,
-                );
-              },
-            ),
-            SizedBox(
-              height: 26,
-            ),
-            CustomButtonLoginBlocConsumer(authCubit: authCubit),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Login',
+                style: AppStyles.styleBoldBlack34(),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 11,
+              ),
+              CustomTextFormFieldLoginSection(
+                email: authCubit.email,
+                password: authCubit.password,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              AlreadyHaveAnAccountAndForgotPasswordSection(
+                title: 'Forgot your password?',
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    Routes.forgotPasswordView,
+                  );
+                },
+              ),
+              SizedBox(
+                height: 26,
+              ),
+              CustomButtonLoginBlocConsumer(authCubit: authCubit),
+            ],
+          ),
         ),
       ),
     );

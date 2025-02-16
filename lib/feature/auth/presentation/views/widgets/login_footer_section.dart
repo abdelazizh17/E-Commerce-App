@@ -9,25 +9,28 @@ class LoginFooterSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverFillRemaining(
       hasScrollBody: false,
-      child: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 9,
-          ),
-          Text(
-            'Or login with social account',
-            style: AppStyles.styleMediumBlack14(),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          CustomQuickAuthButtonSection(),
-          Flexible(
-            child: SizedBox(
-              height: 26,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 9,
             ),
-          )
-        ],
+            Text(
+              'Or login with social account',
+              style: AppStyles.styleMediumBlack14(),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            CustomQuickAuthButtonSection(),
+            Flexible(
+              child: SizedBox(
+                height: 26,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

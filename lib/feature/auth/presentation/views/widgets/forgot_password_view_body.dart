@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/data/helper_methods.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
+import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
 import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_forgot_password_bloc_consumer.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field.dart';
@@ -11,13 +12,14 @@ class ForgotPasswordViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = AuthCubit.get(context);
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Form(
-              key: authCubit.formKey,
+    return CustomScrollView(
+      slivers: [
+        CustomSliverAppBar(),
+        SliverToBoxAdapter(
+          child: Form(
+            key: authCubit.formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,10 +49,9 @@ class ForgotPasswordViewBody extends StatelessWidget {
                 ],
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
-

@@ -9,15 +9,14 @@ class SignUpViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: CustomScrollView(
-        slivers: [
-          SignUpHeaderSection(),
-          SignUpFooterSection(),
-        ],
+      child: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SignUpHeaderSection(),
+            SignUpFooterSection(),
+          ],
+        ),
       ),
     );
   }
 }
-
-
-
