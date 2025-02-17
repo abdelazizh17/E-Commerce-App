@@ -38,7 +38,7 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
               ? CustomCircleIndicator()
               : Text(
                   'SignUp',
-                  style: AppStyles.styleMediumWhite14(),
+                  style: AppStyles.styleMedium14(),
                 ),
           onPressed: () {
             if (authCubit.formKey.currentState!.validate()) {

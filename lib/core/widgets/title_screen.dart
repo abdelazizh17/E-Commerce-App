@@ -11,7 +11,7 @@ class TitleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: AppStyles.styleBoldBlack34(),
+      style: AppStyles.styleBold34(context),
     );
   }
 }

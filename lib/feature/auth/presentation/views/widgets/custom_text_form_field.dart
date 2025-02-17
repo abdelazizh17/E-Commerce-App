@@ -33,7 +33,9 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(24),
         filled: true,
-        fillColor: AppColors.whiteColor,
+        fillColor: Theme.of(context).brightness == Brightness.light
+            ? AppColors.whiteColor
+            : AppColors.transparent,
         labelText: labelText,
         suffixIcon: suffixIcon,
         enabledBorder: borderBuilder(),

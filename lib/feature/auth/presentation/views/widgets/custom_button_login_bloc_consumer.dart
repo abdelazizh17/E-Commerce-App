@@ -38,7 +38,7 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
               ? CustomCircleIndicator()
               : Text(
                   'Login',
-                  style: AppStyles.styleMediumWhite14(),
+                  style: AppStyles.styleMedium14(),
                 ),
           onPressed: () {
             if (authCubit.formKey.currentState!.validate()) {

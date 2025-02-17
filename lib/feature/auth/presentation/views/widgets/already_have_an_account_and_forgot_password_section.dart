@@ -17,7 +17,7 @@ class AlreadyHaveAnAccountAndForgotPasswordSection extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppStyles.styleMediumBlack14(),
+            style: AppStyles.styleMediumTheme14(context),
           ),
           SizedBox(width: 8),
           Icon(

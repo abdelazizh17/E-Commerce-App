@@ -21,7 +21,7 @@ class ProfileItem extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: Text(
           title,
-          style: AppStyles.styleSimiBold16(),
+          style: AppStyles.styleSimiBold16(context),
         ),
         subtitle: Text(
           subtitle,

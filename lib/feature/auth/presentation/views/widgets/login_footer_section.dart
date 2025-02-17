@@ -18,7 +18,7 @@ class LoginFooterSection extends StatelessWidget {
             ),
             Text(
               'Or login with social account',
-              style: AppStyles.styleMediumBlack14(),
+              style: AppStyles.styleMediumTheme14(context),
             ),
             SizedBox(
               height: 12,

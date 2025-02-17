@@ -1,5 +1,7 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
+import 'package:e_commerce/feature/profile/presentation/viewmodels/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomQuickAuthButton extends StatelessWidget {
@@ -27,7 +29,10 @@ class CustomQuickAuthButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            backgroundColor: AppColors.whiteColor,
+            backgroundColor:
+                context.read<SettingsCubit>().themeMode == ThemeMode.light
+                    ? AppColors.whiteColor
+                    : AppColors.transparent,
           ),
           child: SvgPicture.asset(image),
         ),

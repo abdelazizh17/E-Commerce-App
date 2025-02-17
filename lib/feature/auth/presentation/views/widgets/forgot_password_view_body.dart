@@ -32,14 +32,14 @@ class ForgotPasswordViewBody extends StatelessWidget {
                 children: [
                   Text(
                     'Forgot password',
-                    style: AppStyles.styleBoldBlack34(),
+                    style: AppStyles.styleBold34(context),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 9,
                   ),
                   Text(
                     'Please, enter your email address. You will receive a link to create a new password via email.',
-                    style: AppStyles.styleMediumBlack14(),
+                    style: AppStyles.styleMediumTheme14(context),
                   ),
                   SizedBox(
                     height: 16,

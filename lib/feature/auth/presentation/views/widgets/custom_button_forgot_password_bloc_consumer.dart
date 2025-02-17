@@ -43,7 +43,7 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
               ? CustomCircleIndicator()
               : Text(
                   'Send',
-                  style: AppStyles.styleMediumWhite14(),
+                  style: AppStyles.styleMedium14(),
                 ),
         );
       },

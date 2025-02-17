@@ -24,11 +24,11 @@ class UserProfileTile extends StatelessWidget {
           children: [
             Text(
               'Matilda Brown',
-              style: AppStyles.styleSimiBold18(),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             Text(
               'matildabrown@mail.com',
-              style: AppStyles.styleMediumWhite14().copyWith(
+              style: AppStyles.styleMedium14().copyWith(
                 color: AppColors.greyColor,
               ),
             )

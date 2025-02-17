@@ -24,7 +24,7 @@ class SettingViewBody extends StatelessWidget {
           ),
           title: Text(
             'Setting',
-            style: AppStyles.styleSimiBold16(),
+            style: AppStyles.styleSimiBold16(context),
           ),
         ),
         SettingItemsList(),

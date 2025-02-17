@@ -18,7 +18,7 @@ class SignUpFooterSection extends StatelessWidget {
           ),
           Text(
             'Or sign up with social account',
-            style: AppStyles.styleMediumBlack14(),
+            style: AppStyles.styleMediumTheme14(context),
           ),
           SizedBox(
             height: 12,

@@ -24,7 +24,7 @@ class SettingItem extends StatelessWidget {
             ),
             Text(
               title,
-              style: AppStyles.styleSimiBold16(),
+              style: AppStyles.styleSimiBold16(context),
             ),
             const Spacer(),
             if (onPressed != null)
