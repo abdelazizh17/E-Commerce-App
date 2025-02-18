@@ -1,6 +1,9 @@
+import 'package:e_commerce/core/routes/routes.dart';
+import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce/feature/profile/presentation/views/widgets/dark_mode_toggle.dart';
 import 'package:e_commerce/feature/profile/presentation/views/widgets/setting_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingItemsList extends StatelessWidget {
   const SettingItemsList({
@@ -28,10 +31,23 @@ class SettingItemsList extends StatelessWidget {
             onPressed: () {},
           ),
           DarkModeToggle(),
-          SettingItem(
-            icon: Icons.logout,
-            title: 'Logout',
-            onPressed: () {},
+          BlocListener<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is LoggedOut) {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  Routes.signUpView,
+                  (route) => false,
+                );
+              }
+            },
+            child: SettingItem(
+              icon: Icons.logout,
+              title: 'Logout',
+              onPressed: () {
+                AuthCubit.get(context).signOutAllAccounts();
+              },
+            ),
           ),
         ],
       ),

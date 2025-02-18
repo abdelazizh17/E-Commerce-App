@@ -1,6 +1,5 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/feature/home_layout/presentation/viewmodels/cubit/home_layout_cubit.dart';
-import 'package:e_commerce/feature/profile/presentation/viewmodels/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -20,10 +19,9 @@ class HomeLayoutView extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color:
-                      context.read<SettingsCubit>().themeMode == ThemeMode.dark
-                          ? Colors.black.withValues(alpha: 0.2)
-                          : Colors.grey.withValues(alpha: 0.2),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black.withValues(alpha: 0.2)
+                      : Colors.grey.withValues(alpha: 0.2),
                   spreadRadius: 12,
                   blurRadius: 20,
                   offset: Offset(0, 3), // changes position of shadow
@@ -41,7 +39,7 @@ class HomeLayoutView extends StatelessWidget {
                 onTap: homeLayoutCubit.changeTap,
                 type: BottomNavigationBarType.fixed,
                 backgroundColor:
-                    context.read<SettingsCubit>().themeMode == ThemeMode.light
+                    Theme.of(context).brightness == Brightness.light
                         ? AppColors.whiteColor
                         : AppColors.darkModeBackgroundColor,
                 selectedIconTheme:

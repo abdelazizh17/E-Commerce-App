@@ -16,4 +16,10 @@ final class AuthFailure extends AuthState {
 }
 
 class PasswordResetRequestSent extends AuthState {}
+
 class LoggedOut extends AuthState {}
+
+class AuthUserDataLoaded extends AuthState {
+  final UserModel userModel;
+  AuthUserDataLoaded(this.userModel);
+}

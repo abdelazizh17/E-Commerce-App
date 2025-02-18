@@ -63,9 +63,12 @@ class AppRouter {
         );
       case Routes.profileView:
         return MaterialPageRoute(
-          builder: (context) => const ProfileView(),
+          builder: (context) => BlocProvider(
+            create: (context) => AuthCubit(),
+            child: const ProfileView(),
+          ),
         );
-        case Routes.settingView:
+      case Routes.settingView:
         return MaterialPageRoute(
           builder: (context) => const SettingsView(),
         );

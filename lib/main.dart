@@ -19,13 +19,15 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => AuthCubit(),
+          create: (_) => AuthCubit()..fetchUserData(),
+          lazy: true,
         ),
         BlocProvider(
           create: (_) => HomeLayoutCubit(),
         ),
         BlocProvider(
           create: (_) => SettingsCubit()..loadTheme(),
+          lazy: true,
         ),
       ],
       child: ECommerceApp(

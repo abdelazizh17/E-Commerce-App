@@ -1,6 +1,5 @@
 import 'package:e_commerce/feature/profile/presentation/views/widgets/profile_view_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
