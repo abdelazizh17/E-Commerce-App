@@ -66,8 +66,9 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signInwithGoogle() async {
     emit(AuthLoading());
     try {
-      await authFirebaseService.signInWithGoogle();
+      final userModel = await authFirebaseService.signInWithGoogle();
       emit(AuthSuccess());
+      emit(AuthUserDataLoaded(userModel));
     } catch (e) {
       emit(AuthFailure(Failure.fromException(e).message));
     }
@@ -76,8 +77,9 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signInWithFacebook() async {
     emit(AuthLoading());
     try {
-      await authFirebaseService.signInWithFacebook();
+      final userModel = await authFirebaseService.signInWithFacebook();
       emit(AuthSuccess());
+      emit(AuthUserDataLoaded(userModel));
     } catch (e) {
       debugPrint(e.toString());
       emit(AuthFailure(Failure.fromException(e).message));

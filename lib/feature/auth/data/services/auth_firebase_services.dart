@@ -8,27 +8,36 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthFirebaseServices {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection(FirebasePath.users);
 
   Future<UserModel> signUp(SignUpData signUpModel) async {
-    final userCredential = await _auth.createUserWithEmailAndPassword(
+    final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
       email: signUpModel.email,
       password: signUpModel.password,
     );
-    final uId = userCredential.user!.uid;
+
+    final user = userCredential.user;
+
+    //I implemented this condition to ensure it doesn't throw an error or crash if the user is not signed in
+    if (user == null) {
+      throw FirebaseAuthException(
+        code: 'user_null',
+        message: 'User data is null after sign-in',
+      );
+    }
     final userModel = UserModel(
-      uid: uId,
+      uid: user.uid,
       userName: signUpModel.name,
       email: signUpModel.email,
     );
-    await _usersCollection.doc(uId).set(userModel.toJson());
+    await _usersCollection.doc(user.uid).set(userModel.toJson());
     return userModel;
   }
 
   Future<UserModel?> fetchUserData() async {
-    final user = _auth.currentUser;
+    final user = _firebaseAuth.currentUser;
     if (user != null) {
       final snapshot = await _usersCollection.doc(user.uid).get();
       if (snapshot.exists) {
@@ -39,19 +48,19 @@ class AuthFirebaseServices {
   }
 
   Future<void> login(LoginData loginData) async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+    await _firebaseAuth.signInWithEmailAndPassword(
       email: loginData.email,
       password: loginData.password,
     );
   }
 
-  Future<void> logout() => FirebaseAuth.instance.signOut();
+  Future<void> logout() => _firebaseAuth.signOut();
 
   Future<void> resetPassword(String email) async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
-  Future<void> signInWithGoogle() async {
+  Future<UserModel> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -62,18 +71,32 @@ class AuthFirebaseServices {
       );
     }
 
-    // Obtain the auth details from the request
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
-    // Create a new credential
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
 
-    // Once signed in, return the UserCredential
-    await FirebaseAuth.instance.signInWithCredential(credential);
+    final userCredential =
+        await _firebaseAuth.signInWithCredential(credential);
+
+    final user = userCredential.user;
+    //I implemented this condition to ensure it doesn't throw an error or crash if the user is not signed in
+    if (user == null) {
+      throw FirebaseAuthException(
+        code: 'user_null',
+        message: 'User data is null after sign-in',
+      );
+    }
+    final userModel = UserModel(
+      uid: user.uid,
+      userName: user.displayName,
+      email: user.email,
+    );
+    await _usersCollection.doc(user.uid).set(userModel.toJson());
+    return userModel;
   }
 
   Future<void> signOutGoogle() async {
@@ -81,7 +104,7 @@ class AuthFirebaseServices {
     googleSignIn.disconnect();
   }
 
-  Future<void> signInWithFacebook() async {
+  Future<UserModel> signInWithFacebook() async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
     if (loginResult.status == LoginStatus.success) {
@@ -91,8 +114,24 @@ class AuthFirebaseServices {
         final OAuthCredential facebookAuthCredential =
             FacebookAuthProvider.credential(accessToken.tokenString);
 
-        await FirebaseAuth.instance
+        final userCredential = await FirebaseAuth.instance
             .signInWithCredential(facebookAuthCredential);
+
+        final user = userCredential.user;
+
+        if (user == null) {
+          throw FirebaseAuthException(
+            code: 'user_null',
+            message: 'User data is null after sign-in',
+          );
+        }
+        final userModel = UserModel(
+          uid: user.uid,
+          userName: user.displayName,
+          email: user.email,
+        );
+        await _usersCollection.doc(user.uid).set(userModel.toJson());
+        return userModel;
       } else {
         throw FirebaseAuthException(
           code: 'facebook_auth_no_token',
