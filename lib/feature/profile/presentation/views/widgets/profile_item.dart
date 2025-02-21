@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileItem extends StatelessWidget {
   const ProfileItem({
@@ -18,7 +19,7 @@ class ProfileItem extends StatelessWidget {
     return MaterialButton(
       onPressed: onPressed,
       child: ListTile(
-        contentPadding: EdgeInsets.zero,
+        contentPadding: EdgeInsets.symmetric(vertical: 17.sp),
         title: Text(
           title,
           style: AppStyles.styleSimiBold16(context),

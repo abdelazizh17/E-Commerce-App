@@ -50,12 +50,8 @@ class ProfileFooterSection extends StatelessWidget {
             title: 'Settings',
             subtitle: 'Notifications, password',
           ),
-          SizedBox(
-            height: 16,
-          )
         ],
       ),
     );
   }
 }
-

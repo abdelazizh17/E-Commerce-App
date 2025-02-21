@@ -11,7 +11,7 @@ class CustomDivider extends StatelessWidget {
       opacity: 0.05,
       child: Divider(
         color: Color(0xFFABB4BD),
-        height: 18,
+        height: 0,
       ),
     );
   }

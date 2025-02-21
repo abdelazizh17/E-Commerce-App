@@ -24,7 +24,7 @@ class ProfileViewBody extends StatelessWidget {
             height: 18,
           ),
         ),
-        ProfileFooterSection()
+        ProfileFooterSection(),
       ],
     );
   }

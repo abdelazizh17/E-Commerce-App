@@ -35,6 +35,8 @@ Failure _handleFirebaseAuthException(FirebaseAuthException e) {
       return const Failure('Email is already in use');
     case 'invalid-email':
       return const Failure('Invalid email address');
+    case 'invalid-credential':
+      return const Failure('Wrong email or password. Try again.');
     case 'weak-password':
       return const Failure('Password is too weak');
     case 'sign_in_cancelled':
