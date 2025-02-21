@@ -108,4 +108,13 @@ abstract class AppStyles {
       fontWeight: FontWeight.w700,
     );
   }
+
+  static TextStyle styleBold48() {
+    return TextStyle(
+      color: AppColors.whiteColor,
+      fontSize: 48.sp,
+      fontFamily: 'Metropolis',
+      fontWeight: FontWeight.w900,
+    );
+  }
 }
