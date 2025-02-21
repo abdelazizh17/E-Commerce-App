@@ -13,7 +13,9 @@ class CustomHomeSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: AppColors.darkModeBackgroundColor,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.darkModeBackgroundColor
+          : AppColors.lightModeBackgroundColor,
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.only(left: 18, bottom: 30.sp),
         title: Text(
@@ -22,7 +24,7 @@ class CustomHomeSliverAppBar extends StatelessWidget {
               color: AppColors.whiteColor, fontWeight: FontWeight.w900),
         ),
         background: Image.asset(
-          Assets.imagesBigBanner,
+          Assets.imagesFashon,
           fit: BoxFit.cover,
         ),
       ),

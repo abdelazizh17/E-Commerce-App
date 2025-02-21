@@ -18,9 +18,9 @@ class ProductImageContainer extends StatelessWidget {
           height: 184.h,
           decoration: ShapeDecoration(
             image: DecorationImage(
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
               image: AssetImage(
-                Assets.imagesTestsale,
+                Assets.imagesTest,
               ),
             ),
             shape:
@@ -34,7 +34,7 @@ class ProductImageContainer extends StatelessWidget {
             width: 40,
             height: 24,
             decoration: ShapeDecoration(
-              color: isSale ?  AppColors.primaryColor : AppColors.blackColor,
+              color: isSale ? AppColors.primaryColor : AppColors.blackColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(29),
               ),
