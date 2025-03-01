@@ -1,5 +1,4 @@
 import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce/feature/auth/presentation/views/forgot_password_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
@@ -19,24 +18,15 @@ class AppRouter {
     switch (settings.name) {
       case Routes.signUpView:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => AuthCubit(),
-            child: const SignUpView(),
-          ),
+          builder: (context) => const SignUpView(),
         );
       case Routes.loginView:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => AuthCubit(),
-            child: const LoginView(),
-          ),
+          builder: (context) => const LoginView(),
         );
       case Routes.forgotPasswordView:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => AuthCubit(),
-            child: const ForgotPasswordView(),
-          ),
+          builder: (context) => const ForgotPasswordView(),
         );
       case Routes.homeLayout:
         return MaterialPageRoute(
@@ -63,10 +53,7 @@ class AppRouter {
         );
       case Routes.profileView:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => AuthCubit(),
-            child: const ProfileView(),
-          ),
+          builder: (context) => const ProfileView(),
         );
       case Routes.settingView:
         return MaterialPageRoute(

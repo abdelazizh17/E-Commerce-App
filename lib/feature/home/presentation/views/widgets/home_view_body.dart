@@ -1,6 +1,6 @@
 import 'package:e_commerce/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/custom_new_product_card_list_view.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/custom_sale_product_card_list_view.dart';
+import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_new_product_card_list_view.dart';
+import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_sale_product_card_list_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/header_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +21,11 @@ class HomeViewBody extends StatelessWidget {
           child: HeaderTile(
             title: 'Sale',
             subtitle: 'Super summer sale',
+            onPressed: () {},
           ),
         ),
         SliverToBoxAdapter(
-          child: CustomSaleProductCardListView(),
+          child: BlocBuilderSaleProductCardListView(),
         ),
         SliverToBoxAdapter(
           child: HeaderTile(
@@ -33,7 +34,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(
-          child: CustomNewProductCardListView(),
+          child: BlocBuilderNewProductCardListView(),
         ),
       ],
     );

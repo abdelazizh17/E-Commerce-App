@@ -85,5 +85,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'e-commerce-app-1cab7.firebasestorage.app',
     measurementId: 'G-0MX4MLRLR7',
   );
-
 }

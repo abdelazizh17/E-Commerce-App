@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HeaderTile extends StatelessWidget {
-  const HeaderTile({super.key, required this.title, required this.subtitle, this.onPressed});
+  const HeaderTile(
+      {super.key, required this.title, required this.subtitle, this.onPressed});
   final String title, subtitle;
   final void Function()? onPressed;
   @override

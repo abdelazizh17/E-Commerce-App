@@ -13,9 +13,11 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
   const CustomButtonSignUpBlocConsumer({
     super.key,
     required this.authCubit,
+    required this.formKey,
   });
 
   final AuthCubit authCubit;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
           authCubit.isLoading = false;
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.homeLayout, (route) => false);
-        } else if (state is AuthFailure) {
+        } else if (state is AuthError) {
           authCubit.isLoading = false;
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
@@ -41,7 +43,7 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
                   style: AppStyles.styleMedium14(),
                 ),
           onPressed: () {
-            if (authCubit.formKey.currentState!.validate()) {
+            if (formKey.currentState!.validate()) {
               authCubit.signUp(
                 SignUpData(
                     name: authCubit.userName.text,

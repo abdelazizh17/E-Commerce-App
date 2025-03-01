@@ -12,8 +12,6 @@ class UserProfileTile extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final authCubit = AuthCubit.get(context);
-    authCubit.fetchUserData();
     return Row(
       children: [
         CircleAvatar(

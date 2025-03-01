@@ -79,8 +79,7 @@ class AuthFirebaseServices {
       idToken: googleAuth.idToken,
     );
 
-    final userCredential =
-        await _firebaseAuth.signInWithCredential(credential);
+    final userCredential = await _firebaseAuth.signInWithCredential(credential);
 
     final user = userCredential.user;
     //I implemented this condition to ensure it doesn't throw an error or crash if the user is not signed in

@@ -11,10 +11,11 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
   const CustomButtonForgotPasswordBlocConsumer({
     super.key,
     required this.authCubit,
+    required this.formKey,
   });
 
   final AuthCubit authCubit;
-
+  final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
@@ -27,7 +28,7 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
               context,
               '"We\'ve sent you a link to reset your password\nPlease check email"',
               AppColors.greenColor);
-        } else if (state is AuthFailure) {
+        } else if (state is AuthError) {
           authCubit.isLoading = false;
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
@@ -35,7 +36,7 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onPressed: () {
-            if (authCubit.formKey.currentState!.validate()) {
+            if (formKey.currentState!.validate()) {
               authCubit.resetPassword(authCubit.email.text);
             }
           },

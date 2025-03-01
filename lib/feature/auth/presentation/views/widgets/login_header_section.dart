@@ -12,9 +12,10 @@ class LoginHeaderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = AuthCubit.get(context);
+    final formKey = GlobalKey<FormState>();
     return SliverToBoxAdapter(
       child: Form(
-        key: authCubit.formKey,
+        key: formKey,
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -45,7 +46,10 @@ class LoginHeaderSection extends StatelessWidget {
               SizedBox(
                 height: 26,
               ),
-              CustomButtonLoginBlocConsumer(authCubit: authCubit),
+              CustomButtonLoginBlocConsumer(
+                authCubit: authCubit,
+                formKey: formKey,
+              ),
             ],
           ),
         ),

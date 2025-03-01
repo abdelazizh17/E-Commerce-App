@@ -12,6 +12,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = AuthCubit.get(context);
+    final formKey = GlobalKey<FormState>();
     return CustomScrollView(
       slivers: [
         CustomSliverAppBar(
@@ -24,7 +25,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: Form(
-            key: authCubit.formKey,
+            key: formKey,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -52,7 +53,10 @@ class ForgotPasswordViewBody extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 11,
                   ),
-                  CustomButtonForgotPasswordBlocConsumer(authCubit: authCubit),
+                  CustomButtonForgotPasswordBlocConsumer(
+                    authCubit: authCubit,
+                    formKey: formKey,
+                  ),
                 ],
               ),
             ),

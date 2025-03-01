@@ -14,9 +14,9 @@ class SignUpHeaderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = AuthCubit.get(context);
-
+    final formKey = GlobalKey<FormState>();
     return Form(
-      key: authCubit.formKey,
+      key: formKey,
       child: SliverToBoxAdapter(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,12 +47,13 @@ class SignUpHeaderSection extends StatelessWidget {
             SizedBox(
               height: 26,
             ),
-            CustomButtonSignUpBlocConsumer(authCubit: authCubit),
+            CustomButtonSignUpBlocConsumer(
+              authCubit: authCubit,
+              formKey: formKey,
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-

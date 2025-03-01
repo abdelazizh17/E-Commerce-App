@@ -1,8 +1,14 @@
+import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/new_product_card.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class CustomNewProductCardListView extends StatelessWidget {
-  const CustomNewProductCardListView({super.key});
+class NewProductListView extends StatelessWidget {
+  const NewProductListView({
+    super.key,
+    required this.products,
+  });
+
+  final List<Product> products;
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +16,13 @@ class CustomNewProductCardListView extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.43,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: products.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(left: 17, right: 17, top: 22),
-          child: NewProductCard(),
+          child: NewProductCard(
+            product: products[index],
+            isLoading: false,
+          ),
         ),
       ),
     );

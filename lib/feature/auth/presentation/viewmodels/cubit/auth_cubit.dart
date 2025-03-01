@@ -14,7 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
   bool isLoading = false;
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
   final authFirebaseService = AuthFirebaseServices();
   final TextEditingController userName = TextEditingController();
   final TextEditingController email = TextEditingController();
@@ -27,7 +27,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthSuccess());
       emit(AuthUserDataLoaded(userModel));
     } catch (e) {
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 
@@ -39,7 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthUserDataLoaded(userModel));
       }
     } catch (e) {
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 
@@ -49,7 +49,7 @@ class AuthCubit extends Cubit<AuthState> {
       await authFirebaseService.login(loginData);
       emit(AuthSuccess());
     } catch (e) {
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 
@@ -59,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
       await authFirebaseService.resetPassword(email);
       emit(PasswordResetRequestSent());
     } catch (e) {
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 
@@ -70,7 +70,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthSuccess());
       emit(AuthUserDataLoaded(userModel));
     } catch (e) {
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 
@@ -82,7 +82,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthUserDataLoaded(userModel));
     } catch (e) {
       debugPrint(e.toString());
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 
@@ -92,7 +92,7 @@ class AuthCubit extends Cubit<AuthState> {
       await authFirebaseService.signOutAllAccounts();
       emit(LoggedOut());
     } catch (e) {
-      emit(AuthFailure(Failure.fromException(e).message));
+      emit(AuthError(AuthFailure.fromException(e).message));
     }
   }
 }

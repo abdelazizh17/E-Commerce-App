@@ -10,7 +10,6 @@ ThemeData lightTheme = ThemeData(
     size: 24,
     color: AppColors.blackColor,
   ),
-
   appBarTheme: AppBarTheme(
     elevation: 0,
     toolbarHeight: 50.h,
@@ -27,7 +26,6 @@ ThemeData darkTheme = ThemeData(
     size: 24,
     color: AppColors.whiteColor,
   ),
-
   appBarTheme: AppBarTheme(
     iconTheme: IconThemeData(
       color: AppColors.whiteColor,

@@ -1,12 +1,15 @@
+import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_image_container.dart';
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:flutter_rating/flutter_rating.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewProductCard extends StatelessWidget {
-  const NewProductCard({super.key});
-
+  const NewProductCard({super.key, required this.product, required this.isLoading});
+  final Product product;
+    final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,31 +17,32 @@ class NewProductCard extends StatelessWidget {
       children: [
         ProductImageContainer(
           isSale: false,
+          products: product,
+          isLoading: isLoading,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: List.generate(
-                  5,
-                  (index) => Icon(LucideIcons.star,
-                      color: AppColors.greyColor, size: 16),
+              StarRating(),
+              SizedBox(height: 4),
+              Text(
+                product.brand ?? 'Unkown',
+                style: AppStyles.styleRegularGrey11(),
+              ),
+              SizedBox(
+                width: 120.w,
+                child: Text(
+                  product.title ?? 'Unkown',
+                  style: AppStyles.styleRegular16(context),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               SizedBox(height: 4),
               Text(
-                "Dorothy Perkins",
-                style: AppStyles.styleRegularGrey11(),
-              ),
-              Text(
-                "Evening Dress",
-                style: AppStyles.styleRegular16(context),
-              ),
-              SizedBox(height: 4),
-              Text(
-                "15\$",
+                "${product.price!.toStringAsFixed(2)}\$",
                 style: AppStyles.styleMedium14().copyWith(
                   color: AppColors.greyColor,
                   decoration: TextDecoration.lineThrough,

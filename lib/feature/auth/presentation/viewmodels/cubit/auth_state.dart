@@ -9,10 +9,10 @@ final class AuthLoading extends AuthState {}
 
 final class AuthSuccess extends AuthState {}
 
-final class AuthFailure extends AuthState {
+final class AuthError extends AuthState {
   final String errMessage;
 
-  AuthFailure(this.errMessage);
+  AuthError(this.errMessage);
 }
 
 class PasswordResetRequestSent extends AuthState {}

@@ -30,6 +30,7 @@ String? validateGeneral(String? value, String label) {
   }
   return null;
 }
+
 void showSnackBar(BuildContext context, String msg, Color color) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
