@@ -13,8 +13,6 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
-  bool isLoading = false;
-  // final formKey = GlobalKey<FormState>();
   final authFirebaseService = AuthFirebaseServices();
   final TextEditingController userName = TextEditingController();
   final TextEditingController email = TextEditingController();
@@ -24,7 +22,6 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final userModel = await authFirebaseService.signUp(signUpData);
-      emit(AuthSuccess());
       emit(AuthUserDataLoaded(userModel));
     } catch (e) {
       emit(AuthError(AuthFailure.fromException(e).message));
@@ -37,6 +34,8 @@ class AuthCubit extends Cubit<AuthState> {
       final userModel = await authFirebaseService.fetchUserData();
       if (userModel != null) {
         emit(AuthUserDataLoaded(userModel));
+      } else {
+        emit(AuthInitial()); // fix loading issue
       }
     } catch (e) {
       emit(AuthError(AuthFailure.fromException(e).message));
@@ -47,7 +46,12 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       await authFirebaseService.login(loginData);
-      emit(AuthSuccess());
+      final userModel = await authFirebaseService.fetchUserData();
+      if (userModel != null) {
+        emit(AuthUserDataLoaded(userModel));
+      } else {
+        emit(AuthInitial()); // fix loading issue
+      }
     } catch (e) {
       emit(AuthError(AuthFailure.fromException(e).message));
     }
@@ -67,7 +71,6 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final userModel = await authFirebaseService.signInWithGoogle();
-      emit(AuthSuccess());
       emit(AuthUserDataLoaded(userModel));
     } catch (e) {
       emit(AuthError(AuthFailure.fromException(e).message));
@@ -78,7 +81,6 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final userModel = await authFirebaseService.signInWithFacebook();
-      emit(AuthSuccess());
       emit(AuthUserDataLoaded(userModel));
     } catch (e) {
       debugPrint(e.toString());

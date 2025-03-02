@@ -23,34 +23,34 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoading) {
-          authCubit.isLoading = true;
-        } else if (state is AuthSuccess) {
-          authCubit.isLoading = false;
+        if (state is AuthUserDataLoaded) {
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.homeLayout, (route) => false);
+          authCubit.email.clear();
+          authCubit.password.clear();
         } else if (state is AuthError) {
-          authCubit.isLoading = false;
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
       },
       builder: (context, state) {
         return CustomButton(
-          widget: authCubit.isLoading
+          widget: state is AuthLoading
               ? CustomCircleIndicator()
               : Text(
                   'Login',
                   style: AppStyles.styleMedium14(),
                 ),
-          onPressed: () {
-            if (formKey.currentState!.validate()) {
-              authCubit.login(
-                LoginData(
-                    email: authCubit.email.text,
-                    password: authCubit.password.text),
-              );
-            }
-          },
+          onPressed: state is AuthLoading
+              ? null
+              : () {
+                  if (formKey.currentState!.validate()) {
+                    authCubit.login(
+                      LoginData(
+                          email: authCubit.email.text,
+                          password: authCubit.password.text),
+                    );
+                  }
+                },
         );
       },
     );

@@ -12,7 +12,6 @@ class SaleProductsCubit extends Cubit<SaleProductsState> {
   final ProductsRepository productsRepository;
 
   Future<void> getSaleProducts() async {
-    if (isClosed) return;
     emit(SaleProductsLoading());
     try {
       final products = await productsRepository.getSaleProducts();

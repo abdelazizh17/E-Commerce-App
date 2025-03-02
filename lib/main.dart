@@ -21,11 +21,11 @@ void main() async {
       providers: [
         BlocProvider(
           create: (_) => AuthCubit()..fetchUserData(),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
           create: (_) => SettingsCubit()..loadTheme(),
-          lazy: true,
+          lazy: false,
         ),
       ],
       child: ECommerceApp(

@@ -13,7 +13,6 @@ class NewProductsCubit extends Cubit<NewProductsState> {
   final ProductsRepository productsRepository;
 
   Future<void> getNewProduct() async {
-    if (isClosed) return; // تفادي المشكلة لو الكيوبت مقفول
     emit(NewProductsLoading());
     try {
       final products = await productsRepository.getNewProducts();

@@ -18,8 +18,7 @@ class CustomQuickAuthButtonSection extends StatelessWidget {
       children: [
         BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is AuthSuccess) {
-              authCubit.isLoading = false;
+            if (state is AuthUserDataLoaded) {
               Navigator.pushReplacementNamed(context, Routes.homeLayout);
             }
           },

@@ -18,7 +18,7 @@ class CustomSliverAppBar extends StatelessWidget {
       leading: leading,
       actions: actions,
       backgroundColor: Colors.transparent,
-      surfaceTintColor: Colors.transparent,
+      surfaceTintColor: null,
     );
   }
 }

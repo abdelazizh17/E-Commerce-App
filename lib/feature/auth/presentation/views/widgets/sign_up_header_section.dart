@@ -15,6 +15,9 @@ class SignUpHeaderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final authCubit = AuthCubit.get(context);
     final formKey = GlobalKey<FormState>();
+    final TextEditingController userName = TextEditingController();
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
     return Form(
       key: formKey,
       child: SliverToBoxAdapter(
@@ -31,9 +34,9 @@ class SignUpHeaderSection extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 11,
             ),
             CustomTextFormFieldSignUpSection(
-              userName: authCubit.userName,
-              email: authCubit.email,
-              password: authCubit.password,
+              userName: userName,
+              email: email,
+              password: password,
             ),
             SizedBox(
               height: 16,
@@ -42,6 +45,7 @@ class SignUpHeaderSection extends StatelessWidget {
               title: 'Already have an account?',
               onTap: () {
                 Navigator.pushNamed(context, Routes.loginView);
+                
               },
             ),
             SizedBox(
@@ -49,7 +53,7 @@ class SignUpHeaderSection extends StatelessWidget {
             ),
             CustomButtonSignUpBlocConsumer(
               authCubit: authCubit,
-              formKey: formKey,
+              formKey: formKey, userNameController: userName, emailController: email, passwordController: password,
             ),
           ],
         ),

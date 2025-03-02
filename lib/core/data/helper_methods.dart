@@ -32,6 +32,8 @@ String? validateGeneral(String? value, String label) {
 }
 
 void showSnackBar(BuildContext context, String msg, Color color) {
+  ScaffoldMessenger.of(context)
+      .hideCurrentSnackBar(); //fix issue duplicate snackbar message because the `listener` was triggered repeatedly for the same `AuthError` state.
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color,

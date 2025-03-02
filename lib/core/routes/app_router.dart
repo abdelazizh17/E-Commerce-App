@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/feature/auth/presentation/views/forgot_password_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/login_view.dart';
@@ -5,6 +6,7 @@ import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce/feature/bag/presentation/views/bag_view.dart';
 import 'package:e_commerce/feature/favorites/presentation/views/favorites_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/home_view.dart';
+import 'package:e_commerce/feature/home/presentation/views/product_details_view.dart';
 import 'package:e_commerce/feature/home_layout/presentation/viewmodels/cubit/home_layout_cubit.dart';
 import 'package:e_commerce/feature/home_layout/presentation/views/home_layout_view.dart';
 import 'package:e_commerce/feature/profile/presentation/views/profile_view.dart';
@@ -59,6 +61,17 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const SettingsView(),
         );
+      case Routes.productDetailsView:
+        final args = settings.arguments;
+      if (args != null && args is Product) {
+        return MaterialPageRoute(
+          builder: (context) => ProductDetailsView(product: args),
+        );
+      } else {
+        return MaterialPageRoute(
+          builder: (context) => const Text('error'),
+        );
+      }
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

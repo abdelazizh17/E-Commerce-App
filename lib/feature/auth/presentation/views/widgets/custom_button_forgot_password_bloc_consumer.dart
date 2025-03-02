@@ -20,27 +20,25 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoading) {
-          authCubit.isLoading = true;
-        } else if (state is PasswordResetRequestSent) {
-          authCubit.isLoading = false;
+        if (state is PasswordResetRequestSent) {
           showSnackBar(
               context,
               '"We\'ve sent you a link to reset your password\nPlease check email"',
               AppColors.greenColor);
         } else if (state is AuthError) {
-          authCubit.isLoading = false;
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
       },
       builder: (context, state) {
         return CustomButton(
-          onPressed: () {
-            if (formKey.currentState!.validate()) {
-              authCubit.resetPassword(authCubit.email.text);
-            }
-          },
-          widget: authCubit.isLoading
+          onPressed: state is AuthLoading
+              ? null
+              : () {
+                  if (formKey.currentState!.validate()) {
+                    authCubit.resetPassword(authCubit.email.text);
+                  }
+                },
+          widget: state is AuthLoading
               ? CustomCircleIndicator()
               : Text(
                   'Send',

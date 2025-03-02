@@ -9,4 +9,5 @@ class Routes {
   static const String shopView = '/shopView';
   static const String profileView = '/profileView';
   static const String settingView = '/settingView';
+  static const String productDetailsView = '/productDetailsView';
 }

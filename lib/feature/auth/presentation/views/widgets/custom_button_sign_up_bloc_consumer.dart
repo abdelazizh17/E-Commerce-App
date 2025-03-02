@@ -14,8 +14,13 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
     super.key,
     required this.authCubit,
     required this.formKey,
+    required this.userNameController,
+    required this.emailController,
+    required this.passwordController,
   });
-
+  final TextEditingController userNameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
   final AuthCubit authCubit;
   final GlobalKey<FormState> formKey;
 
@@ -23,35 +28,36 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoading) {
-          authCubit.isLoading = true;
-        } else if (state is AuthSuccess) {
-          authCubit.isLoading = false;
+        if (state is AuthUserDataLoaded) {
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.homeLayout, (route) => false);
+          userNameController.clear();
+          emailController.clear();
+          passwordController.clear();
         } else if (state is AuthError) {
-          authCubit.isLoading = false;
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
       },
       builder: (context, state) {
         return CustomButton(
-          widget: authCubit.isLoading
+          widget: state is AuthLoading
               ? CustomCircleIndicator()
               : Text(
                   'SignUp',
                   style: AppStyles.styleMedium14(),
                 ),
-          onPressed: () {
-            if (formKey.currentState!.validate()) {
-              authCubit.signUp(
-                SignUpData(
-                    name: authCubit.userName.text,
-                    email: authCubit.email.text,
-                    password: authCubit.password.text),
-              );
-            }
-          },
+          onPressed: state is AuthLoading
+              ? null
+              : () {
+                  if (formKey.currentState!.validate()) {
+                    authCubit.signUp(
+                      SignUpData(
+                          name: userNameController.text,
+                          email: emailController.text,
+                          password: passwordController.text),
+                    );
+                  }
+                },
         );
       },
     );

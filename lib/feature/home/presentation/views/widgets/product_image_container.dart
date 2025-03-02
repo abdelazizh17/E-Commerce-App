@@ -4,7 +4,6 @@ import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -32,14 +31,14 @@ class ProductImageContainer extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
           child: isLoading
-            ? SizedBox.shrink()
-            : CachedNetworkImage(
-            fit: BoxFit.contain,
-            imageUrl: products.images![0],
-            placeholder: (context, url) =>
-                LottieBuilder.asset(Assets.imagesLoading),
-            errorWidget: (context, url, error) => Icon(Icons.error),
-          ),
+              ? SizedBox.shrink()
+              : CachedNetworkImage(
+                fit: BoxFit.contain,
+                imageUrl: products.images![0],
+                placeholder: (context, url) =>
+                    LottieBuilder.asset(Assets.imagesLoading),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
         ),
         isLoading
             ? SizedBox.shrink()
@@ -72,26 +71,28 @@ class ProductImageContainer extends StatelessWidget {
                 right: 0,
                 bottom: -18,
                 child: Container(
-                  width: 36,
-                  height: 36,
-                  decoration: ShapeDecoration(
-                    color: AppColors.transparent,
-                    shape: OvalBorder(),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x420A0A0A),
-                        blurRadius: 8,
-                        offset: Offset(0, 1),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                  child: Icon(
-                    LucideIcons.heart,
-                    size: 14,
-                    color: AppColors.greyColor,
-                  ),
-                ),
+                    width: 36,
+                    height: 36,
+                    decoration: ShapeDecoration(
+                      color: AppColors.transparent,
+                      shape: OvalBorder(),
+                      shadows: [
+                        BoxShadow(
+                          color: Color(0x420A0A0A),
+                          blurRadius: 8,
+                          offset: Offset(0, 1),
+                          spreadRadius: 0,
+                        )
+                      ],
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LucideIcons.heart,
+                        size: 14,
+                        color: AppColors.greyColor,
+                      ),
+                    )),
               ),
       ],
     );
