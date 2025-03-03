@@ -45,7 +45,6 @@ class NewProductCard extends StatelessWidget {
                 "${product.price!.toStringAsFixed(2)}\$",
                 style: AppStyles.styleMedium14().copyWith(
                   color: AppColors.greyColor,
-                  decoration: TextDecoration.lineThrough,
                 ),
               ),
             ],
