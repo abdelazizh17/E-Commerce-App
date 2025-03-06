@@ -7,13 +7,13 @@ class RatingRow extends StatelessWidget {
   const RatingRow({
     super.key,
     required this.starLevel,
-    required this.count,
+    required this.ratingCount,
     required this.maxCount,
     required this.ratingCounts,
   });
 
   final int starLevel;
-  final int count;
+  final int ratingCount;
   final int maxCount;
   final List<int> ratingCounts;
 
@@ -21,17 +21,17 @@ class RatingRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        StarRow(starCount: starLevel),
+        StarRow(starLevel: starLevel),
         const SizedBox(width: 10),
         Expanded(
           child: RatingProgressBar(
-            count: count,
+            ratingCount: ratingCount,
             maxCount: maxCount,
             ratingCounts: ratingCounts,
           ),
         ),
         const SizedBox(width: 10),
-        CountLabel(count: count),
+        CountLabel(ratingCount: ratingCount),
       ],
     );
   }

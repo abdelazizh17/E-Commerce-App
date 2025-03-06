@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class StarRow extends StatelessWidget {
   const StarRow({
     super.key,
-    required this.starCount,
+    required this.starLevel,
   });
-  final int starCount;
+  final int starLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class StarRow extends StatelessWidget {
         (i) => Icon(
           Icons.star,
           size: 20,
-          color: i < starCount ? AppColors.yellowColor : Colors.transparent,
+          color: i < starLevel ? AppColors.yellowColor : Colors.transparent,
         ),
       ).reversed.toList(),
     );

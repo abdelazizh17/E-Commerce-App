@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class RatingProgressBar extends StatelessWidget {
   const RatingProgressBar({
     super.key,
-    required this.count,
+    required this.ratingCount,
     required this.maxCount,
     required this.ratingCounts,
   });
-  final int count;
+  final int ratingCount;
   final int maxCount;
   final List<int> ratingCounts;
   @override
@@ -15,11 +15,11 @@ class RatingProgressBar extends StatelessWidget {
     // final totalCount = ratingCounts.reduce((a, b) => a + b);
     // final value = totalCount > 0 ? count / totalCount : 0.0; // That's if we need to fix the value based on the total of ratingCounts
     final value = maxCount > 0
-        ? count / maxCount
-        : 0.0; // That's if we need to fix the value at one
+        ? ratingCount / maxCount
+        : 0.08; // That's if we need to fix the value at one
     return LinearProgressIndicator(
       borderRadius: BorderRadius.circular(28),
-      value: value == 0 ? 0.08 : value,
+      value: value,
       minHeight: 10,
       backgroundColor: Colors.transparent,
       color: Colors.red,

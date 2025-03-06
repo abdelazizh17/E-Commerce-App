@@ -22,7 +22,7 @@ class RatingBarsList extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: RatingRow(
             starLevel: starLevel,
-            count: ratingCount,
+            ratingCount: ratingCount,
             maxCount: maxCount,
             ratingCounts: ratingCounts,
           ),
