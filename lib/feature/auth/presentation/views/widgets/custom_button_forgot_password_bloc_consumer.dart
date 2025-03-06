@@ -35,7 +35,7 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
               ? null
               : () {
                   if (formKey.currentState!.validate()) {
-                    authCubit.resetPassword(authCubit.email.text);
+                    authCubit.resetPassword(authCubit.emailController.text);
                   }
                 },
           widget: state is AuthLoading

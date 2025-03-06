@@ -14,9 +14,15 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
   final authFirebaseService = AuthFirebaseServices();
-  final TextEditingController userName = TextEditingController();
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void clearControllers() {
+    userNameController.clear();
+    emailController.clear();
+    passwordController.clear();
+  }
 
   Future<void> signUp(SignUpData signUpData) async {
     emit(AuthLoading());

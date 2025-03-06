@@ -13,8 +13,8 @@ class ProductDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        surfaceTintColor: null,
-        title: Text('Short dress'),
+        surfaceTintColor: Colors.transparent,
+        title: Text(product.title!),
         centerTitle: true,
         elevation: 0,
         actions: [

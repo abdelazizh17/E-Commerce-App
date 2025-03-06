@@ -28,8 +28,8 @@ class LoginHeaderSection extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 11,
               ),
               CustomTextFormFieldLoginSection(
-                email: authCubit.email,
-                password: authCubit.password,
+                email: authCubit.emailController,
+                password: authCubit.passwordController,
               ),
               SizedBox(
                 height: 16,

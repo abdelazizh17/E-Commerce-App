@@ -10,4 +10,5 @@ class Routes {
   static const String profileView = '/profileView';
   static const String settingView = '/settingView';
   static const String productDetailsView = '/productDetailsView';
+  static const String ratingAndReviewsView = '/ratingAndReviewsView';
 }

@@ -54,6 +54,26 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleRegular14GreyAndDark(BuildContext context) {
+    return TextStyle(
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.greyColor
+          : AppColors.blackColor,
+      fontSize: 14.sp,
+      fontFamily: 'Metropolis',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleRegularGrey14() {
+    return TextStyle(
+      color: AppColors.greyColor,
+      fontSize: 14.sp,
+      fontFamily: 'Metropolis',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
   static TextStyle styleRegular16(BuildContext context) {
     return TextStyle(
       color: Theme.of(context).brightness == Brightness.dark
@@ -93,6 +113,17 @@ abstract class AppStyles {
           ? AppColors.whiteColor
           : AppColors.blackColor,
       fontSize: 24.sp,
+      fontFamily: 'Metropolis',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle styleSimiBold44(BuildContext context) {
+    return TextStyle(
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.whiteColor
+          : AppColors.blackColor,
+      fontSize: 44.sp,
       fontFamily: 'Metropolis',
       fontWeight: FontWeight.w600,
     );

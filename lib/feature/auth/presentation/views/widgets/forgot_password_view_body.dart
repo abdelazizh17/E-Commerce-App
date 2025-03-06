@@ -48,7 +48,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
                   CustomTextFormField(
                     labelText: 'Email',
                     validator: (value) => validateEmail(value),
-                    controller: authCubit.email,
+                    controller: authCubit.emailController,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 11,

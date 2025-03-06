@@ -26,8 +26,7 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
         if (state is AuthUserDataLoaded) {
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.homeLayout, (route) => false);
-          authCubit.email.clear();
-          authCubit.password.clear();
+          authCubit.clearControllers();
         } else if (state is AuthError) {
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
@@ -46,8 +45,8 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
                   if (formKey.currentState!.validate()) {
                     authCubit.login(
                       LoginData(
-                          email: authCubit.email.text,
-                          password: authCubit.password.text),
+                          email: authCubit.emailController.text,
+                          password: authCubit.passwordController.text),
                     );
                   }
                 },
