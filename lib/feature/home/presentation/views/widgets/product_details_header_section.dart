@@ -6,11 +6,9 @@ import 'package:flutter/widgets.dart';
 class ProductDetailsHeaderSection extends StatelessWidget {
   const ProductDetailsHeaderSection({
     super.key,
-    required this.formKey,
     required this.product,
   });
 
-  final GlobalKey<FormState> formKey;
   final Product product;
 
   @override
@@ -20,7 +18,6 @@ class ProductDetailsHeaderSection extends StatelessWidget {
       child: Column(
         children: [
           DropDownButtonAndFavoriteButtonSection(
-            formKey: formKey,
           ),
           SizedBox(
             height: 24,

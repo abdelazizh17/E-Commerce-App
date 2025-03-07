@@ -5,9 +5,8 @@ import 'package:flutter/widgets.dart';
 
 class DropDownButtonAndFavoriteButtonSection extends StatelessWidget {
   const DropDownButtonAndFavoriteButtonSection({
-    super.key, required this.formKey,
+    super.key,
   });
-     final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {

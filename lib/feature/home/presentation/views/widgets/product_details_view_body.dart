@@ -29,7 +29,7 @@ class ProductDetailsViewBody extends StatelessWidget {
               SizedBox(
                 height: 12,
               ),
-              ProductDetailsHeaderSection(formKey: formKey, product: product),
+              ProductDetailsHeaderSection(product: product),
               CustomDivider(),
               ProductDetailsRatingAndReviewsSection(
                 product: product,
