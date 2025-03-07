@@ -6,6 +6,7 @@ import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
   const CustomButtonForgotPasswordBlocConsumer({
@@ -43,7 +44,7 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
               : Text(
                   'Send',
                   style: AppStyles.styleMedium14(),
-                ),
+                ), height: 50.h,
         );
       },
     );

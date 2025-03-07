@@ -11,21 +11,24 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.controller,
     this.isRequired = true,
-    required this.labelText,
+    this.labelText,
+    this.hintText, this.maxLines,
   });
 
   final TextEditingController? controller;
   final String? title;
   final Widget? suffixIcon;
   final bool obscureText;
-  final String labelText;
+  final String? labelText;
   final bool isRequired;
   final Function(String)? onChanged;
   final String? Function(String?)? validator;
-
+  final String? hintText;
+  final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       controller: controller,
       onChanged: onChanged,
       validator: validator,
@@ -37,6 +40,7 @@ class CustomTextFormField extends StatelessWidget {
             ? AppColors.whiteColor
             : AppColors.transparent,
         labelText: labelText,
+        hintText: hintText,
         suffixIcon: suffixIcon,
         enabledBorder: borderBuilder(),
         focusedBorder: borderBuilder(),

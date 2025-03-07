@@ -85,6 +85,15 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleSimiBold11() {
+    return TextStyle(
+      color: AppColors.whiteColor,
+      fontSize: 11.sp,
+      fontFamily: 'Metropolis',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle styleSimiBold16(BuildContext context) {
     return TextStyle(
       color: Theme.of(context).brightness == Brightness.dark

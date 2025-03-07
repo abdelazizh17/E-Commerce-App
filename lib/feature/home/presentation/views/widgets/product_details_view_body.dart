@@ -6,6 +6,7 @@ import 'package:e_commerce/feature/home/presentation/views/widgets/product_detai
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_image_page_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_rating_and_review_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key, required this.product});
@@ -47,7 +48,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                 widget: Text(
                   'ADD TO CART',
                   style: AppStyles.styleMedium14(),
-                ),
+                ), height: 50.h,
               ),
               SizedBox(
                 height: 24,

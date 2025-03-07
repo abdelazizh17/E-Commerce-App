@@ -16,10 +16,10 @@ class RatingProgressBar extends StatelessWidget {
     // final value = totalCount > 0 ? count / totalCount : 0.0; // That's if we need to fix the value based on the total of ratingCounts
     final value = maxCount > 0
         ? ratingCount / maxCount
-        : 0.08; // That's if we need to fix the value at one
+        : 0.0; // That's if we need to fix the value at one
     return LinearProgressIndicator(
       borderRadius: BorderRadius.circular(28),
-      value: value,
+      value: value == 0 ? 0.07 : value,
       minHeight: 10,
       backgroundColor: Colors.transparent,
       color: Colors.red,
