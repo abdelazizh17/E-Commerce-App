@@ -17,8 +17,8 @@ class RatingAndReviewsView extends StatelessWidget {
         elevation: 0,
       ),
       body: RatingAndReviewsBody(
-        product: product,
-      ),
+            product: product,
+          ),
     );
   }
 }

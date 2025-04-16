@@ -7,9 +7,10 @@ import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewProductCard extends StatelessWidget {
-  const NewProductCard({super.key, required this.product, required this.isLoading});
+  const NewProductCard(
+      {super.key, required this.product, required this.isLoading});
   final Product product;
-    final bool isLoading;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +26,9 @@ class NewProductCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StarRating(),
+              StarRating(
+                size: 20,
+              ),
               SizedBox(height: 4),
               Text(
                 product.brand ?? 'Unkown',

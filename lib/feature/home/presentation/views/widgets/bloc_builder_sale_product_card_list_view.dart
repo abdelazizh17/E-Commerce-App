@@ -16,7 +16,7 @@ class BlocBuilderSaleProductCardListView extends StatelessWidget {
         } else if (state is SaleProductsSuccess) {
           return SaleProductListView(products: state.products);
         } else if (state is SaleProductsFailure) {
-           return  Center(child: Text(state.errMessage));
+          return Center(child: Text(state.errMessage));
         } else {
           return const Center(child: Text('Something went wrong'));
         }
@@ -24,7 +24,3 @@ class BlocBuilderSaleProductCardListView extends StatelessWidget {
     );
   }
 }
-
-
-
-

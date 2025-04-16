@@ -50,7 +50,8 @@ class CustomButtonLoginBlocConsumer extends StatelessWidget {
                           password: authCubit.passwordController.text),
                     );
                   }
-                }, height: 50.h,
+                },
+          height: 50.h,
         );
       },
     );

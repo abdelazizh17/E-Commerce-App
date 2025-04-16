@@ -26,7 +26,7 @@ class AuthFirebaseServices {
         code: 'user_null',
         message: 'User data is null after sign-in',
       );
-    }
+    }  
     final userModel = UserModel(
       uid: user.uid,
       userName: signUpModel.name,

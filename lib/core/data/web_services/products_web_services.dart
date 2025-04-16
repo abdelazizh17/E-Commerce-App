@@ -27,29 +27,6 @@ class ProductWebServices {
     }
   }
 
-  Future<List<dynamic>> getSaleProducts() async {
-    try {
-      var response = await dio.get('http://10.0.2.2:8000/products/sale/');
-      // print("API Response: ${response.data}"); // ✅ طباعة الاستجابة
-      // log(response.data.toString());
-      return response.data["sale"];
-    } on Exception catch (e) {
-      log(e.toString());
-      return [];
-    }
-  }
-
-  Future<List<dynamic>> getNewProducts() async {
-    try {
-      var response = await dio.get('http://10.0.2.2:8000/products/new/');
-      // log(response.data.toString());
-      return response.data["new"];
-    } on Exception catch (e) {
-      log(e.toString());
-      return [];
-    }
-  }
-
   Future<List<dynamic>> getProductsByCategory(
       {required String category}) async {
     try {

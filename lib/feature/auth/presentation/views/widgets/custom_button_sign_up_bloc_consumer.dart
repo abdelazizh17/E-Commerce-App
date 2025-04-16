@@ -32,9 +32,7 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
         if (state is AuthUserDataLoaded) {
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.homeLayout, (route) => false);
-          userNameController.clear();
-          emailController.clear();
-          passwordController.clear();
+          controllerClear();
         } else if (state is AuthError) {
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
@@ -58,9 +56,16 @@ class CustomButtonSignUpBlocConsumer extends StatelessWidget {
                           password: passwordController.text),
                     );
                   }
-                }, height: 50.h,
+                },
+          height: 50.h,
         );
       },
     );
+  }
+
+  void controllerClear() {
+    userNameController.clear();
+    emailController.clear();
+    passwordController.clear();
   }
 }

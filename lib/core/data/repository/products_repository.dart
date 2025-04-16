@@ -12,18 +12,6 @@ class ProductsRepository {
     return product.map((product) => Product.fromJson(product)).toList();
   }
 
-  Future<List<Product>> getSaleProducts() async {
-    var product = await productWebServices.getSaleProducts();
-
-    return product.map((product) => Product.fromJson(product)).toList();
-  }
-
-  Future<List<Product>> getNewProducts() async {
-    var product = await productWebServices.getNewProducts();
-
-    return product.map((product) => Product.fromJson(product)).toList();
-  }
-
   Future<List<Product>> getProductByCategory({required String category}) async {
     var product =
         await productWebServices.getProductsByCategory(category: category);
