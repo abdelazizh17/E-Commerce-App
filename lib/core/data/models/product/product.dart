@@ -25,6 +25,7 @@ class Product {
   Meta? meta;
   List<dynamic>? images;
   String? thumbnail;
+  String? endPoint;
 
   Product({
     this.id,
@@ -49,7 +50,60 @@ class Product {
     this.meta,
     this.images,
     this.thumbnail,
+    this.endPoint,
   });
+
+  Product copyWith({
+    int? id,
+    String? title,
+    String? description,
+    String? category,
+    double? price,
+    double? discountPercentage,
+    double? rating,
+    int? stock,
+    List<dynamic>? tags,
+    String? brand,
+    String? sku,
+    int? weight,
+    Dimensions? dimensions,
+    String? warrantyInformation,
+    String? shippingInformation,
+    String? availabilityStatus,
+    List<Review>? reviews,
+    String? returnPolicy,
+    int? minimumOrderQuantity,
+    Meta? meta,
+    List<dynamic>? images,
+    String? thumbnail,
+    String? endPoint,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      category: category ?? this.category,
+      price: price ?? this.price,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      rating: rating ?? this.rating,
+      stock: stock ?? this.stock,
+      tags: tags ?? this.tags,
+      brand: brand ?? this.brand,
+      sku: sku ?? this.sku,
+      weight: weight ?? this.weight,
+      dimensions: dimensions ?? this.dimensions,
+      warrantyInformation: warrantyInformation ?? this.warrantyInformation,
+      shippingInformation: shippingInformation ?? this.shippingInformation,
+      availabilityStatus: availabilityStatus ?? this.availabilityStatus,
+      reviews: reviews ?? this.reviews,
+      returnPolicy: returnPolicy ?? this.returnPolicy,
+      minimumOrderQuantity: minimumOrderQuantity ?? this.minimumOrderQuantity,
+      meta: meta ?? this.meta,
+      images: images ?? this.images,
+      thumbnail: thumbnail ?? this.thumbnail,
+      endPoint: endPoint ?? this.endPoint,
+    );
+  }
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json['id'] as int?,

@@ -12,9 +12,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class RatingsAndReviewsButtonSection extends StatelessWidget {
   const RatingsAndReviewsButtonSection({
     super.key,
-    required this.product,
+    required this.product, required this.scrollController,
   });
   final Product product;
+  final ScrollController scrollController;
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -27,7 +28,7 @@ class RatingsAndReviewsButtonSection extends StatelessWidget {
             return WriteReviewBottomSheet(
               mediaQuery: mediaQuery,
               product: product,
-              ratingAndReviewCubit: context.read<RatingAndReviewCubit>(), //
+              ratingAndReviewCubit: context.read<RatingAndReviewCubit>(), scrollController: scrollController, 
             );
           },
         );

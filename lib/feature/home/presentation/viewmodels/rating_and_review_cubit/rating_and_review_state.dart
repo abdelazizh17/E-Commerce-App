@@ -13,12 +13,7 @@ final class RatingAndReviewFailure extends RatingAndReviewState {
   RatingAndReviewFailure(this.errMessage);
 }
 
-class RatingAndReviewAdded extends RatingAndReviewState {
-  final Review addedReview;
-  
-  RatingAndReviewAdded(this.addedReview);
-}
-class SaleProductsDetailUpdated extends RatingAndReviewState {
+class ProductsDetailUpdated extends RatingAndReviewState {
   final Product product;
-  SaleProductsDetailUpdated(this.product);
+  ProductsDetailUpdated(this.product);
 }

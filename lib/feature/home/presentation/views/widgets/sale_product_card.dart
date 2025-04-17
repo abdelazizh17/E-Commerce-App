@@ -2,81 +2,107 @@ import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
+import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_image_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SaleProductCard extends StatelessWidget {
+class SaleProductCard extends StatefulWidget {
   const SaleProductCard(
       {super.key, required this.product, required this.isLoading});
   final Product product;
   final bool isLoading;
+
+  @override
+  State<SaleProductCard> createState() => _SaleProductCardState();
+}
+
+class _SaleProductCardState extends State<SaleProductCard> {
+  late Product currentProduct;
+
+  @override
+  void initState() {
+    currentProduct = widget.product;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    double discountedPrice =
-        product.price! - (product.price! * (product.discountPercentage! / 100));
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, Routes.productDetailsView,
-            arguments: product);
+    double discountedPrice = currentProduct.price! -
+        (currentProduct.price! * (currentProduct.discountPercentage! / 100));
+    return BlocConsumer<RatingAndReviewCubit, RatingAndReviewState>(
+      listener: (context, state) {
+        if (state is ProductsDetailUpdated &&
+            currentProduct.id == state.product.id) {
+          currentProduct = state.product;
+        }
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ProductImageContainer(
-            products: product,
-            isSale: true,
-            isLoading: isLoading,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StarRating(
-                  color: AppColors.yellowColor,
-                  size: 20,
-                  rating: product.rating!,
-                ),
-                SizedBox(height: 4),
-                Text(
-                  product.brand ?? 'Unkown',
-                  style: AppStyles.styleRegularGrey11(),
-                ),
-                SizedBox(
-                  width: 120.w,
-                  child: Text(
-                    product.title ?? 'Unkown',
-                    style: AppStyles.styleRegular16(context),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                SizedBox(height: 4),
-                Row(
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, Routes.productDetailsView,
+                arguments: currentProduct.copyWith(endPoint: 'sale'));
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProductImageContainer(
+                products: currentProduct,
+                isSale: true,
+                isLoading: widget.isLoading,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    StarRating(
+                      color: AppColors.yellowColor,
+                      size: 20,
+                      rating: currentProduct.rating!,
+                    ),
+                    SizedBox(height: 4),
                     Text(
-                      "${product.price!.toStringAsFixed(2)}\$",
-                      style: AppStyles.styleMedium14().copyWith(
-                        color: AppColors.greyColor,
-                        decoration: TextDecoration.lineThrough,
+                      currentProduct.brand ?? 'Unkown',
+                      style: AppStyles.styleRegularGrey11(),
+                    ),
+                    SizedBox(
+                      width: 120.w,
+                      child: Text(
+                        currentProduct.title ?? 'Unkown',
+                        style: AppStyles.styleRegular16(context),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    SizedBox(width: 6),
-                    Text(
-                      "${discountedPrice.toStringAsFixed(2)}\$",
-                      style: AppStyles.styleMedium14().copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                    SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Text(
+                          "${currentProduct.price!.toStringAsFixed(2)}\$",
+                          style: AppStyles.styleMedium14().copyWith(
+                            color: AppColors.greyColor,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                        SizedBox(width: 6),
+                        Text(
+                          "${discountedPrice.toStringAsFixed(2)}\$",
+                          style: AppStyles.styleMedium14().copyWith(
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
-          )
-        ],
-      ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

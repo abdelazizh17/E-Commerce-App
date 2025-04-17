@@ -1,12 +1,10 @@
 import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/utils/injection.dart';
 import 'package:e_commerce/feature/auth/presentation/views/forgot_password_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:e_commerce/feature/bag/presentation/views/bag_view.dart';
 import 'package:e_commerce/feature/favorites/presentation/views/favorites_view.dart';
-import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/views/home_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/product_details_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/rating_and_reviews_view.dart';
@@ -79,11 +77,7 @@ class AppRouter {
         final args = settings.arguments;
         if (args != null && args is Product) {
           return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                      create: (context) => getIt<RatingAndReviewCubit>(),
-
-              child: RatingAndReviewsView(product: args),
-            ),
+            builder: (context) => RatingAndReviewsView(product: args),
           );
         } else {
           return MaterialPageRoute(

@@ -14,12 +14,13 @@ class WriteReviewBottomSheet extends StatefulWidget {
     super.key,
     required this.product,
     required this.mediaQuery,
-    required this.ratingAndReviewCubit,
+    required this.ratingAndReviewCubit, required this.scrollController,
   });
 
   final MediaQueryData mediaQuery;
   final Product product;
   final RatingAndReviewCubit ratingAndReviewCubit;
+  final ScrollController scrollController;
 
   @override
   State<WriteReviewBottomSheet> createState() => _WriteReviewBottomSheetState();
@@ -91,7 +92,13 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
                 validator: (value) => validateGeneral(value, 'review'),
               ),
               SizedBox(height: widget.mediaQuery.size.height / 20),
-              SubmitReviewButton(ratingAndReviewCubit: ratingAndReviewCubit, widget: widget, reviewController: reviewController, formKey: formKey, rating: rating),
+              SubmitReviewButton(
+                ratingAndReviewCubit: ratingAndReviewCubit,
+                reviewController: reviewController,
+                formKey: formKey,
+                rating: rating,
+                product: widget.product, scrollController: widget.scrollController,
+              ),
             ],
           ),
         ),
@@ -126,4 +133,3 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
     );
   }
 }
-

@@ -35,85 +35,66 @@ class _RatingAndReviewsBodyState extends State<RatingAndReviewsBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RatingAndReviewCubit, RatingAndReviewState>(
+    return BlocConsumer<RatingAndReviewCubit, RatingAndReviewState>(
       listener: (context, state) {
-        if (state is SaleProductsDetailUpdated) {
-          setState(() {
-            currentProduct = state.product;
-          });
+        if (state is ProductsDetailUpdated &&
+            currentProduct.id == state.product.id) {
+          currentProduct = state.product;
         }
-
-        _buildScrollController();
       },
-      child: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16.sp),
-            child: CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                SliverToBoxAdapter(
-                  child: RatingSummary(
-                    totalRatings: currentProduct.reviews!.length,
-                    ratingCounts: const [20, 12, 6, 4, 0],
+      builder: (context, state) {
+        return Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.sp),
+              child: CustomScrollView(
+                controller: _scrollController,
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: RatingSummary(
+                      totalRatings: currentProduct.reviews!.length,
+                      ratingCounts: const [20, 12, 6, 4, 0],
+                      product: currentProduct,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Text(
+                      '${currentProduct.reviews!.length} reviews',
+                      style: AppStyles.styleSimiBold24(context),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.035,
+                    ),
+                  ),
+                  ReviewCardSliverList(
                     product: currentProduct,
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: Text(
-                    '${currentProduct.reviews!.length} reviews',
-                    style: AppStyles.styleSimiBold24(context),
-                    textAlign: TextAlign.left,
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.11,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.035,
-                  ),
-                ),
-                ReviewCardSliverList(
-                  product: currentProduct,
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.11,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            child: LinearGradientContainer(),
-          ),
-          Positioned(
-            right: 10,
-            bottom: 25,
-            child: RatingsAndReviewsButtonSection(
-              product: currentProduct,
+            Positioned(
+              bottom: 0,
+              child: LinearGradientContainer(),
             ),
-          ),
-        ],
-      ),
+            Positioned(
+              right: 10,
+              bottom: 25,
+              child: RatingsAndReviewsButtonSection(
+                product: currentProduct,
+                scrollController: _scrollController,
+              ),
+            ),
+          ],
+        );
+      },
     );
-  }
-
-  void _buildScrollController() {
-    return WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (!_scrollController.hasClients || !mounted) return;
-
-      await _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.linearToEaseOut,
-      );
-
-      if (!_scrollController.hasClients || !mounted) return;
-
-      if (_scrollController.offset <
-          _scrollController.position.maxScrollExtent) {
-        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-      }
-    });
   }
 }

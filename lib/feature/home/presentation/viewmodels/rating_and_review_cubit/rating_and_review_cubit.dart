@@ -9,7 +9,8 @@ import 'package:meta/meta.dart';
 part 'rating_and_review_state.dart';
 
 class RatingAndReviewCubit extends Cubit<RatingAndReviewState> {
-  RatingAndReviewCubit(this.ratingAndReviewRepo) : super(RatingAndReviewInitial());
+  RatingAndReviewCubit(this.ratingAndReviewRepo)
+      : super(RatingAndReviewInitial());
 
   final RatingAndReviewRepo ratingAndReviewRepo;
 
@@ -17,33 +18,24 @@ class RatingAndReviewCubit extends Cubit<RatingAndReviewState> {
       BlocProvider.of(context);
 
   Future<void> addReview({
-  required String category,
-  required int productId,
-  required Review review,
-}) async {
-  emit(RatingAndReviewLoading());
-  try {
-    final addedReview = await ratingAndReviewRepo.addReview(
-      productId: productId,
-      review: review,
-      category: category,
-    );
-    emit(RatingAndReviewAdded(review)); // Return the added review
-    print('data has been sent');
-    return addedReview;
-  } catch (e) {
-    emit(RatingAndReviewFailure(e.toString()));
-    return null;
-  }
-}
-
- Future<void> getProductById(int productId) async {
-    // emit(RatingAndReviewLoading());
+    required String category,
+    required int productId,
+    required Review review,
+  }) async {
+    emit(RatingAndReviewLoading());
     try {
-      final product = await ratingAndReviewRepo.getProductById(productId);
-      emit(SaleProductsDetailUpdated(product));
+      await ratingAndReviewRepo.addReview(
+        productId: productId,
+        review: review,
+        category: category,
+      );
+      final updatedProduct = await ratingAndReviewRepo.getProductById(
+        endPoint: category,
+        productId: productId,
+      );
+      emit(ProductsDetailUpdated(updatedProduct));
     } catch (e) {
-      emit(RatingAndReviewFailure('Failed to fetch product: ${e.toString()}'));
+      emit(RatingAndReviewFailure(e.toString()));
     }
   }
 }

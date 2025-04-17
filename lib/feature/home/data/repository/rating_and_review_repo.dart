@@ -19,8 +19,12 @@ class RatingAndReviewRepo {
     );
   }
 
-   Future<Product> getProductById(int productId) async {
-    var productData = await ratingAndReviewWebServices.getProductById(productId);
+  Future<Product> getProductById(
+      {required String endPoint, required int productId}) async {
+    var productData = await ratingAndReviewWebServices.getProductById(
+      endPoint: endPoint,
+      productId: productId,
+    );
     return Product.fromJson(productData);
   }
 }

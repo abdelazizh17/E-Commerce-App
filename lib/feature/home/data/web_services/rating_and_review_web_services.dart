@@ -9,12 +9,6 @@ class RatingAndReviewWebServices {
   RatingAndReviewWebServices() {
     BaseOptions options = BaseOptions(
       baseUrl: "http://10.0.2.2:8000/",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-      },
     );
 
     dio = Dio(options);
@@ -26,7 +20,7 @@ class RatingAndReviewWebServices {
     required int productId,
   }) async {
     try {
-        await dio.post(
+      await dio.post(
         'products/$category/$productId/reviews',
         data: review.toJson(),
         options: Options(
@@ -40,9 +34,12 @@ class RatingAndReviewWebServices {
     }
   }
 
-    Future<dynamic> getProductById(int productId) async {
+  Future<dynamic> getProductById(
+      {required String endPoint, required int productId}) async {
     try {
-      var response = await dio.get('products/sale/$productId');
+      var response = await dio.get(
+        'products/$endPoint/$productId',
+      );
       // log("Product response: ${response.data}");
       return response.data;
     } on Exception catch (e) {

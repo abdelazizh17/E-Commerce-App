@@ -17,4 +17,3 @@ class ReviewCardSliverList extends StatelessWidget {
     );
   }
 }
-

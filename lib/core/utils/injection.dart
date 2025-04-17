@@ -17,19 +17,30 @@ final getIt = GetIt.instance;
 void getInit() {
   // WebServices
   getIt.registerLazySingleton<ProductWebServices>(() => ProductWebServices());
-  getIt.registerLazySingleton<NewProductsWebServices>(() => NewProductsWebServices());
-  getIt.registerLazySingleton<SaleProductsWebServices>(() => SaleProductsWebServices());
-  getIt.registerLazySingleton<RatingAndReviewWebServices>(() => RatingAndReviewWebServices());
+  getIt.registerLazySingleton<NewProductsWebServices>(
+      () => NewProductsWebServices());
+  getIt.registerLazySingleton<SaleProductsWebServices>(
+      () => SaleProductsWebServices());
+  getIt.registerLazySingleton<RatingAndReviewWebServices>(
+      () => RatingAndReviewWebServices());
 
   // Repositories
-  getIt.registerLazySingleton<ProductsRepository>(() => ProductsRepository(getIt<ProductWebServices>()));
-  getIt.registerLazySingleton<NewProductsRepo>(() => NewProductsRepo(getIt<NewProductsWebServices>()));
-  getIt.registerLazySingleton<SaleProductsRepo>(() => SaleProductsRepo(getIt<SaleProductsWebServices>()));
-  getIt.registerLazySingleton<RatingAndReviewRepo>(() => RatingAndReviewRepo(getIt<RatingAndReviewWebServices>()));
+  getIt.registerLazySingleton<ProductsRepository>(
+      () => ProductsRepository(getIt<ProductWebServices>()));
+  getIt.registerLazySingleton<NewProductsRepo>(
+      () => NewProductsRepo(getIt<NewProductsWebServices>()));
+  getIt.registerLazySingleton<SaleProductsRepo>(
+      () => SaleProductsRepo(getIt<SaleProductsWebServices>()));
+  getIt.registerLazySingleton<RatingAndReviewRepo>(
+      () => RatingAndReviewRepo(getIt<RatingAndReviewWebServices>()));
 
   // Cubits
-  getIt.registerLazySingleton<AllProductsCubit>(() => AllProductsCubit(getIt<ProductsRepository>()));
-  getIt.registerLazySingleton<NewProductsCubit>(() => NewProductsCubit(getIt<NewProductsRepo>()));
-  getIt.registerLazySingleton<SaleProductsCubit>(() => SaleProductsCubit(getIt<SaleProductsRepo>()));
-  getIt.registerLazySingleton<RatingAndReviewCubit>(() => RatingAndReviewCubit(getIt<RatingAndReviewRepo>()));
+  getIt.registerLazySingleton<AllProductsCubit>(
+      () => AllProductsCubit(getIt<ProductsRepository>()));
+  getIt.registerLazySingleton<NewProductsCubit>(
+      () => NewProductsCubit(getIt<NewProductsRepo>()));
+  getIt.registerLazySingleton<SaleProductsCubit>(
+      () => SaleProductsCubit(getIt<SaleProductsRepo>()));
+  getIt.registerLazySingleton<RatingAndReviewCubit>(
+      () => RatingAndReviewCubit(getIt<RatingAndReviewRepo>()));
 }
