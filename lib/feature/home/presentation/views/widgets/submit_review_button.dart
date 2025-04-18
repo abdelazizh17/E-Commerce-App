@@ -80,7 +80,7 @@ class SubmitReviewButton extends StatelessWidget {
 
       await scrollController.animateTo(
         scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 1000),
         curve: Curves.linearToEaseOut,
       );
 

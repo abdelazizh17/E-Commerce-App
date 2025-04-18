@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:e_commerce/core/data/failure/failure.dart';
 import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/feature/home/data/repository/sale_products_repo.dart';
 import 'package:flutter/widgets.dart';
@@ -20,7 +22,11 @@ class SaleProductsCubit extends Cubit<SaleProductsState> {
       final products = await saleProductsRepo.getSaleProducts();
       emit(SaleProductsSuccess(products));
     } catch (e) {
-      emit(SaleProductsFailure('Unexpected error: ${e.toString()}'));
+      if (e is DioException) {
+        emit(SaleProductsFailure(ServerFailure.fromDioException(e).message));
+      } else {
+        emit(SaleProductsFailure('Unexpected error'));
+      }
     }
   }
 }

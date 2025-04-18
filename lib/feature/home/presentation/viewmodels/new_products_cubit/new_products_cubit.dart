@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:e_commerce/core/data/failure/failure.dart';
 import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/feature/home/data/repository/new_products_repo.dart';
 import 'package:flutter/widgets.dart';
@@ -17,7 +19,11 @@ class NewProductsCubit extends Cubit<NewProductsState> {
       final products = await newProductsRepo.getNewProducts();
       emit(NewProductsSuccess(products));
     } catch (e) {
-      emit(NewProductsFailure('Unexpected error'));
+      if (e is DioException) {
+        emit(NewProductsFailure(ServerFailure.fromDioException(e).message));
+      } else {
+        emit(NewProductsFailure('Unexpected error'));
+      }
     }
   }
 }

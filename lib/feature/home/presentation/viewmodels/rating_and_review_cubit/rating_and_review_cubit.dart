@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:e_commerce/core/data/failure/failure.dart';
 import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/data/models/product/review.dart';
 import 'package:e_commerce/feature/home/data/repository/rating_and_review_repo.dart';
@@ -35,7 +37,11 @@ class RatingAndReviewCubit extends Cubit<RatingAndReviewState> {
       );
       emit(ProductsDetailUpdated(updatedProduct));
     } catch (e) {
-      emit(RatingAndReviewFailure(e.toString()));
+      if (e is DioException) {
+        emit(RatingAndReviewFailure(ServerFailure.fromDioException(e).message));
+      } else {
+        emit(RatingAndReviewFailure('Unexpected error'));
+      }
     }
   }
 }

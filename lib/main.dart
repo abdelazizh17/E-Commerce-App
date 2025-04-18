@@ -28,9 +28,10 @@ void main() async {
           create: (_) => SettingsCubit()..loadTheme(),
           lazy: false,
         ),
-        BlocProvider.value(
-          value: getIt<RatingAndReviewCubit>(),
-        )
+        BlocProvider(
+          create: (_) => getIt<RatingAndReviewCubit>(),
+          lazy: false,
+        ),
       ],
       child: ECommerceApp(
         appRouter: AppRouter(),
