@@ -30,7 +30,6 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => getIt<RatingAndReviewCubit>(),
-          lazy: false,
         ),
       ],
       child: ECommerceApp(

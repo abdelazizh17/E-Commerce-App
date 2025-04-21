@@ -18,9 +18,17 @@ class Assets {
   /// assets/images/loading.json
   static const String imagesLoading = "assets/images/loading.json";
 
+  /// Assets for imagesNew
+  /// assets/images/new.png
+  static const String imagesNew = "assets/images/new.png";
+
   /// Assets for imagesProf1
   /// assets/images/prof1.jpg
   static const String imagesProf1 = "assets/images/prof1.jpg";
+
+  /// Assets for imagesShop
+  /// assets/images/shop.png
+  static const String imagesShop = "assets/images/shop.png";
 
   /// Assets for imagesSplashlogo
   /// assets/images/splashlogo.png

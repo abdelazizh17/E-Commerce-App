@@ -24,8 +24,8 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
   void changeTap(int index) {
     if (currentIndex != index) {
-  currentIndex = index;
-  emit(HomeLayoutTapChanged(currentIndex));
-}
+      currentIndex = index;
+      emit(HomeLayoutTapChanged(currentIndex));
+    }
   }
 }

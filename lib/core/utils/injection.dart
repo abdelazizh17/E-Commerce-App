@@ -10,6 +10,9 @@ import 'package:e_commerce/feature/home/data/web_services/sale_products_web_serv
 import 'package:e_commerce/feature/home/presentation/viewmodels/new_products_cubit/new_products_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/viewmodels/sale_product_cubit/sale_products_cubit.dart';
+import 'package:e_commerce/feature/shop/data/repository/category_item_repo.dart';
+import 'package:e_commerce/feature/shop/data/web_services/category_item_web_services.dart';
+import 'package:e_commerce/feature/shop/presentation/viewmodels/category_items_cubit/category_items_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -23,6 +26,8 @@ void getInit() {
       () => SaleProductsWebServices());
   getIt.registerLazySingleton<RatingAndReviewWebServices>(
       () => RatingAndReviewWebServices());
+  getIt.registerLazySingleton<CategoryItemWebServices>(
+      () => CategoryItemWebServices());
 
   // Repositories
   getIt.registerLazySingleton<ProductsRepository>(
@@ -33,6 +38,8 @@ void getInit() {
       () => SaleProductsRepo(getIt<SaleProductsWebServices>()));
   getIt.registerLazySingleton<RatingAndReviewRepo>(
       () => RatingAndReviewRepo(getIt<RatingAndReviewWebServices>()));
+  getIt.registerLazySingleton<CategoryItemRepo>(
+      () => CategoryItemRepo(getIt<CategoryItemWebServices>()));
 
   // Cubits
   getIt.registerLazySingleton<AllProductsCubit>(
@@ -43,4 +50,6 @@ void getInit() {
       () => SaleProductsCubit(getIt<SaleProductsRepo>()));
   getIt.registerLazySingleton<RatingAndReviewCubit>(
       () => RatingAndReviewCubit(getIt<RatingAndReviewRepo>()));
+  getIt.registerFactory<CategoryItemsCubit>(
+      () => CategoryItemsCubit(getIt<CategoryItemRepo>()));
 }
