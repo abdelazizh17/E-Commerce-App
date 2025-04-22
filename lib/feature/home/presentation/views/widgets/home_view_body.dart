@@ -1,7 +1,7 @@
-import 'package:e_commerce/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_new_product_card_list_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_sale_product_card_list_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/header_tile.dart';
+import 'package:e_commerce/feature/home/presentation/views/widgets/home_sliver_app_bar_section.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,7 +11,8 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        CustomHomeSliverAppBar(),
+        HomeSliverAppBarSection(),
+        // CustomHomeSliverAppBar(),
         SliverToBoxAdapter(
           child: SizedBox(
             height: 18,
@@ -40,3 +41,4 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+

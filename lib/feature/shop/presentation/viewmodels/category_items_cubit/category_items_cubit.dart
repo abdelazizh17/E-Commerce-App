@@ -10,15 +10,14 @@ import 'package:meta/meta.dart';
 part 'category_items_state.dart';
 
 class CategoryItemsCubit extends Cubit<CategoryItemsState> {
+  final CategoryItemRepo categoryItemRepo;
+  
   CategoryItemsCubit(this.categoryItemRepo) : super(CategoryItemsInitial());
 
-  final CategoryItemRepo categoryItemRepo;
-  static CategoryItemsCubit get(BuildContext context) =>
-      BlocProvider.of(context);
-  Future<void> getCategoryItems() async {
+  Future<void> getCategoryItems(String category) async {
     emit(CategoryItemsLoading());
     try {
-      final categoryItems = await categoryItemRepo.getCategoryItems();
+      final categoryItems = await categoryItemRepo.getCategoryItems(category);
       emit(CategoryItemsSuccess(categoryItems));
     } on Exception catch (e) {
       if (e is DioException) {

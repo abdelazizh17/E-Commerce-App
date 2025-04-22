@@ -78,23 +78,26 @@ class _SaleProductCardState extends State<SaleProductCard> {
                       ),
                     ),
                     SizedBox(height: 4),
-                    Row(
-                      children: [
-                        Text(
-                          "${currentProduct.price!.toStringAsFixed(2)}\$",
-                          style: AppStyles.styleMedium14().copyWith(
-                            color: AppColors.greyColor,
-                            decoration: TextDecoration.lineThrough,
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        children: [
+                          Text(
+                            "${currentProduct.price!.toStringAsFixed(2)}\$",
+                            style: AppStyles.styleMedium14().copyWith(
+                              color: AppColors.greyColor,
+                              decoration: TextDecoration.lineThrough,
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 6),
-                        Text(
-                          "${discountedPrice.toStringAsFixed(2)}\$",
-                          style: AppStyles.styleMedium14().copyWith(
-                            color: AppColors.primaryColor,
+                          SizedBox(width: 6),
+                          Text(
+                            "${discountedPrice.toStringAsFixed(2)}\$",
+                            style: AppStyles.styleMedium14().copyWith(
+                              color: AppColors.primaryColor,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

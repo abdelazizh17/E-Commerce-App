@@ -1,16 +1,16 @@
 import 'package:e_commerce/core/data/models/product/product.dart';
-import 'package:e_commerce/core/data/web_services/products_web_services.dart';
+import 'package:e_commerce/feature/shop/data/web_services/products_web_services.dart';
 
 class ProductsRepository {
   final ProductWebServices productWebServices;
 
   ProductsRepository(this.productWebServices);
 
-  Future<List<Product>> getAllProducts() async {
-    var product = await productWebServices.getAllProducts();
+  // Future<List<Product>> getAllProducts() async {
+  //   var product = await productWebServices.getAllProducts();
 
-    return product.map((product) => Product.fromJson(product)).toList();
-  }
+  //   return product.map((product) => Product.fromJson(product)).toList();
+  // }
 
   Future<List<Product>> getProductByCategory({required String category}) async {
     var product =

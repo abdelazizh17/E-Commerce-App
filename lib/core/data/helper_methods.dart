@@ -61,3 +61,20 @@ String getMonthName(int month) {
     ];
     return months[month];
   }
+
+
+  String formatCategoryName(String name) {
+  if (name.startsWith('womens-')) {
+    name = name.replaceFirst('womens-', '');
+  } else if (name.startsWith('mens-')) {
+    name = name.replaceFirst('mens-', '');
+  }
+
+  name = name.replaceAll('-', ' ');
+
+  return name.split(' ').map((word) {
+    if (word.isEmpty) return '';
+    return word[0].toUpperCase() + word.substring(1);
+  }).join(' ');
+}
+

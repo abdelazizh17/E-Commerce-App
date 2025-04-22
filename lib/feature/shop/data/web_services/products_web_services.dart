@@ -16,22 +16,22 @@ class ProductWebServices {
     dio = Dio(options);
   }
 
-  Future<List<dynamic>> getAllProducts() async {
-    try {
-      var response = await dio.get('products');
-      log(response.data.toString());
-      return response.data["products"];
-    } on Exception catch (e) {
-      log(e.toString());
-      return [];
-    }
-  }
+  // Future<List<dynamic>> getAllProducts() async {
+  //   try {
+  //     var response = await dio.get('products');
+  //     log(response.data.toString());
+  //     return response.data["products"];
+  //   } on Exception catch (e) {
+  //     log(e.toString());
+  //     return [];
+  //   }
+  // }
 
   Future<List<dynamic>> getProductsByCategory(
       {required String category}) async {
     try {
       var response = await dio.get('products/category/$category');
-      log(response.data.toString());
+      // log(response.data.toString());
       return response.data["products"];
     } on Exception catch (e) {
       log(e.toString());

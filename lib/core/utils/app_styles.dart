@@ -94,6 +94,17 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleSimiBold11Theme(BuildContext context) {
+    return TextStyle(
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.whiteColor
+          : AppColors.blackColor,
+      fontSize: 11.sp,
+      fontFamily: 'Metropolis',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle styleSimiBold16(BuildContext context) {
     return TextStyle(
       color: Theme.of(context).brightness == Brightness.dark

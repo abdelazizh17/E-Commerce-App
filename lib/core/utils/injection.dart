@@ -1,6 +1,5 @@
-import 'package:e_commerce/core/cubits/all_products_cubit/all_products_cubit.dart';
-import 'package:e_commerce/core/data/repository/products_repository.dart';
-import 'package:e_commerce/core/data/web_services/products_web_services.dart';
+import 'package:e_commerce/feature/shop/data/repository/products_repository.dart';
+import 'package:e_commerce/feature/shop/data/web_services/products_web_services.dart';
 import 'package:e_commerce/feature/home/data/repository/new_products_repo.dart';
 import 'package:e_commerce/feature/home/data/repository/rating_and_review_repo.dart';
 import 'package:e_commerce/feature/home/data/repository/sale_products_repo.dart';
@@ -13,6 +12,7 @@ import 'package:e_commerce/feature/home/presentation/viewmodels/sale_product_cub
 import 'package:e_commerce/feature/shop/data/repository/category_item_repo.dart';
 import 'package:e_commerce/feature/shop/data/web_services/category_item_web_services.dart';
 import 'package:e_commerce/feature/shop/presentation/viewmodels/category_items_cubit/category_items_cubit.dart';
+import 'package:e_commerce/feature/shop/presentation/viewmodels/get_product_by_category_cubit/get_product_by_category_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -42,8 +42,8 @@ void getInit() {
       () => CategoryItemRepo(getIt<CategoryItemWebServices>()));
 
   // Cubits
-  getIt.registerLazySingleton<AllProductsCubit>(
-      () => AllProductsCubit(getIt<ProductsRepository>()));
+  getIt.registerLazySingleton<GetProductByCategoryCubit>(
+      () => GetProductByCategoryCubit(getIt<ProductsRepository>()));
   getIt.registerLazySingleton<NewProductsCubit>(
       () => NewProductsCubit(getIt<NewProductsRepo>()));
   getIt.registerLazySingleton<SaleProductsCubit>(

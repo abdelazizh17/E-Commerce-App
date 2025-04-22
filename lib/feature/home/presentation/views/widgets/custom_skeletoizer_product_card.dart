@@ -3,13 +3,13 @@ import 'package:e_commerce/feature/home/presentation/views/widgets/sale_product_
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class CustomSkeletonizerLoading extends StatelessWidget {
-  const CustomSkeletonizerLoading({super.key});
+class CustomSkeletonizerProductCard extends StatelessWidget {
+  const CustomSkeletonizerProductCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
-      child: SizedBox(
+        child: SizedBox(
       height: MediaQuery.of(context).size.height * 0.43,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -22,11 +22,17 @@ class CustomSkeletonizerLoading extends StatelessWidget {
           ),
         ),
       ),
-    )
-    );
+    ));
   }
 
   static List<Product> getDummyList() {
-    return List.generate(7, (index) => Product(rating: 4, price: 12,discountPercentage: 12,images: ['assets/images/test.png'],));
+    return List.generate(
+        7,
+        (index) => Product(
+              rating: 4,
+              price: 12,
+              discountPercentage: 12,
+              images: ['assets/images/test.png'],
+            ));
   }
 }

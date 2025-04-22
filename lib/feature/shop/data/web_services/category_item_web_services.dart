@@ -15,9 +15,9 @@ class CategoryItemWebServices {
     dio = Dio(options);
   }
 
-  Future<List<dynamic>> getCategoryItems() async {
+  Future<List<dynamic>> getCategoryItems(String category) async {
     try {
-      var response = await dio.get('category/women');
+      var response = await dio.get('category/$category');
       return response.data['items'];
     } on Exception catch (e) {
       log(e.toString());
