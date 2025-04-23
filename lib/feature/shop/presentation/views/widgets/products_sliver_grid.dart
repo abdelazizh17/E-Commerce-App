@@ -31,4 +31,3 @@ class ProductsSliverGrid extends StatelessWidget {
     );
   }
 }
-

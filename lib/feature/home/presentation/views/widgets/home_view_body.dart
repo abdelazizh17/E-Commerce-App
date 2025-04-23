@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_new_product_card_list_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_sale_product_card_list_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/header_tile.dart';
@@ -12,7 +13,6 @@ class HomeViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         HomeSliverAppBarSection(),
-        // CustomHomeSliverAppBar(),
         SliverToBoxAdapter(
           child: SizedBox(
             height: 18,
@@ -22,7 +22,9 @@ class HomeViewBody extends StatelessWidget {
           child: HeaderTile(
             title: 'Sale',
             subtitle: 'Super summer sale',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.salesProductsView);
+            },
           ),
         ),
         SliverToBoxAdapter(
@@ -41,4 +43,3 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-

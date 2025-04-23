@@ -1,48 +1,62 @@
 import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/custom_skeletoizer_product_card.dart';
-import 'package:e_commerce/feature/shop/presentation/viewmodels/get_product_by_category_cubit/get_product_by_category_cubit.dart';
+import 'package:e_commerce/feature/shop/presentation/viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
 import 'package:e_commerce/feature/shop/presentation/views/widgets/filter_buttons_row.dart';
 import 'package:e_commerce/feature/shop/presentation/views/widgets/products_sliver_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductsViewBody extends StatefulWidget {
-  const ProductsViewBody({super.key, required this.category});
-  final String category;
+class SalesProductsViewBody extends StatefulWidget {
+  const SalesProductsViewBody({super.key});
+
   @override
-  State<ProductsViewBody> createState() => _ProductsViewBodyState();
+  State<SalesProductsViewBody> createState() => _SalesProductsViewBodyState();
 }
 
-class _ProductsViewBodyState extends State<ProductsViewBody> {
-  List<Product> products = [];
+class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
+
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
     _loadData();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+
     super.initState();
   }
 
   void _loadData() {
-    final cubit = context.read<GetProductByCategoryCubit>();
-    cubit.getProductByCategory(category: widget.category);
+    final productCubit = context.read<GetAllProductsCubit>();
+    productCubit.getAllProducts();
+  }
+
+  void _scrollListener() {
+    var currentPosition = _scrollController.position.pixels;
+    var maxScrollLength = _scrollController.position.maxScrollExtent;
+    if (currentPosition >= 0.7 * maxScrollLength) {
+      context
+          .read<GetAllProductsCubit>()
+          .getAllProducts(loadMore: true);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetProductByCategoryCubit, GetProductByCategoryState>(
+    final productCubit = context.read<GetAllProductsCubit>();
+
+    return BlocConsumer<GetAllProductsCubit, GetAllProductsState>(
       listener: (context, state) {
-        if (state is GetProductByCategorySuccess) {
-          products = state.products;
-        } else if (state is GetProductByCategoryFailure) {
+        if (state is GetAllProductsFailure) {
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
       },
       builder: (context, state) {
         return CustomScrollView(
+          controller: _scrollController,
           slivers: [
             CustomSliverAppBar(
               leading: BackButton(
@@ -52,7 +66,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                 color: AppColors.whiteColor,
               ),
               title: Text(
-                formatCategoryName(widget.category),
+                'Sales',
                 style: AppStyles.styleSimiBold18(context).copyWith(
                   color: AppColors.whiteColor,
                 ),
@@ -62,12 +76,17 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                   ? AppColors.darkModeBackgroundColor
                   : AppColors.primaryColor,
             ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 16,
+              ),
+            ),
             FilterButtonsRow(),
-            (state is GetProductByCategoryLoading)
+            (state is GetAllProductsLoading)
                 ? SliverFillRemaining(
                     child: CustomSkeletonizerProductCardGridView(),
                   )
-                : ProductsSliverGrid(products: products),
+                : ProductsSliverGrid(products: productCubit.loadedProducts),
           ],
         );
       },

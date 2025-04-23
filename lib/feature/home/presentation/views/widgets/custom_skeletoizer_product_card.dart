@@ -1,10 +1,11 @@
 import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/sale_product_card.dart';
+import 'package:e_commerce/feature/shop/presentation/views/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class CustomSkeletonizerProductCard extends StatelessWidget {
-  const CustomSkeletonizerProductCard({super.key});
+class CustomSkeletonizerProductCardListView extends StatelessWidget {
+  const CustomSkeletonizerProductCardListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +25,40 @@ class CustomSkeletonizerProductCard extends StatelessWidget {
       ),
     ));
   }
+}
 
-  static List<Product> getDummyList() {
-    return List.generate(
-        7,
-        (index) => Product(
-              rating: 4,
-              price: 12,
-              discountPercentage: 12,
-              images: ['assets/images/test.png'],
-            ));
+class CustomSkeletonizerProductCardGridView extends StatelessWidget {
+  const CustomSkeletonizerProductCardGridView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Skeletonizer(
+      child: GridView.builder(
+        itemCount: getDummyList().length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          childAspectRatio: 0.54,
+        ),
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+          child: ProductCard(
+            product: getDummyList()[index],
+            isLoading: true,
+          ),
+        ),
+      ),
+    );
   }
+}
+
+List<Product> getDummyList() {
+  return List.generate(
+      8,
+      (index) => Product(
+            rating: 4,
+            price: 12,
+            discountPercentage: 12,
+            images: ['assets/images/test.png'],
+          ));
 }

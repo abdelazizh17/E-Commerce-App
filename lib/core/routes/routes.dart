@@ -12,4 +12,5 @@ class Routes {
   static const String productDetailsView = '/productDetailsView';
   static const String ratingAndReviewsView = '/ratingAndReviewsView';
   static const String productsView = '/productsView';
+  static const String salesProductsView = '/salesProductsView';
 }

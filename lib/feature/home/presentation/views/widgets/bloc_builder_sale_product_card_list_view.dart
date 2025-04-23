@@ -12,7 +12,7 @@ class BlocBuilderSaleProductCardListView extends StatelessWidget {
     return BlocBuilder<SaleProductsCubit, SaleProductsState>(
       builder: (context, state) {
         if (state is SaleProductsLoading) {
-          return const CustomSkeletonizerProductCard();
+          return const CustomSkeletonizerProductCardListView();
         } else if (state is SaleProductsSuccess) {
           return SaleProductListView(products: state.products);
         } else if (state is SaleProductsFailure) {
