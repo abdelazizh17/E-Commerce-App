@@ -16,7 +16,19 @@ class ProductWebServices {
     dio = Dio(options);
   }
 
-  Future<List<dynamic>> getAllProducts({required int pageNumber}) async {
+ Future<List<dynamic>> searchProducts(String searchText) async {
+  try {
+    var response = await dio.get('products/search?q=$searchText');
+    return response.data["products"];
+  } on Exception catch (e) {
+    log(e.toString());
+    return [];
+  }
+}
+
+  
+
+  Future<List<dynamic>> fetchProductsPage({required int pageNumber}) async {
     try {
       var response = await dio.get('products?limit=10&skip=${pageNumber * 10}');
       // log(response.data.toString());
@@ -40,9 +52,12 @@ class ProductWebServices {
   }
 
   Future<List<dynamic>> sortProducts(
-      {required String sortBy, required String order,required int pageNumber}) async {
+      {required String sortBy,
+      required String order,
+      required int pageNumber}) async {
     try {
-      var response = await dio.get('products?sortBy=$sortBy&order=$order&limit=10&skip=${pageNumber * 10}');
+      var response = await dio.get(
+          'products?sortBy=$sortBy&order=$order&limit=10&skip=${pageNumber * 10}');
       // log(response.data.toString());
       return response.data["products"];
     } on Exception catch (e) {

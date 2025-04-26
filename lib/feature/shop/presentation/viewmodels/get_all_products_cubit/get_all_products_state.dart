@@ -24,7 +24,13 @@ final class SortOptionChanged extends GetAllProductsState {
 }
 
 final class SortedProductsSuccess extends GetAllProductsState {
- final List<Product> sortedProduct;
+  final List<Product> sortedProduct;
 
   SortedProductsSuccess(this.sortedProduct);
+}
+
+final class SearchedProductsSuccess extends GetAllProductsState {
+  final List<Product> searchedProducts;
+
+  SearchedProductsSuccess(this.searchedProducts);
 }

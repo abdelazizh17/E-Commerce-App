@@ -23,7 +23,7 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
   String? currentSortBy;
   String? currentOrder;
 
-  Future<void> getAllProducts({bool loadMore = false}) async {
+  Future<void> fetchProductsPage({bool loadMore = false}) async {
     if (isLoadingAll) return;
     isLoadingAll = true;
 
@@ -34,8 +34,8 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
     }
 
     try {
-      final products =
-          await productsRepository.getAllProducts(pageNumber: allProductsPage);
+      final products = await productsRepository.fetchProductsPage(
+          pageNumber: allProductsPage);
       allProducts.addAll(products);
       allProductsPage++;
       emit(GetAllProductsSuccess(allProducts));
@@ -50,10 +50,11 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
     }
   }
 
-  Future<void> sortProducts(
-      {required String sortBy,
-      required String order,
-      bool loadMore = false,}) async {
+  Future<void> sortProducts({
+    required String sortBy,
+    required String order,
+    bool loadMore = false,
+  }) async {
     if (isLoadingSorted) return;
     isLoadingSorted = true;
 
@@ -80,6 +81,17 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
       }
     } finally {
       isLoadingSorted = false;
+    }
+  }
+
+  void searchProducts(String searchText) async {
+    emit(GetAllProductsLoading());
+    try {
+      final searchedProducts =
+          await productsRepository.searchProducts(searchText);
+      emit(SearchedProductsSuccess(searchedProducts));
+    } catch (e) {
+      emit(GetAllProductsFailure('Failed to search products'));
     }
   }
 

@@ -22,3 +22,19 @@ const List<String> tabs = [
   "Accessories & Gadgets",
   "Vehicles"
 ];
+
+const Map<String, String> orderdMap = {
+  'Popular': '',
+  'Price: lowest to high': 'asc',
+  'Price: highest to low': 'desc',
+};
+const Map<String, String> sortedByMap = {
+  'Popular': 'popular',
+  'Price: lowest to high': 'price',
+  'Price: highest to low': 'price',
+};
+const List<String> options = [
+  'Popular',
+  'Price: lowest to high',
+  'Price: highest to low',
+];

@@ -19,12 +19,18 @@ class SalesProductsViewBody extends StatefulWidget {
 
 class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
   late final ScrollController _scrollController;
+  late final TextEditingController _searchController;
+
   late List<Product> products = [];
+
+  bool isSearching = false;
 
   @override
   void initState() {
     _scrollController = ScrollController()..addListener(_scrollListener);
-    context.read<GetAllProductsCubit>().getAllProducts();
+    _searchController = TextEditingController();
+
+    context.read<GetAllProductsCubit>().fetchProductsPage();
     super.initState();
   }
 
@@ -41,13 +47,42 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
 
     if (state is SortedProductsSuccess) {
     } else if (state is GetAllProductsSuccess) {
-      cubit.getAllProducts(loadMore: true);
+      cubit.fetchProductsPage(loadMore: true);
     }
+  }
+
+  void _onSearchChanged(String value) {
+    final cubit = context.read<GetAllProductsCubit>();
+    if (value.isEmpty) {
+      isSearching = false;
+      cubit.fetchProductsPage();
+    } else {
+      isSearching = true;
+      cubit.searchProducts(value);
+    }
+  }
+
+  void _toggleSearch() {
+    if (isSearching) {
+      _clearSearch();
+      Navigator.pop(context);
+    } else {
+      ModalRoute.of(context)!.addLocalHistoryEntry(LocalHistoryEntry(
+        onRemove: () => setState(() => isSearching = false),
+      ));
+      setState(() => isSearching = true);
+    }
+  }
+
+  void _clearSearch() {
+    _searchController.clear();
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _searchController.dispose();
+
     super.dispose();
   }
 
@@ -59,6 +94,8 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
           products = state.products;
         } else if (state is SortedProductsSuccess) {
           products = state.sortedProduct;
+        } else if (state is SearchedProductsSuccess) {
+          products = state.searchedProducts;
         }
         if (state is GetAllProductsFailure) {
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
@@ -69,18 +106,33 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
           controller: _scrollController,
           slivers: [
             CustomSliverAppBar(
-              leading: BackButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+              leading: const BackButton(
                 color: AppColors.whiteColor,
               ),
-              title: Text(
-                'Sales',
-                style: AppStyles.styleSimiBold18(context).copyWith(
-                  color: AppColors.whiteColor,
+              title: isSearching
+                  ? TextField(
+                      controller: _searchController,
+                      onChanged: _onSearchChanged,
+                      decoration: InputDecoration(
+                        hintText: 'Search Products...',
+                        hintStyle: AppStyles.styleRegular16(context)
+                            .copyWith(color: AppColors.whiteColor),
+                        border: InputBorder.none,
+                      ),
+                      style: AppStyles.styleSimiBold18(context)
+                          .copyWith(color: AppColors.whiteColor),
+                    )
+                  : const Text('Sales',
+                      style: TextStyle(color: AppColors.whiteColor)),
+              actions: [
+                IconButton(
+                  onPressed: _toggleSearch,
+                  icon: Icon(
+                    isSearching ? Icons.clear : Icons.search,
+                    color: AppColors.whiteColor,
+                  ),
                 ),
-              ),
+              ],
               pinned: true,
               backgroundColor: Theme.of(context).brightness == Brightness.dark
                   ? AppColors.darkModeBackgroundColor
