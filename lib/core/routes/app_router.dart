@@ -72,14 +72,19 @@ class AppRouter {
       case Routes.productsView:
         final category = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => ProductsView(
-            category: category,
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                GetAllProductsCubit(getIt<ProductsRepository>()),
+            child: ProductsView(
+              category: category,
+            ),
           ),
         );
       case Routes.salesProductsView:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => GetAllProductsCubit(getIt<ProductsRepository>()),
+            create: (context) =>
+                GetAllProductsCubit(getIt<ProductsRepository>()),
             child: SalesProductsView(),
           ),
         );

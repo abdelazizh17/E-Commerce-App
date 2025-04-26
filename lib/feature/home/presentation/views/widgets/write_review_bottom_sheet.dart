@@ -52,7 +52,7 @@ class _WriteReviewBottomSheetState extends State<WriteReviewBottomSheet> {
         width: widget.mediaQuery.size.width,
         height: widget.mediaQuery.size.height * 0.7,
         decoration: BoxDecoration(
-          color: AppColors.lightModeBackgroundColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),

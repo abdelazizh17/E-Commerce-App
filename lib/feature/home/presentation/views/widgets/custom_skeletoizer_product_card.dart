@@ -54,7 +54,7 @@ class CustomSkeletonizerProductCardGridView extends StatelessWidget {
 
 List<Product> getDummyList() {
   return List.generate(
-      8,
+      6,
       (index) => Product(
             rating: 4,
             price: 12,

@@ -1,6 +1,8 @@
+import 'package:e_commerce/feature/shop/presentation/viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
+import 'package:e_commerce/feature/shop/presentation/views/widgets/filter_bottom_sheet.dart';
 import 'package:e_commerce/feature/shop/presentation/views/widgets/filter_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class FilterButtonsRow extends StatelessWidget {
@@ -10,6 +12,7 @@ class FilterButtonsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.watch<GetAllProductsCubit>();
     return SliverToBoxAdapter(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,17 +23,21 @@ class FilterButtonsRow extends StatelessWidget {
             onPressed: () {},
           ),
           FilterButton(
-            title: 'Price: lowest to high',
+            title: cubit.selectedFromSort,
             iconData: Icons.import_export,
-            onPressed: () {},
-          ),
-          FilterButton(
-            iconData: LucideIcons.list,
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (_) {
+                  return FilterBotttomSheet(
+                    cubit: cubit,
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
     );
   }
 }
-

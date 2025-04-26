@@ -18,3 +18,13 @@ final class GetAllProductsFailure extends GetAllProductsState {
 
   GetAllProductsFailure(this.errMessage);
 }
+
+final class SortOptionChanged extends GetAllProductsState {
+  SortOptionChanged();
+}
+
+final class SortedProductsSuccess extends GetAllProductsState {
+ final List<Product> sortedProduct;
+
+  SortedProductsSuccess(this.sortedProduct);
+}

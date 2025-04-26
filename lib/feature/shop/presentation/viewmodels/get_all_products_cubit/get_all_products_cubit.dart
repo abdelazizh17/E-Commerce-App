@@ -11,26 +11,34 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
   GetAllProductsCubit(this.productsRepository) : super(GetAllProductsInitial());
 
   final ProductsRepository productsRepository;
-  List<Product> loadedProducts = [];
-  int currentPage = 0;
-  bool isLoading = false;
+
+  List<Product> allProducts = [];
+  int allProductsPage = 0;
+  bool isLoadingAll = false;
+
+  List<Product> sortedProducts = [];
+  int sortedProductsPage = 0;
+  bool isLoadingSorted = false;
+
+  String? currentSortBy;
+  String? currentOrder;
 
   Future<void> getAllProducts({bool loadMore = false}) async {
-    if (isLoading) return;
-    
-    isLoading = true;
+    if (isLoadingAll) return;
+    isLoadingAll = true;
 
     if (!loadMore) {
-      loadedProducts.clear();
-      currentPage = 0;
+      allProducts.clear();
+      allProductsPage = 0;
+      emit(GetAllProductsLoading());
     }
-    emit(GetAllProductsLoading());
+
     try {
       final products =
-          await productsRepository.getAllProducts(pageNumber: currentPage);
-      loadedProducts.addAll(products);
-      currentPage++;
-      emit(GetAllProductsSuccess(loadedProducts));
+          await productsRepository.getAllProducts(pageNumber: allProductsPage);
+      allProducts.addAll(products);
+      allProductsPage++;
+      emit(GetAllProductsSuccess(allProducts));
     } catch (e) {
       if (e is DioException) {
         emit(GetAllProductsFailure(ServerFailure.fromDioException(e).message));
@@ -38,7 +46,50 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
         emit(GetAllProductsFailure('Unexpected error'));
       }
     } finally {
-      isLoading = false;
+      isLoadingAll = false;
+    }
+  }
+
+  Future<void> sortProducts(
+      {required String sortBy,
+      required String order,
+      bool loadMore = false,}) async {
+    if (isLoadingSorted) return;
+    isLoadingSorted = true;
+
+    if (!loadMore) {
+      sortedProducts.clear();
+      sortedProductsPage = 0;
+      currentSortBy = sortBy;
+      currentOrder = order;
+      emit(GetAllProductsLoading());
+    }
+
+    try {
+      final products = await productsRepository.sortProducts(
+          order: order, sortBy: sortBy, pageNumber: sortedProductsPage);
+
+      sortedProducts.addAll(products);
+      sortedProductsPage++;
+      emit(SortedProductsSuccess(sortedProducts));
+    } catch (e) {
+      if (e is DioException) {
+        emit(GetAllProductsFailure(ServerFailure.fromDioException(e).message));
+      } else {
+        emit(GetAllProductsFailure('Unexpected error'));
+      }
+    } finally {
+      isLoadingSorted = false;
+    }
+  }
+
+  int currentIndex = 0;
+  String selectedFromSort = 'Popular';
+  void changeTap(int index, String selected) {
+    if (currentIndex != index && selectedFromSort != selected) {
+      currentIndex = index;
+      selectedFromSort = selected;
+      emit(SortOptionChanged());
     }
   }
 }

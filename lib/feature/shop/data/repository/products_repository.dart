@@ -7,15 +7,22 @@ class ProductsRepository {
   ProductsRepository(this.productWebServices);
 
   Future<List<Product>> getAllProducts({required int pageNumber}) async {
-    var product = await productWebServices.getAllProducts(pageNumber: pageNumber);
+    var products =
+        await productWebServices.getAllProducts(pageNumber: pageNumber);
 
-    return product.map((product) => Product.fromJson(product)).toList();
+    return products.map((product) => Product.fromJson(product)).toList();
   }
 
   Future<List<Product>> getProductByCategory({required String category}) async {
-    var product =
+    var products =
         await productWebServices.getProductsByCategory(category: category);
 
-    return product.map((product) => Product.fromJson(product)).toList();
+    return products.map((product) => Product.fromJson(product)).toList();
+  }
+
+  Future<List<Product>> sortProducts({required String sortBy ,required String order,required int pageNumber}) async {
+    var products = await productWebServices.sortProducts(order: order, sortBy: sortBy, pageNumber: pageNumber);
+
+    return products.map((product) => Product.fromJson(product)).toList();
   }
 }

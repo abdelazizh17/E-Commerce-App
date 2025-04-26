@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/data/helper_methods.dart';
+import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
@@ -17,39 +18,48 @@ class SalesProductsViewBody extends StatefulWidget {
 }
 
 class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
-
   late final ScrollController _scrollController;
+  late List<Product> products = [];
 
   @override
   void initState() {
-    _loadData();
-    _scrollController = ScrollController();
-    _scrollController.addListener(_scrollListener);
-
+    _scrollController = ScrollController()..addListener(_scrollListener);
+    context.read<GetAllProductsCubit>().getAllProducts();
     super.initState();
   }
 
-  void _loadData() {
-    final productCubit = context.read<GetAllProductsCubit>();
-    productCubit.getAllProducts();
+  void _scrollListener() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent * 0.7) {
+      _loadMoreData();
+    }
   }
 
-  void _scrollListener() {
-    var currentPosition = _scrollController.position.pixels;
-    var maxScrollLength = _scrollController.position.maxScrollExtent;
-    if (currentPosition >= 0.7 * maxScrollLength) {
-      context
-          .read<GetAllProductsCubit>()
-          .getAllProducts(loadMore: true);
+  void _loadMoreData() {
+    final cubit = context.read<GetAllProductsCubit>();
+    final state = cubit.state;
+
+    if (state is SortedProductsSuccess) {
+    } else if (state is GetAllProductsSuccess) {
+      cubit.getAllProducts(loadMore: true);
     }
   }
 
   @override
-  Widget build(BuildContext context) {
-    final productCubit = context.read<GetAllProductsCubit>();
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<GetAllProductsCubit, GetAllProductsState>(
       listener: (context, state) {
+        if (state is GetAllProductsSuccess) {
+          products = state.products;
+        } else if (state is SortedProductsSuccess) {
+          products = state.sortedProduct;
+        }
         if (state is GetAllProductsFailure) {
           showSnackBar(context, state.errMessage, AppColors.primaryColor);
         }
@@ -83,10 +93,12 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
             ),
             FilterButtonsRow(),
             (state is GetAllProductsLoading)
-                ? SliverFillRemaining(
-                    child: CustomSkeletonizerProductCardGridView(),
+                ? const SliverFillRemaining(
+                    child: Center(
+                      child: CustomSkeletonizerProductCardGridView(),
+                    ),
                   )
-                : ProductsSliverGrid(products: productCubit.loadedProducts),
+                : ProductsSliverGrid(products: products),
           ],
         );
       },
