@@ -1,10 +1,9 @@
 import 'package:e_commerce/core/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/drop_down_button_and_favorite_button_section.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_info_section.dart';
 import 'package:flutter/widgets.dart';
 
-class ProductDetailsHeaderSection extends StatelessWidget {
-  const ProductDetailsHeaderSection({
+class ProductDetailsBodySection extends StatelessWidget {
+  const ProductDetailsBodySection({
     super.key,
     required this.product,
   });
@@ -14,11 +13,13 @@ class ProductDetailsHeaderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(
+        left: 16,
+        right: 16,
+        bottom: 16,
+      ),
       child: Column(
         children: [
-          DropDownButtonAndFavoriteButtonSection(product: product,
-          ),
           SizedBox(
             height: 24,
           ),

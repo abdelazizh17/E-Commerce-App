@@ -13,6 +13,7 @@ class CustomSkeletonizerProductCardListView extends StatelessWidget {
         child: SizedBox(
       height: MediaQuery.of(context).size.height * 0.43,
       child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: getDummyList().length,
         itemBuilder: (context, index) => Padding(

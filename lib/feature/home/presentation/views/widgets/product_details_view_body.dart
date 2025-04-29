@@ -1,9 +1,12 @@
+import 'package:e_commerce/core/data/helper_methods.dart';
 import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_divider.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
+import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_header_section.dart';
+import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_body_section.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_image_page_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_rating_and_review_section.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +31,6 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
     return BlocConsumer<RatingAndReviewCubit, RatingAndReviewState>(
       listener: (context, state) {
         if (state is ProductsDetailUpdated &&
@@ -38,45 +39,47 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
         }
       },
       builder: (context, state) {
-        return Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ProductDetailsImagePageView(
-                  product: currentProduct,
+        return SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ProductDetailsImagePageView(
+                product: currentProduct,
+              ),
+              ProductDetailsBodySection(
+                product: currentProduct,
+              ),
+              CustomDivider(),
+              ProductDetailsRatingAndReviewsSection(
+                product: currentProduct,
+              ),
+              CustomDivider(),
+              SizedBox(
+                height: 16,
+              ),
+              CustomButton(
+                padding: const EdgeInsets.all(16),
+                onPressed: () {
+                  final cubit = context.read<BagCubit>();
+                  cubit.addBagProduct(currentProduct);
+                  setState(() {
+                    showSnackBar(
+                      context,
+                      'Added to Cart ✅',
+                      AppColors.greenColor,
+                    );
+                  });
+                },
+                widget: Text(
+                  'ADD TO CART',
+                  style: AppStyles.styleMedium14(),
                 ),
-                SizedBox(
-                  height: 12,
-                ),
-                ProductDetailsHeaderSection(product: currentProduct),
-                CustomDivider(),
-                ProductDetailsRatingAndReviewsSection(
-                  product: currentProduct,
-                ),
-                CustomDivider(),
-                SizedBox(
-                  height: 16,
-                ),
-                CustomButton(
-                  padding: const EdgeInsets.all(16),
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      //todo : navigate to another screen
-                    }
-                  },
-                  widget: Text(
-                    'ADD TO CART',
-                    style: AppStyles.styleMedium14(),
-                  ),
-                  height: 50.h,
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-              ],
-            ),
+                height: 50.h,
+              ),
+              SizedBox(
+                height: 24,
+              ),
+            ],
           ),
         );
       },

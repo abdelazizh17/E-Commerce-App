@@ -3,26 +3,27 @@ import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/favorites/presentation/viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/products_sliver_grid.dart';
+import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
+import 'package:e_commerce/feature/bag/presentation/views/widgets/bag_view_footer_section.dart';
+import 'package:e_commerce/feature/bag/presentation/views/widgets/product_bag_card_sliver_list.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
-class FavoritesViewBody extends StatefulWidget {
-  const FavoritesViewBody({super.key});
+class BagViewBody extends StatefulWidget {
+  const BagViewBody({super.key});
 
   @override
-  State<FavoritesViewBody> createState() => _FavoritesViewBodyState();
+  State<BagViewBody> createState() => _BagViewBodyState();
 }
 
-class _FavoritesViewBodyState extends State<FavoritesViewBody> {
-  List<Product> products = [];
-
+class _BagViewBodyState extends State<BagViewBody> {
+  late List<Product> products = [];
   @override
   void initState() {
-    context.read<FavoriteProductsCubit>().fetchFavoriteProducts();
+    context.read<BagCubit>().fetchBagProducts();
     super.initState();
   }
 
@@ -32,32 +33,30 @@ class _FavoritesViewBodyState extends State<FavoritesViewBody> {
       slivers: [
         CustomSliverAppBar(
           title: Text(
-            'Favorites',
+            'My Bag',
             style: AppStyles.styleSimiBold18(context).copyWith(
               color: AppColors.whiteColor,
             ),
           ),
           backgroundColor: AppColors.primaryColor,
         ),
-        BlocBuilder<FavoriteProductsCubit, FavoriteProductsState>(
+        BlocBuilder<BagCubit, BagState>(
           builder: (context, state) {
-            if (state is FavoriteProductsLoaded) {
+            if (state is BagProductLoaded) {
               products = state.products;
               return (products.isEmpty)
                   ? SliverFillRemaining(
                       hasScrollBody: false,
                       child: Center(
                         child: Text(
-                          'Your favorites list is empty. Start adding products you love!',
+                          'No items in your bag',
                           style: AppStyles.styleRegular16(context),
                           textAlign: TextAlign.center,
                         ),
                       ),
                     )
-                  : ProductsSliverGrid(
-                      products: products.toList(),
-                    );
-            } else if (state is FavoriteProductFailure) {
+                  : ProductBagCardSliverList(products: products);
+            } else if (state is BagProductFailure) {
               return SliverFillRemaining(
                 hasScrollBody: false,
                 child: Center(
@@ -78,7 +77,9 @@ class _FavoritesViewBodyState extends State<FavoritesViewBody> {
             }
           },
         ),
+        BagViewFooterSection()
       ],
     );
   }
 }
+

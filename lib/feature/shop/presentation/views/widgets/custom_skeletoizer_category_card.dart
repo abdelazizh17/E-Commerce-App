@@ -10,6 +10,7 @@ class CustomSkeletonizerCategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Skeletonizer(
         child: ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       scrollDirection: Axis.vertical,
       itemCount: getDummyList().length,
       itemBuilder: (context, index) => Padding(

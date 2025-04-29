@@ -146,6 +146,7 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
             FilterButtonsRow(),
             (state is GetAllProductsLoading)
                 ? const SliverFillRemaining(
+                    hasScrollBody: false,
                     child: Center(
                       child: CustomSkeletonizerProductCardGridView(),
                     ),

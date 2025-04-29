@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 class CustomDropdownButtonFormField extends StatefulWidget {
   const CustomDropdownButtonFormField(
-      {super.key, required this.itemList, required this.hint});
+      {super.key, required this.itemList, required this.hint, this.onChanged});
   final List<String> itemList;
+  final void Function(String?)? onChanged;
   final String hint;
 
   @override
@@ -35,11 +36,7 @@ class _CustomDropdownButtonFormFieldState
               ),
             )
             .toList(),
-        onChanged: (value) {
-          setState(() {
-            selectedValue = value;
-          });
-        });
+        onChanged: widget.onChanged);
   }
 
   OutlineInputBorder borderBuilder(Color color) {

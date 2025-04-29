@@ -26,6 +26,7 @@ class Product {
   List<dynamic>? images;
   String? thumbnail;
   String? endPoint;
+  int quantity;
 
   Product({
     this.id,
@@ -51,6 +52,7 @@ class Product {
     this.images,
     this.thumbnail,
     this.endPoint,
+    this.quantity = 1,
   });
 
   Product copyWith({
@@ -137,6 +139,7 @@ class Product {
             ?.map((e) => e.toString())
             .toList(),
         thumbnail: json['thumbnail'] as String?,
+        quantity: json['quantity'] as int? ?? 1,
       );
 
   Map<String, dynamic> toJson() => {
@@ -162,5 +165,6 @@ class Product {
         'meta': meta?.toJson(),
         'images': images,
         'thumbnail': thumbnail,
+        'quantity': quantity,
       };
 }

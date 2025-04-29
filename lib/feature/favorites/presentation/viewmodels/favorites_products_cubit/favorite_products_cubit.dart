@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_commerce/core/data/helper_methods.dart';
 import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-
 part 'favorite_products_state.dart';
 
 class FavoriteProductsCubit extends Cubit<FavoriteProductsState> {
@@ -11,19 +10,9 @@ class FavoriteProductsCubit extends Cubit<FavoriteProductsState> {
 
   List<Product> favoriteProducts = [];
 
-  List<String> _encodeFavorites(List<Product> products) {
-    return products.map((product) => jsonEncode(product.toJson())).toList();
-  }
-
-  List<Product> _decodeFavorites(List<String> jsonStringList) {
-    return jsonStringList
-        .map((jsonString) => Product.fromJson(jsonDecode(jsonString)))
-        .toList();
-  }
-
   Future<void> _saveFavoritesToSharedPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> productStrings = _encodeFavorites(favoriteProducts);
+    List<String> productStrings = encodeProducts(favoriteProducts);
     await prefs.setStringList('favorite_products', productStrings);
   }
 
@@ -31,7 +20,7 @@ class FavoriteProductsCubit extends Cubit<FavoriteProductsState> {
     final prefs = await SharedPreferences.getInstance();
     List<String>? productStrings = prefs.getStringList('favorite_products');
     if (productStrings != null) {
-      favoriteProducts = _decodeFavorites(productStrings);
+      favoriteProducts = decodeProducts(productStrings);
     }
   }
 

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 String? validateEmail(String? value) {
@@ -32,38 +35,40 @@ String? validateGeneral(String? value, String label) {
 }
 
 void showSnackBar(BuildContext context, String msg, Color color) {
-  ScaffoldMessenger.of(context)
-      .hideCurrentSnackBar(); //fix issue duplicate snackbar message because the `listener` was triggered repeatedly for the same `AuthError` state.
+  //fix issue duplicate snackbar message because the `listener` was triggered repeatedly for the same `AuthError` state.
+  ScaffoldMessenger.of(context).hideCurrentSnackBar();
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color,
-      content: Text(msg),
+      content: Text(
+        msg,
+        style: AppStyles.styleMedium14(),
+        textAlign: TextAlign.center,
+      ),
     ),
   );
 }
 
-
 String getMonthName(int month) {
-    const months = [
-      "",
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-    return months[month];
-  }
+  const months = [
+    "",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  return months[month];
+}
 
-
-  String formatCategoryName(String name) {
+String formatCategoryName(String name) {
   if (name.startsWith('womens-')) {
     name = name.replaceFirst('womens-', '');
   } else if (name.startsWith('mens-')) {
@@ -78,3 +83,12 @@ String getMonthName(int month) {
   }).join(' ');
 }
 
+List<String> encodeProducts(List<Product> products) {
+  return products.map((product) => jsonEncode(product.toJson())).toList();
+}
+
+List<Product> decodeProducts(List<String> jsonStringList) {
+  return jsonStringList
+      .map((jsonString) => Product.fromJson(jsonDecode(jsonString)))
+      .toList();
+}

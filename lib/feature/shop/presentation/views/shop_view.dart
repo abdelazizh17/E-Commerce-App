@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/utils/injection.dart';
+import 'package:e_commerce/feature/shop/data/repository/category_item_repo.dart';
 import 'package:e_commerce/feature/shop/presentation/viewmodels/category_items_cubit/category_items_cubit.dart';
 import 'package:e_commerce/feature/shop/presentation/views/widgets/shop_view_body.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class ShopView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<CategoryItemsCubit>(),
+      create: (context) => CategoryItemsCubit(getIt<CategoryItemRepo>()),
       child: Scaffold(
         body: ShopViewBody(),
       ),
