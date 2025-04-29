@@ -3,6 +3,7 @@ import 'package:e_commerce/core/data/bloc_observer.dart';
 import 'package:e_commerce/core/routes/app_router.dart';
 import 'package:e_commerce/e_commerce_app.dart';
 import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
+import 'package:e_commerce/feature/favorites/presentation/viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
 import 'package:e_commerce/feature/profile/presentation/viewmodels/cubit/settings_cubit.dart';
 import 'package:e_commerce/feature/shop/presentation/viewmodels/get_product_by_category_cubit/get_product_by_category_cubit.dart';
@@ -32,9 +33,12 @@ void main() async {
         BlocProvider(
           create: (_) => getIt<RatingAndReviewCubit>(),
         ),
-          BlocProvider(
+        BlocProvider(
           create: (_) => getIt<GetProductByCategoryCubit>(),
         ),
+        BlocProvider(
+          create: (_) => FavoriteProductsCubit(),
+        )
       ],
       child: ECommerceApp(
         appRouter: AppRouter(),

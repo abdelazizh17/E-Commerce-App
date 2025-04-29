@@ -19,7 +19,8 @@ class ProductCard extends StatelessWidget {
         product.price! - (product.price! * (product.discountPercentage! / 100));
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.productDetailsView,arguments: product);
+        Navigator.pushNamed(context, Routes.productDetailsView,
+            arguments: product);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

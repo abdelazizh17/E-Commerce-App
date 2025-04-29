@@ -1,12 +1,16 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class CustomFavoriteButton extends StatelessWidget {
   const CustomFavoriteButton({
     super.key,
+    this.onPressed,
+    required this.isFavorite,
   });
-
+  final void Function()? onPressed;
+  final bool isFavorite;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,11 +38,11 @@ class CustomFavoriteButton extends StatelessWidget {
           ],
         ),
         child: IconButton(
-          onPressed: () {},
+          onPressed: onPressed,
           icon: Icon(
-            LucideIcons.heart,
+            isFavorite ? FontAwesomeIcons.solidHeart : LucideIcons.heart,
             size: 14,
-            color: AppColors.greyColor,
+            color: isFavorite ? AppColors.primaryColor : AppColors.greyColor,
           ),
         ));
   }

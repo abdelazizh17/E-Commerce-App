@@ -17,7 +17,7 @@ class ProductDetailsHeaderSection extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          DropDownButtonAndFavoriteButtonSection(
+          DropDownButtonAndFavoriteButtonSection(product: product,
           ),
           SizedBox(
             height: 24,

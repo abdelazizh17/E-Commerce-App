@@ -3,8 +3,10 @@ import 'package:e_commerce/core/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
+import 'package:e_commerce/feature/favorites/presentation/viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/custom_favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
@@ -75,10 +77,25 @@ class ProductImageContainer extends StatelessWidget {
             : Positioned(
                 right: 0,
                 bottom: -18,
-                child: CustomFavoriteButton(),
+                child:
+                    BlocBuilder<FavoriteProductsCubit, FavoriteProductsState>(
+                  builder: (context, state) {
+                    final cubit = context.read<FavoriteProductsCubit>();
+                    final isFavorite = cubit.isProductFavorite(products);
+                    return CustomFavoriteButton(
+                      onPressed: () {
+                        if (isFavorite) {
+                          cubit.removeFavoriteProduct(products);
+                        } else {
+                          cubit.addFavoriteProduct(products);
+                        }
+                      },
+                      isFavorite: isFavorite,
+                    );
+                  },
+                ),
               ),
       ],
     );
   }
 }
-

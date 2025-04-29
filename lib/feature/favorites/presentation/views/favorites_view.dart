@@ -1,3 +1,4 @@
+import 'package:e_commerce/feature/favorites/presentation/views/widgets/favorites_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,9 +8,7 @@ class FavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Favorites'),
-      ),
+      body: FavoritesViewBody(),
     );
   }
 }
