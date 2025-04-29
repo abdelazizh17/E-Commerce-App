@@ -40,6 +40,12 @@ void showSnackBar(BuildContext context, String msg, Color color) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
+        ),
+      ),
       content: Text(
         msg,
         style: AppStyles.styleMedium14(),

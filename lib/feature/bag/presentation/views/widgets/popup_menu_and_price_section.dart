@@ -48,7 +48,7 @@ class _PopupMenuAndPriceSectionState extends State<PopupMenuAndPriceSection> {
                       showSnackBar(
                         context,
                         'You’ve already added this one to favorites!',
-                        AppColors.greenColor,
+                        AppColors.primaryColor,
                       );
                     });
                   }

@@ -1,4 +1,6 @@
+import 'package:e_commerce/core/data/helper_methods.dart';
 import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
 import 'package:e_commerce/feature/bag/presentation/views/widgets/custom_floating_action_button.dart';
@@ -43,17 +45,21 @@ class _IncreaseAndDecreaseProductSectionState
         SizedBox(width: 16),
         CustomFloatingActionButton(
           iconData: LucideIcons.plus,
-          onPressed: (widget.product.stock == widget.product.quantity)
-              ? null
-              : () {
-                  setState(() {
-                    widget.product.quantity++;
-                  });
-                  cubit.updateProductQuantity(widget.product);
-                },
-        )
+          onPressed: () {
+            if (widget.product.quantity == widget.product.stock) {
+              showSnackBar(
+                  context,
+                  'You’ve reached the maximum quantity available in stock.',
+                  AppColors.primaryColor);
+              return;
+            }
+            setState(() {
+              widget.product.quantity++;
+            });
+            cubit.updateProductQuantity(widget.product);
+          },
+        ),
       ],
     );
   }
 }
-

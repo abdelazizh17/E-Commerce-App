@@ -69,4 +69,8 @@ class BagCubit extends Cubit<BagState> {
       emit(BagProductFailure(e.toString()));
     }
   }
+
+  bool isProductInbag(Product product) {
+    return bagProducts.any((p) => p.id == product.id);
+  }
 }

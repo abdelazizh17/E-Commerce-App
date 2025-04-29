@@ -61,14 +61,25 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                 padding: const EdgeInsets.all(16),
                 onPressed: () {
                   final cubit = context.read<BagCubit>();
-                  cubit.addBagProduct(currentProduct);
-                  setState(() {
-                    showSnackBar(
-                      context,
-                      'Added to Cart ✅',
-                      AppColors.greenColor,
-                    );
-                  });
+                  final isProductInBag = cubit.isProductInbag(currentProduct);
+                  if (!isProductInBag) {
+                    cubit.addBagProduct(currentProduct);
+                    setState(() {
+                      showSnackBar(
+                        context,
+                        'Added to Cart ✅',
+                        AppColors.greenColor,
+                      );
+                    });
+                  } else {
+                    setState(() {
+                      showSnackBar(
+                        context,
+                        'You’ve already added this one to Cart!',
+                        AppColors.primaryColor,
+                      );
+                    });
+                  }
                 },
                 widget: Text(
                   'ADD TO CART',
