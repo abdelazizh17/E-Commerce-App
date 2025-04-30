@@ -12,7 +12,8 @@ class CategoryCard extends StatelessWidget {
   const CategoryCard({
     super.key,
     required this.categoryItem,
-    required this.isLoading, this.onTap,
+    required this.isLoading,
+    this.onTap,
   });
   final CategoryItem categoryItem;
   final bool isLoading;
@@ -31,11 +32,13 @@ class CategoryCard extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           shadows: [
             BoxShadow(
-              color: Color(0x14000000),
-              blurRadius: 25,
-              offset: Offset(0, 1),
-              spreadRadius: 0,
-            )
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.black.withValues(alpha: 0.2)
+                  : Colors.grey.withValues(alpha: 0.2),
+              spreadRadius: 12,
+              blurRadius: 20,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
           ],
         ),
         child: Row(

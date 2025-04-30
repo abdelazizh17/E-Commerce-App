@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,14 +18,14 @@ class LinearGradientContainer extends StatelessWidget {
           end: Alignment.topCenter,
           colors: Theme.of(context).brightness == Brightness.light
               ? [
-                  Colors.white,
-                  Colors.white.withAlpha(255),
-                  Colors.white.withAlpha(0),
+                  AppColors.lightModeBackgroundColor,
+                  AppColors.lightModeBackgroundColor.withAlpha(255),
+                  AppColors.lightModeBackgroundColor.withAlpha(0),
                 ]
               : [
-                  Colors.black,
-                  Colors.black.withAlpha(255),
-                  Colors.black.withAlpha(0),
+                  AppColors.darkModeBackgroundColor,
+                  AppColors.darkModeBackgroundColor.withAlpha(255),
+                  AppColors.darkModeBackgroundColor.withAlpha(0),
                 ],
         ),
       ),

@@ -6,7 +6,9 @@ class CustomSliverAppBar extends StatelessWidget {
     this.leading,
     this.actions,
     this.title,
-    this.pinned = false,  this.backgroundColor = Colors.transparent, this.surfaceTintColor = Colors.transparent,
+    this.pinned = false,
+    this.backgroundColor = Colors.transparent,
+    this.surfaceTintColor = Colors.transparent,
   });
   final Widget? leading;
   final Widget? title;

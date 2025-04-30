@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/sale_product_card.dart';
 import 'package:e_commerce/feature/shop/presentation/views/widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +35,7 @@ class CustomSkeletonizerProductCardGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Skeletonizer(
       child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: getDummyList().length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

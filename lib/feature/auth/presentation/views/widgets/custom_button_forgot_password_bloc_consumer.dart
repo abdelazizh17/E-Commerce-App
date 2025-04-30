@@ -44,7 +44,8 @@ class CustomButtonForgotPasswordBlocConsumer extends StatelessWidget {
               : Text(
                   'Send',
                   style: AppStyles.styleMedium14(),
-                ), height: 50.h,
+                ),
+          height: 50.h,
         );
       },
     );

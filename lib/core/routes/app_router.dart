@@ -1,9 +1,10 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/injection.dart';
 import 'package:e_commerce/feature/auth/presentation/views/forgot_password_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
+import 'package:e_commerce/feature/bag/presentation/views/thank_you_view.dart';
 import 'package:e_commerce/feature/favorites/presentation/views/favorites_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/product_details_view.dart';
 import 'package:e_commerce/feature/home/presentation/views/rating_and_reviews_view.dart';
@@ -87,6 +88,10 @@ class AppRouter {
                 GetAllProductsCubit(getIt<ProductsRepository>()),
             child: SalesProductsView(),
           ),
+        );
+      case Routes.thankYouView:
+        return MaterialPageRoute(
+          builder: (context) => ThankYouView(),
         );
       default:
         return MaterialPageRoute(

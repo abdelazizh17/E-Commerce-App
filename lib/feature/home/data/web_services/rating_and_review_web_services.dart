@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:e_commerce/core/data/models/product/review.dart';
+import 'package:e_commerce/feature/bag/data/models/product/review.dart';
 
 class RatingAndReviewWebServices {
   late Dio dio;

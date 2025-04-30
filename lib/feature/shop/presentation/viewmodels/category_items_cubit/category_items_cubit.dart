@@ -11,7 +11,7 @@ part 'category_items_state.dart';
 
 class CategoryItemsCubit extends Cubit<CategoryItemsState> {
   final CategoryItemRepo categoryItemRepo;
-  
+
   CategoryItemsCubit(this.categoryItemRepo) : super(CategoryItemsInitial());
 
   Future<void> getCategoryItems(String category) async {

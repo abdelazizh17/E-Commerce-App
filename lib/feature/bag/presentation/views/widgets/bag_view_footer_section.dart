@@ -1,9 +1,11 @@
 import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
+import 'package:e_commerce/core/utils/injection.dart';
+import 'package:e_commerce/feature/bag/data/repo/checkout_repo.dart';
 import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
+import 'package:e_commerce/feature/bag/presentation/viewmodels/payment_cubit/payment_cubit.dart';
+import 'package:e_commerce/feature/bag/presentation/views/widgets/bag_checkout_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BagViewFooterSection extends StatelessWidget {
   const BagViewFooterSection({super.key});
@@ -39,14 +41,9 @@ class BagViewFooterSection extends StatelessWidget {
                       ),
                     ],
                   ),
-                  CustomButton(
-                    padding: const EdgeInsets.only(bottom: 16, top: 24),
-                    onPressed: () {},
-                    widget: Text(
-                      'CHECK OUT',
-                      style: AppStyles.styleMedium14(),
-                    ),
-                    height: 50.h,
+                   BlocProvider(
+                    create: (context) => PaymentCubit(getIt<CheckoutRepo>()),
+                    child: BagCheckoutButton(total: total),
                   ),
                 ],
               ),
@@ -59,3 +56,4 @@ class BagViewFooterSection extends StatelessWidget {
     );
   }
 }
+

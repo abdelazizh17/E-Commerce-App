@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/review.dart';
+import 'package:e_commerce/feature/bag/data/models/product/review.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';

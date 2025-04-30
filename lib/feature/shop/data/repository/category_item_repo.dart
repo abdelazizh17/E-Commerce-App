@@ -7,7 +7,8 @@ class CategoryItemRepo {
   CategoryItemRepo(this.categoryItemWebServices);
 
   Future<List<CategoryItem>> getCategoryItems(String category) async {
-    var categoryItems = await categoryItemWebServices.getCategoryItems(category);
+    var categoryItems =
+        await categoryItemWebServices.getCategoryItems(category);
     return categoryItems
         .map((categoryItem) => CategoryItem.fromJson(categoryItem))
         .toList();

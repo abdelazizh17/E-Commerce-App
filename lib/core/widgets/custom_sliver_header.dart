@@ -24,7 +24,9 @@ class CustomSliverHeader extends StatelessWidget {
     required this.height,
     this.centerTitle = false,
     this.actions,
-    this.titlePadding, required this.backgroundColor, this.forceElevated = false,
+    this.titlePadding,
+    required this.backgroundColor,
+    this.forceElevated = false,
   });
 
   @override
@@ -39,8 +41,7 @@ class CustomSliverHeader extends StatelessWidget {
       forceElevated: forceElevated,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: centerTitle,
-        titlePadding:
-            titlePadding ?? EdgeInsets.only(left: 18, bottom: 30.sp),
+        titlePadding: titlePadding ?? EdgeInsets.only(left: 18, bottom: 30.sp),
         title: Text(
           title,
           style: AppStyles.styleBold34(context).copyWith(

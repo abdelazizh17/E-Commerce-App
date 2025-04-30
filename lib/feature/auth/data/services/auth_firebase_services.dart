@@ -1,16 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/core/data/models/firebase_path.dart';
+import 'package:e_commerce/core/utils/injection.dart';
+import 'package:e_commerce/feature/bag/data/models/stripe_customer.dart';
 import 'package:e_commerce/core/data/models/user_model.dart';
 import 'package:e_commerce/feature/auth/data/models/login_data.dart';
 import 'package:e_commerce/feature/auth/data/models/sign_up_data.dart';
+import 'package:e_commerce/feature/bag/data/repo/customer_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthFirebaseServices {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final CollectionReference _usersCollection =
-      FirebaseFirestore.instance.collection(FirebasePath.users);
+  final CollectionReference _usersCollection = FirebaseFirestore.instance
+      .collection(FirebasePath.users);
 
   Future<UserModel> signUp(SignUpData signUpModel) async {
     final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -26,12 +29,24 @@ class AuthFirebaseServices {
         code: 'user_null',
         message: 'User data is null after sign-in',
       );
-    }  
+    }
+
+    final response = await getIt<CustomerRepo>().createStripeCustomer(
+      stripeCustomer: StripeCustomer(
+        email: signUpModel.email,
+        name: signUpModel.name,
+      ),
+    );
+
+    final stripeCustomerId = response.id;
+
     final userModel = UserModel(
       uid: user.uid,
       userName: signUpModel.name,
       email: signUpModel.email,
+      stripeCustomerId: stripeCustomerId,
     );
+
     await _usersCollection.doc(user.uid).set(userModel.toJson());
     return userModel;
   }
@@ -89,10 +104,18 @@ class AuthFirebaseServices {
         message: 'User data is null after sign-in',
       );
     }
+
+    final response = await getIt<CustomerRepo>().createStripeCustomer(
+      stripeCustomer: StripeCustomer(email: user.email, name: user.displayName),
+    );
+
+    final stripeCustomerId = response.id;
+
     final userModel = UserModel(
       uid: user.uid,
       userName: user.displayName,
       email: user.email,
+      stripeCustomerId: stripeCustomerId,
     );
     await _usersCollection.doc(user.uid).set(userModel.toJson());
     return userModel;
@@ -113,8 +136,9 @@ class AuthFirebaseServices {
         final OAuthCredential facebookAuthCredential =
             FacebookAuthProvider.credential(accessToken.tokenString);
 
-        final userCredential = await FirebaseAuth.instance
-            .signInWithCredential(facebookAuthCredential);
+        final userCredential = await FirebaseAuth.instance.signInWithCredential(
+          facebookAuthCredential,
+        );
 
         final user = userCredential.user;
 
@@ -124,11 +148,23 @@ class AuthFirebaseServices {
             message: 'User data is null after sign-in',
           );
         }
+
+        final response = await getIt<CustomerRepo>().createStripeCustomer(
+          stripeCustomer: StripeCustomer(
+            email: user.email,
+            name: user.displayName,
+          ),
+        );
+
+        final stripeCustomerId = response.id;
+
         final userModel = UserModel(
           uid: user.uid,
           userName: user.displayName,
           email: user.email,
+          stripeCustomerId: stripeCustomerId,
         );
+
         await _usersCollection.doc(user.uid).set(userModel.toJson());
         return userModel;
       } else {
@@ -145,7 +181,8 @@ class AuthFirebaseServices {
     } else {
       throw FirebaseAuthException(
         code: 'facebook_sign_in_failed',
-        message: loginResult.message ??
+        message:
+            loginResult.message ??
             'Facebook sign-in failed for unknown reasons.',
       );
     }

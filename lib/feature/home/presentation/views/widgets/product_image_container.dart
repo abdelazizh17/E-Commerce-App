@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
@@ -28,10 +28,19 @@ class ProductImageContainer extends StatelessWidget {
           width: 148.w,
           height: 184.h,
           decoration: ShapeDecoration(
-            color: AppColors.whiteColor,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          ),
+              color: AppColors.whiteColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              shadows: [
+                BoxShadow(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black.withValues(alpha: 0.2)
+                      : Colors.grey.withValues(alpha: 0.2),
+                  spreadRadius: 12,
+                  blurRadius: 20,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ]),
           child: isLoading
               ? SizedBox.shrink()
               : CachedNetworkImage(

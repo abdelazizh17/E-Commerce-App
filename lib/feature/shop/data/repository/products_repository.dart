@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/feature/shop/data/web_services/products_web_services.dart';
 
 class ProductsRepository {
@@ -7,9 +7,9 @@ class ProductsRepository {
   ProductsRepository(this.productWebServices);
 
   Future<List<Product>> searchProducts(String searchText) async {
-  var products = await productWebServices.searchProducts(searchText);
-  return products.map((product) => Product.fromJson(product)).toList();
-}
+    var products = await productWebServices.searchProducts(searchText);
+    return products.map((product) => Product.fromJson(product)).toList();
+  }
 
   Future<List<Product>> fetchProductsPage({required int pageNumber}) async {
     var products =

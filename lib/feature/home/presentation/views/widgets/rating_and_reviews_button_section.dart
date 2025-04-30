@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
@@ -12,7 +12,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class RatingsAndReviewsButtonSection extends StatelessWidget {
   const RatingsAndReviewsButtonSection({
     super.key,
-    required this.product, required this.scrollController,
+    required this.product,
+    required this.scrollController,
   });
   final Product product;
   final ScrollController scrollController;
@@ -28,7 +29,8 @@ class RatingsAndReviewsButtonSection extends StatelessWidget {
             return WriteReviewBottomSheet(
               mediaQuery: mediaQuery,
               product: product,
-              ratingAndReviewCubit: context.read<RatingAndReviewCubit>(), scrollController: scrollController, 
+              ratingAndReviewCubit: context.read<RatingAndReviewCubit>(),
+              scrollController: scrollController,
             );
           },
         );

@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/feature/bag/presentation/views/widgets/popup_menu_and_price_section.dart';
 import 'package:e_commerce/feature/bag/presentation/views/widgets/product_image.dart';
@@ -23,11 +23,13 @@ class ProductBagCard extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         shadows: [
           BoxShadow(
-            color: Color(0x14000000),
-            blurRadius: 25,
-            offset: Offset(0, 1),
-            spreadRadius: 0,
-          )
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withValues(alpha: 0.2)
+                : Colors.grey.withValues(alpha: 0.2),
+            spreadRadius: 12,
+            blurRadius: 20,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
         ],
       ),
       child: Row(

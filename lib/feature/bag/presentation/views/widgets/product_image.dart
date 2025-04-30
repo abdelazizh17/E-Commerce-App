@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -8,7 +8,8 @@ import 'package:lottie/lottie.dart';
 
 class ProductImage extends StatelessWidget {
   const ProductImage({
-    super.key, required this.product,
+    super.key,
+    required this.product,
   });
   final Product product;
   @override

@@ -15,13 +15,14 @@ class CategoryCardSliverListView extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: CategoryCard(
             categoryItem: categoryItem[index],
-            isLoading: false, onTap:  () {
-        Navigator.pushNamed(
-          context,
-          Routes.productsView,
-          arguments: categoryItem[index].name,
-        );
-      },
+            isLoading: false,
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                Routes.productsView,
+                arguments: categoryItem[index].name,
+              );
+            },
           ),
         );
       },

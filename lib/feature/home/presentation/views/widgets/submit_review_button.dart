@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/core/data/models/product/product.dart';
-import 'package:e_commerce/core/data/models/product/review.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/review.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/core/widgets/custom_circle_indicator.dart';
@@ -59,7 +59,6 @@ class SubmitReviewButton extends StatelessWidget {
                         reviewerName: 'Abdelaziz', //for test
                       ),
                     );
-                    
                   }
                 },
           widget: state is RatingAndReviewLoading

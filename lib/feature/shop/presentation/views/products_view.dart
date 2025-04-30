@@ -7,7 +7,9 @@ class ProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ProductsViewBody(category: category,),
+      body: ProductsViewBody(
+        category: category,
+      ),
     );
   }
 }

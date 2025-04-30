@@ -1,3 +1,6 @@
+import 'package:e_commerce/feature/bag/data/repo/checkout_repo.dart';
+import 'package:e_commerce/feature/bag/data/repo/customer_repo.dart';
+import 'package:e_commerce/feature/bag/data/services/stripe_service.dart';
 import 'package:e_commerce/feature/shop/data/repository/products_repository.dart';
 import 'package:e_commerce/feature/shop/data/web_services/products_web_services.dart';
 import 'package:e_commerce/feature/home/data/repository/new_products_repo.dart';
@@ -20,34 +23,54 @@ void getInit() {
   // WebServices
   getIt.registerLazySingleton<ProductWebServices>(() => ProductWebServices());
   getIt.registerLazySingleton<NewProductsWebServices>(
-      () => NewProductsWebServices());
+    () => NewProductsWebServices(),
+  );
   getIt.registerLazySingleton<SaleProductsWebServices>(
-      () => SaleProductsWebServices());
+    () => SaleProductsWebServices(),
+  );
   getIt.registerLazySingleton<RatingAndReviewWebServices>(
-      () => RatingAndReviewWebServices());
+    () => RatingAndReviewWebServices(),
+  );
   getIt.registerLazySingleton<CategoryItemWebServices>(
-      () => CategoryItemWebServices());
+    () => CategoryItemWebServices(),
+  );
+  getIt.registerLazySingleton<StripeService>(() => StripeService());
 
   // Repositories
   getIt.registerLazySingleton<ProductsRepository>(
-      () => ProductsRepository(getIt<ProductWebServices>()));
+    () => ProductsRepository(getIt<ProductWebServices>()),
+  );
   getIt.registerLazySingleton<NewProductsRepo>(
-      () => NewProductsRepo(getIt<NewProductsWebServices>()));
+    () => NewProductsRepo(getIt<NewProductsWebServices>()),
+  );
   getIt.registerLazySingleton<SaleProductsRepo>(
-      () => SaleProductsRepo(getIt<SaleProductsWebServices>()));
+    () => SaleProductsRepo(getIt<SaleProductsWebServices>()),
+  );
   getIt.registerLazySingleton<RatingAndReviewRepo>(
-      () => RatingAndReviewRepo(getIt<RatingAndReviewWebServices>()));
+    () => RatingAndReviewRepo(getIt<RatingAndReviewWebServices>()),
+  );
   getIt.registerLazySingleton<CategoryItemRepo>(
-      () => CategoryItemRepo(getIt<CategoryItemWebServices>()));
+    () => CategoryItemRepo(getIt<CategoryItemWebServices>()),
+  );
+  getIt.registerLazySingleton<CustomerRepo>(
+    () => CustomerRepo(getIt<StripeService>()),
+  );
+
+  getIt.registerLazySingleton<CheckoutRepo>(
+    () => CheckoutRepo(getIt<StripeService>()),
+  );
 
   // Cubits
   getIt.registerLazySingleton<GetProductByCategoryCubit>(
-      () => GetProductByCategoryCubit(getIt<ProductsRepository>()));
+    () => GetProductByCategoryCubit(getIt<ProductsRepository>()),
+  );
   getIt.registerLazySingleton<NewProductsCubit>(
-      () => NewProductsCubit(getIt<NewProductsRepo>()));
+    () => NewProductsCubit(getIt<NewProductsRepo>()),
+  );
   getIt.registerLazySingleton<SaleProductsCubit>(
-      () => SaleProductsCubit(getIt<SaleProductsRepo>()));
+    () => SaleProductsCubit(getIt<SaleProductsRepo>()),
+  );
   getIt.registerLazySingleton<RatingAndReviewCubit>(
-      () => RatingAndReviewCubit(getIt<RatingAndReviewRepo>()));
-
+    () => RatingAndReviewCubit(getIt<RatingAndReviewRepo>()),
+  );
 }

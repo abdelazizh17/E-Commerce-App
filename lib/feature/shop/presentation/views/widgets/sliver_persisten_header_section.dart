@@ -22,10 +22,9 @@ class SliverPersistentHeaderSection extends StatelessWidget {
           labelColor: Theme.of(context).brightness == Brightness.light
               ? AppColors.blackColor
               : AppColors.whiteColor,
-          unselectedLabelColor:
-              Theme.of(context).brightness == Brightness.light
-                  ? AppColors.darkModeBackgroundColor
-                  : AppColors.greyColor,
+          unselectedLabelColor: Theme.of(context).brightness == Brightness.light
+              ? AppColors.darkModeBackgroundColor
+              : AppColors.greyColor,
           tabAlignment: TabAlignment.start,
           indicatorColor: AppColors.primaryColor,
           labelStyle: AppStyles.styleSimiBold16(context),

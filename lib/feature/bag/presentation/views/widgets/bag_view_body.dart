@@ -32,9 +32,11 @@ class _BagViewBodyState extends State<BagViewBody> {
               color: AppColors.whiteColor,
             ),
           ),
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.darkModeBackgroundColor
+              : AppColors.primaryColor,
         ),
-        const BagProductsList(), 
+        const BagProductsList(),
         const BagViewFooterSection(),
       ],
     );

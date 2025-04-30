@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/review.dart';
+import 'package:e_commerce/feature/bag/data/models/product/review.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/home/presentation/views/widgets/helpfull_row.dart';
@@ -7,11 +7,11 @@ import 'package:flutter/material.dart';
 
 class CustomReviewCard extends StatelessWidget {
   const CustomReviewCard({
-    super.key, 
+    super.key,
     required this.review,
     required this.formattedDate,
   });
-  
+
   final Review review;
   final String formattedDate;
 
@@ -24,13 +24,17 @@ class CustomReviewCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        color: AppColors.whiteColor,
-        shadows: const [
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkModeBackgroundColor
+            : AppColors.whiteColor,
+        shadows: [
           BoxShadow(
-            color: Color(0x0C000000),
-            blurRadius: 25,
-            offset: Offset(0, 1),
-            spreadRadius: 0,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withValues(alpha: 0.2)
+                : Colors.grey.withValues(alpha: 0.2),
+            spreadRadius: 12,
+            blurRadius: 20,
+            offset: Offset(0, 3), // changes position of shadow
           ),
         ],
       ),

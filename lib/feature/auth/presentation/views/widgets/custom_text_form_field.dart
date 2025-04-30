@@ -12,7 +12,8 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.isRequired = true,
     this.labelText,
-    this.hintText, this.maxLines = 1,
+    this.hintText,
+    this.maxLines = 1,
   });
 
   final TextEditingController? controller;

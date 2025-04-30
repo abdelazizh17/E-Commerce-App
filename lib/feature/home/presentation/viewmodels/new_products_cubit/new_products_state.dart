@@ -17,5 +17,4 @@ final class NewProductsFailure extends NewProductsState {
   final String errMessage;
 
   NewProductsFailure(this.errMessage);
-
 }

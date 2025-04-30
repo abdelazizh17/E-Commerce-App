@@ -1,5 +1,5 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
-import 'package:e_commerce/core/data/models/product/review.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/review.dart';
 import 'package:e_commerce/feature/home/data/web_services/rating_and_review_web_services.dart';
 
 class RatingAndReviewRepo {

@@ -31,5 +31,3 @@ class ShopViewBody extends StatelessWidget {
     );
   }
 }
-
-

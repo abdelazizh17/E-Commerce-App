@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/routes/routes.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
@@ -32,7 +32,7 @@ class _NewProductCardState extends State<NewProductCard> {
   Widget build(BuildContext context) {
     return BlocConsumer<RatingAndReviewCubit, RatingAndReviewState>(
       listener: (context, state) {
-  if (state is ProductsDetailUpdated &&
+        if (state is ProductsDetailUpdated &&
             currentProduct.id == state.product.id) {
           currentProduct = state.product;
         }

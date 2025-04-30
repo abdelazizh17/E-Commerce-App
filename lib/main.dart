@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/api_keys.dart';
 import 'package:e_commerce/core/utils/injection.dart';
 import 'package:e_commerce/core/data/bloc_observer.dart';
 import 'package:e_commerce/core/routes/app_router.dart';
@@ -12,6 +13,7 @@ import 'package:e_commerce/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +21,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = AppBlocObserver();
+  Stripe.publishableKey = ApiKeys.publishableKey;
   getInit();
   runApp(
     MultiBlocProvider(
@@ -42,7 +45,7 @@ void main() async {
         ),
         BlocProvider(
           create: (_) => BagCubit(),
-        )
+        ),
       ],
       child: ECommerceApp(
         appRouter: AppRouter(),

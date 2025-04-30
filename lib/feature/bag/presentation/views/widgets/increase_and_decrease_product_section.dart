@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/core/data/models/product/product.dart';
+import 'package:e_commerce/feature/bag/data/models/product/product.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
@@ -27,6 +27,7 @@ class _IncreaseAndDecreaseProductSectionState
     return Row(
       children: [
         CustomFloatingActionButton(
+          heroTag: 'decrease',
           iconData: LucideIcons.minus,
           onPressed: (widget.product.quantity == 1)
               ? null
@@ -44,6 +45,7 @@ class _IncreaseAndDecreaseProductSectionState
         ),
         SizedBox(width: 16),
         CustomFloatingActionButton(
+          heroTag: 'increase',
           iconData: LucideIcons.plus,
           onPressed: () {
             if (widget.product.quantity == widget.product.stock) {

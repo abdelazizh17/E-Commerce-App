@@ -2,12 +2,12 @@ import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/feature/shop/presentation/viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
 import 'package:flutter/material.dart';
+
 class SortMenuListView extends StatelessWidget {
   const SortMenuListView({super.key, required this.cubit});
   final GetAllProductsCubit cubit;
   @override
   Widget build(BuildContext context) {
-    
     return ListView.builder(
       itemCount: options.length,
       itemBuilder: (context, index) {

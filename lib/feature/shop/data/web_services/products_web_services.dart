@@ -16,17 +16,15 @@ class ProductWebServices {
     dio = Dio(options);
   }
 
- Future<List<dynamic>> searchProducts(String searchText) async {
-  try {
-    var response = await dio.get('products/search?q=$searchText');
-    return response.data["products"];
-  } on Exception catch (e) {
-    log(e.toString());
-    return [];
+  Future<List<dynamic>> searchProducts(String searchText) async {
+    try {
+      var response = await dio.get('products/search?q=$searchText');
+      return response.data["products"];
+    } on Exception catch (e) {
+      log(e.toString());
+      return [];
+    }
   }
-}
-
-  
 
   Future<List<dynamic>> fetchProductsPage({required int pageNumber}) async {
     try {
