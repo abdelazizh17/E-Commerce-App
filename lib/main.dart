@@ -23,8 +23,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = AppBlocObserver();
+  await dotenv.load(fileName: ".env");
   Stripe.publishableKey = ApiKeys.publishableKey;
-   await dotenv.load(fileName: ".env");
   getInit();
   runApp(
     MultiBlocProvider(
