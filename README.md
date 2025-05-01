@@ -46,6 +46,7 @@ The project follows **MVVM** architecture, ensuring better separation of concern
 |-----------|--------|---------|
 | ![](assets/screenshots/shop-view.png) | ![](assets/screenshots/mybag.png) | ![](assets/screenshots/payment.png) |
 
-| Success Payment |
-|-----------------|
-| ![](assets/screenshots/success-payment.png) |
+<h3 align="center">✅ Success Payment</h3>
+<p align="center">
+  <img src="assets/screenshots/success-payment.png" width="300"/>
+</p>
