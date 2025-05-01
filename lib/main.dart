@@ -1,3 +1,5 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'core/utils/api_keys.dart';
 import 'core/utils/injection.dart';
 import 'core/data/bloc_observer.dart';
@@ -22,6 +24,7 @@ void main() async {
   );
   Bloc.observer = AppBlocObserver();
   Stripe.publishableKey = ApiKeys.publishableKey;
+   await dotenv.load(fileName: ".env");
   getInit();
   runApp(
     MultiBlocProvider(
