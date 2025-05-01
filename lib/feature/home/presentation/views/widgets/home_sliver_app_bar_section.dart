@@ -1,7 +1,7 @@
 import 'dart:ui';
-import 'package:e_commerce/core/utils/app_assets.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/widgets/custom_sliver_header.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/widgets/custom_sliver_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

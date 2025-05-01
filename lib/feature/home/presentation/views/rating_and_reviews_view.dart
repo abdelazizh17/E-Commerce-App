@@ -1,6 +1,7 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/rating_and_reviews_body.dart';
 import 'package:flutter/material.dart';
+
+import '../../../bag/data/models/product/product.dart';
+import 'widgets/rating_and_reviews_body.dart';
 
 class RatingAndReviewsView extends StatelessWidget {
   const RatingAndReviewsView({super.key, required this.product});

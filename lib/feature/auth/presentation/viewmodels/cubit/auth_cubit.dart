@@ -1,12 +1,11 @@
-import 'package:bloc/bloc.dart';
-import 'package:e_commerce/core/data/failure/failure.dart';
-import 'package:e_commerce/core/data/models/user_model.dart';
-import 'package:e_commerce/feature/auth/data/models/login_data.dart';
-import 'package:e_commerce/feature/auth/data/models/sign_up_data.dart';
-import 'package:e_commerce/feature/auth/data/services/auth_firebase_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
+
+import '../../../../../core/data/failure/failure.dart';
+import '../../../../../core/data/models/user_model.dart';
+import '../../../data/models/login_data.dart';
+import '../../../data/models/sign_up_data.dart';
+import '../../../data/services/auth_firebase_services.dart';
 
 part 'auth_state.dart';
 

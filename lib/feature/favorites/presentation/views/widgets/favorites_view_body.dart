@@ -1,8 +1,8 @@
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/favorites/presentation/viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
-import 'package:e_commerce/feature/favorites/presentation/views/widgets/favorite_product_list.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/custom_sliver_app_bar.dart';
+import '../../viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
+import 'favorite_product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,6 +1,6 @@
-import 'package:e_commerce/feature/shop/presentation/viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/filter_bottom_sheet.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/filter_button.dart';
+import '../../viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
+import 'filter_bottom_sheet.dart';
+import 'filter_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';

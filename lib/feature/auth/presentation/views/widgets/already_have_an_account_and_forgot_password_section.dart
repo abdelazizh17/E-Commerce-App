@@ -1,7 +1,8 @@
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
 
 class AlreadyHaveAnAccountAndForgotPasswordSection extends StatelessWidget {
   const AlreadyHaveAnAccountAndForgotPasswordSection(

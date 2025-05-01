@@ -1,9 +1,10 @@
-import 'package:e_commerce/core/utils/injection.dart';
-import 'package:e_commerce/feature/shop/data/repository/category_item_repo.dart';
-import 'package:e_commerce/feature/shop/presentation/viewmodels/category_items_cubit/category_items_cubit.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/shop_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/utils/injection.dart';
+import '../../data/repository/category_item_repo.dart';
+import '../viewmodels/category_items_cubit/category_items_cubit.dart';
+import 'widgets/shop_view_body.dart';
 
 class ShopView extends StatelessWidget {
   const ShopView({super.key});

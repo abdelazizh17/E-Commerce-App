@@ -1,7 +1,8 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/widgets/custom_divider.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/profile_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/routes/routes.dart';
+import '../../../../../core/widgets/custom_divider.dart';
+import 'profile_item.dart';
 
 class ProfileFooterSection extends StatelessWidget {
   const ProfileFooterSection({

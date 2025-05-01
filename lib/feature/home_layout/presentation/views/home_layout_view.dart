@@ -1,8 +1,9 @@
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/feature/home_layout/presentation/viewmodels/cubit/home_layout_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../viewmodels/cubit/home_layout_cubit.dart';
 
 class HomeLayoutView extends StatelessWidget {
   const HomeLayoutView({super.key});

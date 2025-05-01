@@ -1,12 +1,13 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import '../../../../constants.dart';
 
 class SaleProductsWebServices {
   late Dio dio;
 
   SaleProductsWebServices() {
     BaseOptions options = BaseOptions(
-      baseUrl: "http://10.0.2.2:8000/",
+      baseUrl: saleAndNewBaseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Accept': '*/*',
@@ -21,8 +22,7 @@ class SaleProductsWebServices {
   Future<List<dynamic>> getSaleProducts() async {
     try {
       var response = await dio.get('products/sale/');
-      // print("API Response: ${response.data}"); // ✅ طباعة الاستجابة
-      // log(response.data.toString());
+      // print("API Response: ${response.data}");
       return response.data["sale"];
     } on Exception catch (e) {
       log(e.toString());

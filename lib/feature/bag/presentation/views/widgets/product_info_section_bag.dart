@@ -1,6 +1,6 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/bag/presentation/views/widgets/increase_and_decrease_product_section.dart';
+import '../../../data/models/product/product.dart';
+import '../../../../../core/utils/app_styles.dart';
+import 'increase_and_decrease_product_section.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,8 +1,8 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/feature/shop/data/models/category_item.dart';
-import 'package:e_commerce/feature/shop/presentation/viewmodels/category_items_cubit/category_items_cubit.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/custom_skeletoizer_category_card.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../data/models/category_item.dart';
+import '../../viewmodels/category_items_cubit/category_items_cubit.dart';
+import 'custom_skeletoizer_category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

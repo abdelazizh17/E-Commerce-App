@@ -1,7 +1,8 @@
-import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/profile_footer_section.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/profile_header_section.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/widgets/custom_sliver_app_bar.dart';
+import 'profile_footer_section.dart';
+import 'profile_header_section.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});

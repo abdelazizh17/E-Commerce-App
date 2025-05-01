@@ -1,14 +1,15 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:e_commerce/feature/bag/data/models/product/review.dart';
+import '../../../../constants.dart';
+import '../../../bag/data/models/product/review.dart';
 
 class RatingAndReviewWebServices {
   late Dio dio;
 
   RatingAndReviewWebServices() {
     BaseOptions options = BaseOptions(
-      baseUrl: "http://10.0.2.2:8000/",
+      baseUrl: saleAndNewBaseUrl,
     );
 
     dio = Dio(options);

@@ -1,9 +1,9 @@
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/utils/injection.dart';
-import 'package:e_commerce/feature/bag/data/repo/checkout_repo.dart';
-import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
-import 'package:e_commerce/feature/bag/presentation/viewmodels/payment_cubit/payment_cubit.dart';
-import 'package:e_commerce/feature/bag/presentation/views/widgets/bag_checkout_button.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/injection.dart';
+import '../../../data/repo/checkout_repo.dart';
+import '../../viewmodels/bag_cubit/bag_cubit.dart';
+import '../../viewmodels/payment_cubit/payment_cubit.dart';
+import 'bag_checkout_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

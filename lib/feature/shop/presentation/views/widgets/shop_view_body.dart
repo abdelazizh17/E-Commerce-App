@@ -1,7 +1,7 @@
-import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/generic_category_tab.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/shop_sliver_app_bar_section.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/sliver_persisten_header_section.dart';
+import '../../../../../constants.dart';
+import 'generic_category_tab.dart';
+import 'shop_sliver_app_bar_section.dart';
+import 'sliver_persisten_header_section.dart';
 import 'package:flutter/material.dart';
 
 class ShopViewBody extends StatelessWidget {

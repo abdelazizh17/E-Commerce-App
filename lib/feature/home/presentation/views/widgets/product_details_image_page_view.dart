@@ -1,7 +1,8 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/product_details_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../bag/data/models/product/product.dart';
+import 'product_details_image.dart';
 
 class ProductDetailsImagePageView extends StatefulWidget {
   const ProductDetailsImagePageView({

@@ -1,5 +1,5 @@
-import 'package:e_commerce/core/widgets/title_screen.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/user_profile_tile.dart';
+import '../../../../../core/widgets/title_screen.dart';
+import 'user_profile_tile.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeaderSection extends StatelessWidget {

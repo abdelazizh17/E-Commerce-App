@@ -1,6 +1,6 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/feature/shop/data/models/category_item.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/category_card.dart';
+import '../../../../../core/routes/routes.dart';
+import '../../../data/models/category_item.dart';
+import 'category_card.dart';
 import 'package:flutter/widgets.dart';
 
 class CategoryCardSliverListView extends StatelessWidget {

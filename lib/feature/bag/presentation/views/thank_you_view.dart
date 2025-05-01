@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/bag/presentation/views/widgets/thank_you_view_body.dart';
+import 'widgets/thank_you_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ThankYouView extends StatelessWidget {

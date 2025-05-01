@@ -1,6 +1,7 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/data/helper_methods.dart';
+import 'custom_text_form_field.dart';
 
 class CustomTextFormFieldLoginSection extends StatelessWidget {
   const CustomTextFormFieldLoginSection(

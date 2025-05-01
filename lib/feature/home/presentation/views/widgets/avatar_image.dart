@@ -1,5 +1,6 @@
-import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/app_assets.dart';
 
 class AvatarImage extends StatelessWidget {
   const AvatarImage({super.key});

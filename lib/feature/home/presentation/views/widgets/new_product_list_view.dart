@@ -1,5 +1,5 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/new_product_card.dart';
+import '../../../../bag/data/models/product/product.dart';
+import 'new_product_card.dart';
 import 'package:flutter/widgets.dart';
 
 class NewProductListView extends StatelessWidget {

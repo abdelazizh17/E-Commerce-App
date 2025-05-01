@@ -1,5 +1,5 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/review_card.dart';
+import '../../../../bag/data/models/product/product.dart';
+import 'review_card.dart';
 import 'package:flutter/material.dart';
 
 class ReviewCardSliverList extends StatelessWidget {

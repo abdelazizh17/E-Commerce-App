@@ -1,9 +1,10 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_new_product_card_list_view.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/bloc_builder_sale_product_card_list_view.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/header_tile.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/home_sliver_app_bar_section.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/routes/routes.dart';
+import 'bloc_builder_new_product_card_list_view.dart';
+import 'bloc_builder_sale_product_card_list_view.dart';
+import 'header_tile.dart';
+import 'home_sliver_app_bar_section.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});

@@ -1,4 +1,5 @@
 const String baseUrl = 'https://dummyjson.com/';
+const String saleAndNewBaseUrl = 'https://e-commerce-api-production-297e.up.railway.app/';
 const List<String> sizeList = ['S', 'M', 'L', 'XL'];
 const List<String> colorList = ['Black', 'White', 'Blue', 'Grey'];
 const Map<String, String> categoryMapping = {

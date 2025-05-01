@@ -1,9 +1,9 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/widgets/custom_circle_indicator.dart';
-import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/custom_circle_indicator.dart';
+import '../../viewmodels/cubit/auth_cubit.dart';
+import 'custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

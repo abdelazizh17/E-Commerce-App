@@ -1,8 +1,8 @@
-import 'package:e_commerce/core/routes/app_router.dart';
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/utils/app_theme.dart';
-import 'package:e_commerce/feature/auth/presentation/views/sign_up_view.dart';
-import 'package:e_commerce/feature/profile/presentation/viewmodels/cubit/settings_cubit.dart';
+import 'core/routes/app_router.dart';
+import 'core/routes/routes.dart';
+import 'core/utils/app_theme.dart';
+import 'feature/auth/presentation/views/sign_up_view.dart';
+import 'feature/profile/presentation/viewmodels/cubit/settings_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

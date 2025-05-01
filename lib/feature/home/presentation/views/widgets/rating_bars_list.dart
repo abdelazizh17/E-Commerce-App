@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/home/presentation/views/widgets/rating_row.dart';
+import 'rating_row.dart';
 import 'package:flutter/material.dart';
 
 class RatingBarsList extends StatelessWidget {

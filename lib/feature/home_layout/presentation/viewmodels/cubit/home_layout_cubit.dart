@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce/feature/bag/presentation/views/bag_view.dart';
-import 'package:e_commerce/feature/favorites/presentation/views/favorites_view.dart';
-import 'package:e_commerce/feature/home/presentation/views/home_view.dart';
-import 'package:e_commerce/feature/profile/presentation/views/profile_view.dart';
-import 'package:e_commerce/feature/shop/presentation/views/shop_view.dart';
+import '../../../../bag/presentation/views/bag_view.dart';
+import '../../../../favorites/presentation/views/favorites_view.dart';
+import '../../../../home/presentation/views/home_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
+import '../../../../shop/presentation/views/shop_view.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

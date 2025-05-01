@@ -1,9 +1,9 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/widgets/title_screen.dart';
-import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/already_have_an_account_and_forgot_password_section.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_sign_up_bloc_consumer.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field_sign_up_section.dart';
+import '../../../../../core/routes/routes.dart';
+import '../../../../../core/widgets/title_screen.dart';
+import '../../viewmodels/cubit/auth_cubit.dart';
+import 'already_have_an_account_and_forgot_password_section.dart';
+import 'custom_button_sign_up_bloc_consumer.dart';
+import 'custom_text_form_field_sign_up_section.dart';
 import 'package:flutter/material.dart';
 
 class SignUpHeaderSection extends StatefulWidget {

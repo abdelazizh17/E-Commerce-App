@@ -1,7 +1,8 @@
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/setting_items_list.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/custom_sliver_app_bar.dart';
+import 'setting_items_list.dart';
 
 class SettingViewBody extends StatelessWidget {
   const SettingViewBody({

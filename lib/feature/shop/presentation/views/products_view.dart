@@ -1,4 +1,4 @@
-import 'package:e_commerce/feature/shop/presentation/views/widgets/products_view_body.dart';
+import 'widgets/products_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ProductsView extends StatelessWidget {

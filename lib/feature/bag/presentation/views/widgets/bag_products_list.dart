@@ -1,7 +1,7 @@
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/utils/app_assets.dart';
-import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
-import 'package:e_commerce/feature/bag/presentation/views/widgets/product_bag_card_sliver_list.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../viewmodels/bag_cubit/bag_cubit.dart';
+import 'product_bag_card_sliver_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

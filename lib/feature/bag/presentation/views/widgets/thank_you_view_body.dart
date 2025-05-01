@@ -1,7 +1,7 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/utils/app_assets.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button.dart';
+import '../../../../../core/routes/routes.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../auth/presentation/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

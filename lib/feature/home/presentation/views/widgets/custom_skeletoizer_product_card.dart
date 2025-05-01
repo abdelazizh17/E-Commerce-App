@@ -1,6 +1,6 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/sale_product_card.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/product_card.dart';
+import '../../../../bag/data/models/product/product.dart';
+import 'sale_product_card.dart';
+import '../../../../shop/presentation/views/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

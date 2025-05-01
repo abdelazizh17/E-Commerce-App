@@ -1,14 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce/core/data/models/firebase_path.dart';
-import 'package:e_commerce/core/utils/injection.dart';
-import 'package:e_commerce/feature/bag/data/models/stripe_customer.dart';
-import 'package:e_commerce/core/data/models/user_model.dart';
-import 'package:e_commerce/feature/auth/data/models/login_data.dart';
-import 'package:e_commerce/feature/auth/data/models/sign_up_data.dart';
-import 'package:e_commerce/feature/bag/data/repo/customer_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../../../core/data/models/firebase_path.dart';
+import '../../../../core/data/models/user_model.dart';
+import '../../../../core/utils/injection.dart';
+import '../../../bag/data/models/stripe_customer.dart';
+import '../../../bag/data/repo/customer_repo.dart';
+import '../models/login_data.dart';
+import '../models/sign_up_data.dart';
 
 class AuthFirebaseServices {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

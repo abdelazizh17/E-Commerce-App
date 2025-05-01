@@ -1,6 +1,6 @@
-import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/feature/shop/presentation/viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../viewmodels/get_all_products_cubit/get_all_products_cubit.dart';
 import 'package:flutter/material.dart';
 
 class SortMenuListView extends StatelessWidget {

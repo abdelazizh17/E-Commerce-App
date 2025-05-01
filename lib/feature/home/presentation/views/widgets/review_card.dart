@@ -1,7 +1,7 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/feature/bag/data/models/product/review.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/avatar_image.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/custom_review_card.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../../bag/data/models/product/review.dart';
+import 'avatar_image.dart';
+import 'custom_review_card.dart';
 import 'package:flutter/material.dart';
 
 class ReviewCard extends StatelessWidget {

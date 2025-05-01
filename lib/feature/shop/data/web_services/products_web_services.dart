@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:e_commerce/constants.dart';
+import '../../../../constants.dart';
 
 class ProductWebServices {
   late Dio dio;

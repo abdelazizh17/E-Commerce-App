@@ -1,12 +1,14 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import '../../../../constants.dart';
 
 class NewProductsWebServices {
   late Dio dio;
+
   NewProductsWebServices() {
     BaseOptions options = BaseOptions(
-      baseUrl: "http://10.0.2.2:8000/",
+      baseUrl: saleAndNewBaseUrl,
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),

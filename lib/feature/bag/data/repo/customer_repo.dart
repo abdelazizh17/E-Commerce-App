@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:e_commerce/feature/bag/data/models/stripe_customer.dart';
-import 'package:e_commerce/feature/bag/data/services/stripe_service.dart';
+import '../models/stripe_customer.dart';
+import '../services/stripe_service.dart';
 
 class CustomerRepo {
   final StripeService stripeService;

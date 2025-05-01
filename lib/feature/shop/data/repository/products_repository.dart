@@ -1,5 +1,5 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/shop/data/web_services/products_web_services.dart';
+import '../../../bag/data/models/product/product.dart';
+import '../web_services/products_web_services.dart';
 
 class ProductsRepository {
   final ProductWebServices productWebServices;

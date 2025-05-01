@@ -1,13 +1,14 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/linear_gradient_container.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/rating_and_reviews_button_section.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/rating_summary.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/review_card_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../bag/data/models/product/product.dart';
+import '../../viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
+import 'linear_gradient_container.dart';
+import 'rating_and_reviews_button_section.dart';
+import 'rating_summary.dart';
+import 'review_card_list_view.dart';
 
 class RatingAndReviewsBody extends StatefulWidget {
   const RatingAndReviewsBody({super.key, required this.product});

@@ -1,7 +1,7 @@
-import 'package:e_commerce/core/utils/app_assets.dart';
-import 'package:e_commerce/core/utils/app_styles.dart' show AppStyles;
-import 'package:e_commerce/feature/favorites/presentation/viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/products_sliver_grid.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_styles.dart' show AppStyles;
+import '../../viewmodels/favorites_products_cubit/favorite_products_cubit.dart';
+import '../../../../shop/presentation/views/widgets/products_sliver_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

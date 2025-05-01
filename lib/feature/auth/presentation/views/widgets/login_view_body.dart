@@ -1,6 +1,6 @@
-import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/login_footer_section.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/login_header_section.dart';
+import '../../../../../core/widgets/custom_sliver_app_bar.dart';
+import 'login_footer_section.dart';
+import 'login_header_section.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewBody extends StatelessWidget {

@@ -1,12 +1,12 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/custom_skeletoizer_product_card.dart';
-import 'package:e_commerce/feature/shop/presentation/viewmodels/get_product_by_category_cubit/get_product_by_category_cubit.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/filter_buttons_row.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/products_sliver_grid.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../../bag/data/models/product/product.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/custom_sliver_app_bar.dart';
+import '../../../../home/presentation/views/widgets/custom_skeletoizer_product_card.dart';
+import '../../viewmodels/get_product_by_category_cubit/get_product_by_category_cubit.dart';
+import 'filter_buttons_row.dart';
+import 'products_sliver_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

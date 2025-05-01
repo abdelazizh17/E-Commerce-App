@@ -1,9 +1,9 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/core/widgets/custom_sliver_app_bar.dart';
-import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_button_forgot_password_bloc_consumer.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/custom_sliver_app_bar.dart';
+import '../../viewmodels/cubit/auth_cubit.dart';
+import 'custom_button_forgot_password_bloc_consumer.dart';
+import 'custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {

@@ -7,7 +7,7 @@ class CategoryItemWebServices {
 
   CategoryItemWebServices() {
     BaseOptions options = BaseOptions(
-      baseUrl: "http://10.0.2.2:8000/",
+      baseUrl: "https://e-commerce-api-production-297e.up.railway.app/",
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),

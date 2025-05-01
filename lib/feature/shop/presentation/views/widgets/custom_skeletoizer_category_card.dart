@@ -1,7 +1,8 @@
-import 'package:e_commerce/feature/shop/data/models/category_item.dart';
-import 'package:e_commerce/feature/shop/presentation/views/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
+import '../../../data/models/category_item.dart';
+import 'category_card.dart';
 
 class CustomSkeletonizerCategoryCard extends StatelessWidget {
   const CustomSkeletonizerCategoryCard({super.key});

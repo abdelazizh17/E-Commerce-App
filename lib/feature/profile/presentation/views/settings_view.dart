@@ -1,5 +1,6 @@
-import 'package:e_commerce/feature/profile/presentation/views/widgets/setting_view_body.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/setting_view_body.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});

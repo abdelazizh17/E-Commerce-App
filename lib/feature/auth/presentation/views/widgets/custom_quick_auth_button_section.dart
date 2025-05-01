@@ -1,9 +1,10 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/core/utils/app_assets.dart';
-import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_quick_auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/routes/routes.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../viewmodels/cubit/auth_cubit.dart';
+import 'custom_quick_auth_button.dart';
 
 class CustomQuickAuthButtonSection extends StatelessWidget {
   const CustomQuickAuthButtonSection({

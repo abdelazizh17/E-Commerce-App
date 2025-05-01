@@ -1,6 +1,6 @@
-import 'package:e_commerce/feature/home/presentation/views/widgets/count_label.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/rating_progress_bar.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/star_row.dart';
+import 'count_label.dart';
+import 'rating_progress_bar.dart';
+import 'star_row.dart';
 import 'package:flutter/material.dart';
 
 class RatingRow extends StatelessWidget {

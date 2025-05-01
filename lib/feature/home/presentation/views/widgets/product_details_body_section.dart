@@ -1,6 +1,7 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/product_info_section.dart';
 import 'package:flutter/widgets.dart';
+
+import '../../../../bag/data/models/product/product.dart';
+import 'product_info_section.dart';
 
 class ProductDetailsBodySection extends StatelessWidget {
   const ProductDetailsBodySection({

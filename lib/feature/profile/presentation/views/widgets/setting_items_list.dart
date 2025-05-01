@@ -1,7 +1,7 @@
-import 'package:e_commerce/core/routes/routes.dart';
-import 'package:e_commerce/feature/auth/presentation/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/dark_mode_toggle.dart';
-import 'package:e_commerce/feature/profile/presentation/views/widgets/setting_item.dart';
+import '../../../../../core/routes/routes.dart';
+import '../../../../auth/presentation/viewmodels/cubit/auth_cubit.dart';
+import 'dark_mode_toggle.dart';
+import 'setting_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

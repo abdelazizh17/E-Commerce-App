@@ -1,5 +1,6 @@
-import 'package:e_commerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/app_styles.dart';
 
 class TitleScreen extends StatelessWidget {
   const TitleScreen({

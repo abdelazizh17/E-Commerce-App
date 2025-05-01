@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:e_commerce/core/data/failure/failure.dart';
-import 'package:e_commerce/feature/bag/data/models/payment_intent_model/payment_intent_input_model.dart';
-import 'package:e_commerce/feature/bag/data/repo/checkout_repo.dart';
+import '../../../../../core/data/failure/failure.dart';
+import '../../../data/models/payment_intent_model/payment_intent_input_model.dart';
+import '../../../data/repo/checkout_repo.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:meta/meta.dart';
 

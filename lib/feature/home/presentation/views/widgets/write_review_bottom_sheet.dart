@@ -1,10 +1,10 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/auth/presentation/views/widgets/custom_text_form_field.dart';
-import 'package:e_commerce/feature/home/presentation/viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/submit_review_button.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../../bag/data/models/product/product.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../auth/presentation/views/widgets/custom_text_form_field.dart';
+import '../../viewmodels/rating_and_review_cubit/rating_and_review_cubit.dart';
+import 'submit_review_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

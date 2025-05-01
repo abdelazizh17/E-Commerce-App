@@ -1,5 +1,5 @@
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/feature/bag/presentation/views/widgets/product_bag_card.dart';
+import '../../../data/models/product/product.dart';
+import 'product_bag_card.dart';
 import 'package:flutter/material.dart';
 
 class ProductBagCardSliverList extends StatelessWidget {

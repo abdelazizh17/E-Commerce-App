@@ -1,6 +1,6 @@
-import 'package:e_commerce/feature/home/presentation/viewmodels/sale_product_cubit/sale_products_cubit.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/custom_skeletoizer_product_card.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/sale_product_list_view.dart';
+import '../../viewmodels/sale_product_cubit/sale_products_cubit.dart';
+import 'custom_skeletoizer_product_card.dart';
+import 'sale_product_list_view.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

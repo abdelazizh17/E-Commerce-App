@@ -1,9 +1,9 @@
-import 'package:e_commerce/core/data/helper_methods.dart';
-import 'package:e_commerce/feature/bag/data/models/product/product.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/bag/presentation/viewmodels/bag_cubit/bag_cubit.dart';
-import 'package:e_commerce/feature/bag/presentation/views/widgets/custom_floating_action_button.dart';
+import '../../../../../core/data/helper_methods.dart';
+import '../../../data/models/product/product.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../viewmodels/bag_cubit/bag_cubit.dart';
+import 'custom_floating_action_button.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';

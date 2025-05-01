@@ -1,8 +1,8 @@
-import 'package:e_commerce/feature/bag/data/models/product/review.dart';
-import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/helpfull_row.dart';
-import 'package:e_commerce/feature/home/presentation/views/widgets/rating_and_data_row.dart';
+import '../../../../bag/data/models/product/review.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_styles.dart';
+import 'helpfull_row.dart';
+import 'rating_and_data_row.dart';
 import 'package:flutter/material.dart';
 
 class CustomReviewCard extends StatelessWidget {
