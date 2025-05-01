@@ -46,6 +46,11 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
     final state = cubit.state;
 
     if (state is SortedProductsSuccess) {
+      cubit.sortProducts(
+        sortBy: cubit.currentSortBy!,
+        order: cubit.currentOrder!,
+        loadMore: true,
+      );
     } else if (state is GetAllProductsSuccess) {
       cubit.fetchProductsPage(loadMore: true);
     }
