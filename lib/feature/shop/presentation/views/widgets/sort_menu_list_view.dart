@@ -44,7 +44,11 @@ class SortMenuListView extends StatelessWidget {
             child: Text(
               options[index],
               style: TextStyle(
-                color: isSelected ? AppColors.whiteColor : AppColors.blackColor,
+                color: isSelected
+                    ? AppColors.whiteColor
+                    : Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.greyColor
+                        : AppColors.blackColor,
                 fontSize: 16,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),

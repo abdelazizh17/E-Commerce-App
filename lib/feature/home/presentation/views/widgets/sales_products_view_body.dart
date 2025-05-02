@@ -73,7 +73,10 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
       Navigator.pop(context);
     } else {
       ModalRoute.of(context)!.addLocalHistoryEntry(LocalHistoryEntry(
-        onRemove: () => setState(() => isSearching = false),
+        onRemove: () => setState(() {
+          isSearching = false;
+          _clearSearch();
+        }),
       ));
       setState(() => isSearching = true);
     }
@@ -81,6 +84,16 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
 
   void _clearSearch() {
     _searchController.clear();
+    final cubit = context.read<GetAllProductsCubit>();
+
+    if (cubit.state is SortedProductsSuccess || cubit.currentSortBy != null) {
+      cubit.sortProducts(
+        sortBy: cubit.currentSortBy!,
+        order: cubit.currentOrder!,
+      );
+    } else {
+      cubit.fetchProductsPage();
+    }
   }
 
   @override

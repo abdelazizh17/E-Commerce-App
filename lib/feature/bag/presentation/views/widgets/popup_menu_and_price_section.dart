@@ -23,6 +23,8 @@ class PopupMenuAndPriceSection extends StatefulWidget {
 class _PopupMenuAndPriceSectionState extends State<PopupMenuAndPriceSection> {
   @override
   Widget build(BuildContext context) {
+    double discountedPrice = widget.product.price! -
+        (widget.product.price! * (widget.product.discountPercentage! / 100));
     return Column(
       children: [
         PopupMenuButton(
@@ -78,7 +80,7 @@ class _PopupMenuAndPriceSectionState extends State<PopupMenuAndPriceSection> {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            "\$${widget.product.price}",
+            "\$${discountedPrice.toStringAsFixed(2)}",
             style: AppStyles.styleMediumTheme14(context),
           ),
         ),
