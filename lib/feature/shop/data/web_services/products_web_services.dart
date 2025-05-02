@@ -16,9 +16,14 @@ class ProductWebServices {
     dio = Dio(options);
   }
 
-  Future<List<dynamic>> searchProducts(String searchText) async {
+  Future<List<dynamic>> searchProducts({
+    required String searchText,
+    String sortBy = 'popular',
+    String order = 'asc',
+  }) async {
     try {
-      var response = await dio.get('products/search?q=$searchText');
+      var response = await dio
+          .get('products/search?q=$searchText&sortBy=$sortBy&order=$order');
       return response.data["products"];
     } on Exception catch (e) {
       log(e.toString());

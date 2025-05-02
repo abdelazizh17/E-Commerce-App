@@ -6,8 +6,16 @@ class ProductsRepository {
 
   ProductsRepository(this.productWebServices);
 
-  Future<List<Product>> searchProducts(String searchText) async {
-    var products = await productWebServices.searchProducts(searchText);
+  Future<List<Product>> searchProducts({
+    required String searchText,
+    required String sortBy,
+    required String order,
+  }) async {
+    var products = await productWebServices.searchProducts(
+      searchText: searchText,
+      sortBy: sortBy,
+      order: order,
+    );
     return products.map((product) => Product.fromJson(product)).toList();
   }
 

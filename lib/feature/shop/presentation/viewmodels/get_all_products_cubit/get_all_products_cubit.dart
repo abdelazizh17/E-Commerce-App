@@ -84,11 +84,18 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
     }
   }
 
-  void searchProducts(String searchText) async {
+  void searchProducts({
+    required String searchText,
+    required String sortBy,
+    required String order,
+  }) async {
     emit(GetAllProductsLoading());
     try {
-      final searchedProducts =
-          await productsRepository.searchProducts(searchText);
+      final searchedProducts = await productsRepository.searchProducts(
+        searchText: searchText,
+        sortBy: sortBy,
+        order: order,
+      );
       emit(SearchedProductsSuccess(searchedProducts));
     } catch (e) {
       emit(GetAllProductsFailure('Failed to search products'));

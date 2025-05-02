@@ -56,15 +56,14 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
     }
   }
 
-  void _onSearchChanged(String value) {
+  void _onSearchChanged(String searchText) {
     final cubit = context.read<GetAllProductsCubit>();
-    if (value.isEmpty) {
-      isSearching = false;
-      cubit.fetchProductsPage();
-    } else {
-      isSearching = true;
-      cubit.searchProducts(value);
-    }
+    isSearching = true;
+    cubit.searchProducts(
+      searchText: searchText,
+      sortBy: cubit.currentSortBy ?? 'popular',
+      order: cubit.currentOrder ?? 'asc', // issue about api
+    );
   }
 
   void _toggleSearch() {
@@ -73,17 +72,23 @@ class _SalesProductsViewBodyState extends State<SalesProductsViewBody> {
       Navigator.pop(context);
     } else {
       ModalRoute.of(context)!.addLocalHistoryEntry(LocalHistoryEntry(
-        onRemove: () => setState(() {
-          isSearching = false;
-          _clearSearch();
-        }),
+        onRemove: _stopSearch,
       ));
       setState(() => isSearching = true);
     }
   }
 
+  void _stopSearch() {
+    _clearSearch();
+    setState(() {
+      isSearching = false;
+    });
+  }
+
   void _clearSearch() {
-    _searchController.clear();
+    setState(() {
+      _searchController.clear();
+    });
     final cubit = context.read<GetAllProductsCubit>();
 
     if (cubit.state is SortedProductsSuccess || cubit.currentSortBy != null) {
